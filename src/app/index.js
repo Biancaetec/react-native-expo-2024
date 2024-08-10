@@ -1,17 +1,27 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View } from 'react-native';
 import { useAuth } from "../hooks/Auth";
-{/*Desenvolver a pagina inicial*/}
-export default function App() { 
+{/*Desenvolver a pagina inicial*/ }
+export default function App() {
   const { signIn, signOut } = useAuth();
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Aplicativo está pronto para usar.</Text>
-      <Button title="Signin" 
-      onPress={() => 
-        signIn({ email: "super@gmail.com", password: "Super123!" })
-      }
+      <Button title="Signin Super"
+        onPress={() =>
+          signIn({ email: "super@email.com", password: "Super123!" })
+        }
+      />
+      <Button title="Signin Adm"
+        onPress={() =>
+          signIn({ email: "adm@email.com", password: "Adm123!" })
+        }
+      />
+      <Button title="Signin User"
+        onPress={() =>
+          signIn({ email: "user@email.com", password: "User123!" })
+        }
       />
       <Button title="Signout" onPress={() => signOut()} />
       <StatusBar style="auto" />
@@ -29,5 +39,5 @@ const styles = StyleSheet.create({
   title: {
     fontFamily: "MontserratLight",
     fontSize: 20,
-  },
+  }
 });
