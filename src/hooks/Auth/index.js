@@ -48,7 +48,7 @@ export function AuthProvider({ children }) {
     };
 
     useEffect(() => {
-        console.log('AuthProvider: ', user);
+        console.log("AuthProvider: ", user);
     }, [user]);
 
     return (
