@@ -3,36 +3,36 @@ import { AppProvider } from "../hooks";
 import { useAuth } from "../hooks/Auth";
 import { useEffect } from "react";
 
-const StackLayout = () => {
-    const { user } = useAuth();
-    const segments = useSegments();
 
-    useEffect(() => {
+const StackLayout = () => {    
+    const { user } = useAuth ();
+    const segments = useSegments ();
+
+    useEffect (() => {
         const inAuthGroup = segments[0] === "(protected)";
 
-        if (!user?.autenticated && inAuthGroup) {
-            router.replace("/")
+        if(!user?.autenticated && inAuthGroup){
+            router.replace("/");
         } else {
-            if (user?.autenticated) {
+            if (user?.autenticated){
                 router.replace("/(protected)");
             }
         }
+        
     }, [user]);
 
-    return (
+    return(
         <Stack>
-            <Stack.Screen name="index" options={{ headerShown: false }} />
-            <Stack.Screen name="(protected)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{ headerShown: false}} />
+        <Stack.Screen name="(protected)" options={{ headerShown: false}} />
         </Stack>
     );
-};
-
+}
 export default function Layout() {
 
-    {/*responsável por exibir a pagina inicial*/ }
     return (
-        <AppProvider>
-            <StackLayout />
-        </AppProvider>
+    <AppProvider>
+        <StackLayout />
+    </AppProvider>
     );
 }

@@ -29,8 +29,9 @@ export default function App() {
           signIn({ email: "user@email.com", password: "User123!" })
         }
       />
-      <Button title="Sobre" onPress={()=>router.push("/about")} />
-        <Button title="Sair do Aplicativo" onPress={() => BackHandler.exitApp()} 
+      <Button title="Sobre" onPress={() => router.push("/about")} />
+        <Button title="Sair do Aplicativo"
+         onPress={() => BackHandler.exitApp()} 
         />
       <StatusBar style="auto" />
     </View>
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   title: {
-    fontFamily: "MontserratLight",
+    fontFamily: "OpenSansMedium",
     fontSize: 20,
   }
 });
