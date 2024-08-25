@@ -1,33 +1,67 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, Button, StyleSheet, Text, View } from 'react-native';
+import { BackHandler, Button, StyleSheet, TextInput, Text, View, Alert } from 'react-native';
 import { useAuth } from "../hooks/Auth";
 import { router } from "expo-router";
+import { Ionicons } from "@expo/vector-icons";
+import { useState } from 'react';
+
 {/*Desenvolver a pagina inicial*/ }
+
 export default function App() {
   const { signIn, signOut } = useAuth();
+  const [email, setEmail] = useState("super@email.com"); //esse email e senha, está relacionado a pagina "initializeDatabase.js"
+  const [password, setPassword] = useState("A123456a!");
+  const [passwordVisibility, setpasswordVisibility] = useState(false);
+
+  const tooglePasswordVisibility = () => {
+    setpasswordVisibility(!passwordVisibility);
+  };
 
   const handleEntrarSuper = async () => {
     try {
-      await signIn({ email: "Super@email.com", password: "A123456a!" })
-      // router.replace("/");
+      await signIn({ email, password });
+      router.replace("/"); //o prof tinha comentado essa linha de codigo
     } catch (error) {
+      Alert.alert("Erro", error.message);
       console.log(error);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Aplicativo está pronto para usar.</Text>
-      <Button title="Signin Super" onPress={handleEntrarSuper} />
-      <Button title="Signin Adm"
-        onPress={() =>
-          signIn({ email: "Adm@email.com", password: "A123456a!" })
-        }
-      />
-      <Button title="Signin User"
-        onPress={() =>
-          signIn({ email: "User@email.com", password: "A123456a!" })
-        }
+
+      <View style={styles.inputbox}>
+        <Ionicons name="mail-open-outline" size={20} color="black" />
+        <TextInput
+          style={styles.emailinput}
+          placeholder="E-mail"
+          value={email}
+          onChangeText={setEmail}
+        />
+      </View>
+
+      <View style={styles.inputbox}>
+        <Ionicons name="lock-closed-outline" size={20} color="black" />
+        <TextInput
+          style={styles.emailinput}
+          placeholder="Senha"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={passwordVisibility}
+        />
+        <Ionicons
+          name={passwordVisibility ? "eye-off-outline" : "eye-outline"}
+          size={20}
+          color="black"
+          onPress={tooglePasswordVisibility}
+        />
+
+      </View>
+
+      <Button style={styles.button}
+        title="Entrar"
+        onPress={handleEntrarSuper}
       />
       <Button title="Sobre" onPress={() => router.push("/about")} />
       <Button title="Sair do Aplicativo"
@@ -47,7 +81,23 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   title: {
+    fontFamily: "OpenSansLight",
+    fontSize: 20,
+  },
+  inputbox: {
+    flexDirection: "row",
+    gap: 10,
+    marginHorizontal: 40,
+    marginVertical: 10,
+    alignItems: "center",
+  },
+  emailinput: {
+    flex: 1,
     fontFamily: "OpenSansMedium",
     fontSize: 20,
-  }
+
+  },
+  button: { //entrar
+    width: "100%",
+  },
 });

@@ -20,21 +20,25 @@ export function AuthProvider({ children }) {
 
     const signIn = async ({ email, password }) => {
         const response = await authUser({ email, password });
+        console.log(response);
 
-        if (!response) {
+
+        if (!response) { //dados incorretos:
             setUser({
                 autenticated: false,
                 user: null,
                 role: null,
             });
+            throw new Error("Usuário ou senha inválidos.");
         }
-        else {
-            setUser({
+
+        // else {
+            setUser({ //dados certos:
                 autenticated: true,
                 user: response,
                 role: response.role,
             });
-        }
+        // }
     };
 
     const signOut = async () => {
