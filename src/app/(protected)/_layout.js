@@ -1,26 +1,50 @@
-import { Drawer } from 'expo-router/drawer';
-import { Text, Touchable, TouchableOpacity, View } from 'react-native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { Ionicons } from "@expo/vector-icons";
-import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
+import { 
+  DrawerContentScrollView, 
+  DrawerItemList 
+} from '@react-navigation/drawer';
+import { Drawer } from 'expo-router/drawer';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { useAuth } from "../../hooks/Auth/index";
 
 function CustomDrawerContent(props) {
+  const { user, signOut } = useAuth();
+
+
   return (
     <View style={{ flex:1 }}>
+      <View style={{ 
+        marginTop: 20, 
+        justifyContent: "center", 
+        alignItems: "center",
+        backgroundColor: "#f0fcff",
+        paddingVertical: 10,
+        }}
+      >
+        <Image source={{
+          uri: 'https:www.github.com/biancaetec.png', //img do usuario
+        }}
+        style={{width: 100,height: 100, borderRadius: 50, margin: 10}}
+        />
+        <Text style={{ textAlign: "center", fontSize: 16, fontFamily: "OpenSansMedium" }}>
+          {user.user.name}
+        </Text>
+      </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <TouchableOpacity 
+      <TouchableOpacity onPress={()=>signOut()}
       style={{
-        width: "100%",
         justifyContent: "center",
         alignItems: "center",
         height: 50,
-        padding: 10,
+        margin: 10,
         backgroundColor: "#0000ff",
+        borderRadius: 5,
       }}
       >
-        <Text>Deslogar</Text>
+        <Text style={{ color: "white", fontFamily: "RobotoMedium" }}>Deslogar</Text>
       </TouchableOpacity>
     </View>
   );
