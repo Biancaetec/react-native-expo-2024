@@ -5,7 +5,7 @@ import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import { useState } from 'react';
 
-{/*Desenvolver a pagina inicial*/ }
+{/*Desenvolvendo a pagina inicial*/ }
 
 export default function App() {
   const { signIn, signOut } = useAuth();

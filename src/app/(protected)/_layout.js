@@ -1,16 +1,17 @@
 import { Ionicons } from "@expo/vector-icons";
 import { 
   DrawerContentScrollView, 
-  DrawerItemList 
+  DrawerItemList,
 } from '@react-navigation/drawer';
 import { Drawer } from 'expo-router/drawer';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAuth } from "../../hooks/Auth/index";
 
+// estilizando o Drawer (menu)
+
 function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
-
 
   return (
     <View style={{ flex:1 }}>
@@ -22,19 +23,22 @@ function CustomDrawerContent(props) {
         paddingVertical: 10,
         }}
       >
-        <Image source={{
-          uri: 'https:www.github.com/biancaetec.png', //img do usuario
+      <Image 
+        source={{
+          uri: 'https://www.github.com/biancaetec.png', //img do usuario
         }}
-        style={{width: 100,height: 100, borderRadius: 50, margin: 10}}
-        />
-        <Text style={{ textAlign: "center", fontSize: 16, fontFamily: "OpenSansMedium" }}>
-          {user.user.name}
+        style={{ width: 100, height: 100, borderRadius: 50, margin: 10 }}
+      />
+        <Text style={{ textAlign: "center", fontSize: 16, fontFamily: "OpenSansMedium" }}
+        >
+          {user?.user?.nome}
         </Text>
       </View>
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <TouchableOpacity onPress={()=>signOut()}
+      <TouchableOpacity 
+      onPress={()=>signOut()}
       style={{
         justifyContent: "center",
         alignItems: "center",

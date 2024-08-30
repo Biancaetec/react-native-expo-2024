@@ -1,7 +1,7 @@
 import { Text, View } from "react-native";
 import { useAuth } from "../../hooks/Auth";
 
-export default function Home() {
+export default function Home() { //criar os itens do menu
 
     const { signOut }  = useAuth();
 
