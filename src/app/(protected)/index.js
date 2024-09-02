@@ -8,7 +8,7 @@ export default function Home() { //criar os itens do menu
     return(
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
             <Text>Home</Text>
-            {/* <Button title="Sair" onPress={()=>signOut()} />  */}
+           {/* <Button title="Sair" onPress={()=>signOut()} />   */}
                 {/* teste para saber o porque o botão de deslogar não funciona */}
         </View> 
     );
