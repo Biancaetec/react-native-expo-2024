@@ -1,8 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
-import { 
-  DrawerContentScrollView, 
-  DrawerItemList,
-} from '@react-navigation/drawer';
+import { DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer';
 import { Drawer } from 'expo-router/drawer';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -14,7 +11,7 @@ function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
 
   return (
-    <View style={{ flex:1 }}>
+    <View style={{ flex: 1 }}>
       <View style={{ 
         marginTop: 20, 
         justifyContent: "center", 
@@ -34,11 +31,12 @@ function CustomDrawerContent(props) {
           {user?.user?.nome}
         </Text>
       </View>
+
       <DrawerContentScrollView {...props}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
-      <TouchableOpacity 
-      onPress={()=>signOut()}
+
+      <TouchableOpacity onPress={()=>signOut()}
       style={{
         justifyContent: "center",
         alignItems: "center",
@@ -57,6 +55,7 @@ function CustomDrawerContent(props) {
 const DrawerLayout = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
+
           <Drawer drawerContent={(props) => <CustomDrawerContent {...props} />}>
           <Drawer.Screen 
           name="index"  
@@ -68,6 +67,7 @@ const DrawerLayout = () => {
             ),
             }} 
           /> 
+
           <Drawer.Screen 
           name="list"  
           options={{
@@ -78,6 +78,7 @@ const DrawerLayout = () => {
             ),
             }} 
           />
+
           <Drawer.Screen 
           name="payment"  
           options={{
@@ -89,6 +90,7 @@ const DrawerLayout = () => {
           }} 
           />
           </Drawer>
+
         </GestureHandlerRootView>
       );
 }
