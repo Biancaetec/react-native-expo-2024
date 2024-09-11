@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     content: {
-        marginTop: 10,
-        height: 100,
+        marginTop: 15,
+        height: 140,
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
@@ -53,13 +53,14 @@ const styles = StyleSheet.create({
     page: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#fff",
+        backgroundColor: "#eb81a7",
         padding: 10,
       },
     bulletContent: {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
+        
     },
     bullet: {
         width: 10,

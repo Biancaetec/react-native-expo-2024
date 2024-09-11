@@ -11,12 +11,12 @@ function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: "#f2f2f2" }}>
       <View style={{ 
-        marginTop: 20, 
+        marginTop: 26, 
         justifyContent: "center", 
         alignItems: "center",
-        backgroundColor: "#f0fcff",
+        backgroundColor: "#ebe2e2",
         paddingVertical: 10,
         }}
       >
@@ -42,7 +42,7 @@ function CustomDrawerContent(props) {
         alignItems: "center",
         height: 50,
         margin: 10,
-        backgroundColor: "#0000ff",
+        backgroundColor: "#1c75fa",
         borderRadius: 5,
       }}
       >
