@@ -9,7 +9,7 @@ export default function Home() {
     );
 }
 
-const styles = StyleSheet.create({ // eu estilizei a pagina
+const styles = StyleSheet.create({ // eu estilizei a cor da pagina principal
     container: {
       flex: 1,
       backgroundColor: '#f2f2f2',

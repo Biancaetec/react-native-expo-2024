@@ -21,11 +21,11 @@ export function Banner() {
                 <Text style={styles.text}>Banner 1 - img</Text> 
             </View>
             <View key="2" style={styles.page}>
-                <Text style={styles.text}>PROMOÇÃO</Text> 
+                <Text style={styles.text}>Hidratante</Text> 
                 <Text style={styles.text}>Banner 2 - img</Text>
             </View>
             <View key="3" style={styles.page}>
-                <Text style={styles.text}>PROMOÇÃO</Text> 
+                <Text style={styles.text}>Sabonete Líquido</Text> 
                 <Text style={styles.text}>Banner 3 - img</Text>
             </View>
         </PagerView>
@@ -36,16 +36,19 @@ export function Banner() {
 
         </View>
     </View>
+  
+   
     );
 }
+
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
     content: {
-        marginTop: 15,
-        height: 140,
+        marginTop: 20,
+        height: 220,
         alignItems: "center",
         justifyContent: "center",
         width: "100%",
@@ -53,7 +56,7 @@ const styles = StyleSheet.create({
     page: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#eb81a7",
+        backgroundColor: "#20B2AA",
         padding: 10,
       },
     bulletContent: {
@@ -67,10 +70,10 @@ const styles = StyleSheet.create({
         height: 10,
         borderRadius: 5,
         margin: 10,
-        backgroundColor: "#999",
+        backgroundColor: "#D3D3D3", 
     },
     activeBullet: {
-        backgroundColor: "#000",
+        backgroundColor: "#A9A9A9",
     },
     text: {
         fontSize: 18,
