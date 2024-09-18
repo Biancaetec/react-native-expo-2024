@@ -60,8 +60,9 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="index"  
           options={{
-            drawerLabel: "Principal", 
-            headerTitle:"Principal",
+            drawerLabel: "Promoção", 
+            headerTitle:"Promoção",
+            headerTitleAlign: 'center',
             drawerIcon: () => (
               <Ionicons name="home-outline" size={20} color="black" />
             ),
@@ -71,8 +72,9 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="list"  
           options={{
-            drawerLabel: "Listagem", 
-            headerTitle:"Listagem",
+            drawerLabel: "Hidratante", 
+            headerTitle:"Hidrante",
+            headerTitleAlign: 'center',
             drawerIcon: () => (
             <Ionicons name="list-circle-outline" size={20} color="black" />
             ),
@@ -82,8 +84,9 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="payment"  
           options={{
-            drawerLabel: "Pagamentos", 
-            headerTitle:"Pagamentos",
+            drawerLabel: "Sabonete Líquido", 
+            headerTitle:"Sabonete Líquido",
+            headerTitleAlign: 'center',
             drawerIcon: () => (
             <Ionicons name="diamond-outline" size={20} color="black" />
             ),
