@@ -60,7 +60,7 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="index"  
           options={{
-            drawerLabel: "Promoção", 
+            drawerLabel: "Home", 
             headerTitle:"Promoção",
             headerTitleAlign: 'center',
             drawerIcon: () => (
@@ -72,7 +72,7 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="list"  
           options={{
-            drawerLabel: "Hidratante", 
+            drawerLabel: "List", 
             headerTitle:"Hidrante",
             headerTitleAlign: 'center',
             drawerIcon: () => (
@@ -84,7 +84,7 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="payment"  
           options={{
-            drawerLabel: "Sabonete Líquido", 
+            drawerLabel: "Payment", 
             headerTitle:"Sabonete Líquido",
             headerTitleAlign: 'center',
             drawerIcon: () => (
