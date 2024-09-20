@@ -23,11 +23,11 @@ export function Banner() {
                 </View>
                 <View key="2" style={styles.page2}>
                     <Image
-                        source={require('../../../src/assets/images/banner.png')}
+                        source={require('../../../src/assets/images/banner2.png')}
                         style={{
                             flex: 1,
-                            width: '100%',
-                            height: '100%',
+                            width: '200%',
+                            height: '200%',
                             resizeMode: 'contain',
                         }}
 
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     page2: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#20B2AA",
+        backgroundColor: "f8a1e0",
         padding: 10,
     },
     // image2: {

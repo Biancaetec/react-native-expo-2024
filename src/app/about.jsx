@@ -6,7 +6,7 @@ export default function About() {
         
         <View style={{ flex:1, justifyContent: 'center', alignItems: 'center' }}>
              <Image
-                        source={require('../assets/images/banner.png')}
+                        source={require('../assets/images/imgsobre.png')}
                         style={{
                             flex: 1,
                             width: '100%',
