@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import PagerView from "react-native-pager-view";
 
+
 export function Banner() {
     const [page, setPage] = useState(0);
 
@@ -20,17 +21,18 @@ export function Banner() {
                     <Text style={styles.text}>PROMOÇÃO</Text> 
                 
                 </View>
-                <View key="2" style={styles.page}>
-                    <Text style={styles.text}>Hidratante</Text> 
+                <View key="2" style={styles.page2}>
                     <Image 
-                        source={require('../../../src/assets/images/sabonetecereja.png')} 
+                        source={require('../../../src/assets/images/banner2.png')} 
                         style={styles.image2}
                     />
                 </View>
                 <View key="3" style={styles.page}>
-                    <Text style={styles.text}>Sabonete Líquido</Text> 
+                    <Text style={styles.text}>HIDRATANTE</Text> 
+                    <Text style={styles.text}>CORPORAL</Text> 
+
                     <Image 
-                        source={require('../../../src/assets/images/hidratante.png')} 
+                        source={require('../../../src/assets/images/hidratantepromocao.png')} 
                         style={styles.image3}
                     />
                 </View>
@@ -63,10 +65,21 @@ const styles = StyleSheet.create({
         borderRadius: 24,
         margin: 8,
     },
+    page2: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: "#9f7b82",
+        padding: 10,
+        borderRadius: 24,
+        margin: 8,
+    },
     image2: {
         width: "100%",
-        height: 150,
-        borderRadius: 16,
+        height: "100%",
+        borderRadius: 24, 
+        position: 'absolute',
+        top: 0,
+        left: 0,
         resizeMode: "cover",
     },
     image3: {
