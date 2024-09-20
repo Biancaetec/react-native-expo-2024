@@ -1,9 +1,9 @@
 import { Text, View, StyleSheet } from "react-native";
 
-export default function Hidratante() { //criar os itens do menu - Hidratante
+export default function Sabonete() { //criar os itens do menu - Sabonete líquido
     return(
         <View style={styles.container}>
-            <Text>Hidratante</Text>
+            <Text>Sabonete líquido</Text>
         </View>
     );
 }

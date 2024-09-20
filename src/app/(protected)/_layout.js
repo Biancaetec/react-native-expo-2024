@@ -68,23 +68,23 @@ const DrawerLayout = () => {
             ),
             }} 
           /> 
-
+{/* antigo listagem: */}
           <Drawer.Screen 
           name="list"  
           options={{
-            drawerLabel: "List", 
-            headerTitle:"Hidrante",
+            drawerLabel: "Hidratante", 
+            headerTitle:"Hidratante",
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <Ionicons name="list-circle-outline" size={20} color="black" />
             ),
             }} 
           />
-
+{/*  */}
           <Drawer.Screen 
-          name="payment"  
+          name="sabonete"  
           options={{
-            drawerLabel: "Payment", 
+            drawerLabel: "Sabonete líquido", 
             headerTitle:"Sabonete Líquido",
             headerTitleAlign: 'center',
             drawerIcon: () => (
@@ -92,6 +92,18 @@ const DrawerLayout = () => {
             ),
           }} 
           />
+          <Drawer.Screen 
+          name="payment"  
+          options={{
+            drawerLabel: "Pagamento", 
+            headerTitle:"Pagamento",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+            <Ionicons name="diamond-outline" size={20} color="black" />
+            ),
+          }} 
+          />
+
           </Drawer>
 
         </GestureHandlerRootView>

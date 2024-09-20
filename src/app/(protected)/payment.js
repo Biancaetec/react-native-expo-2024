@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 
-export default function Payment() { //criar os itens do menu
+export default function Payment() { //criar os itens do menu -pagamento
     const [valor, setValor] = useState("0,00");
     const [sugestoes, setSugestoes] = useState([
         {
@@ -28,6 +28,7 @@ export default function Payment() { //criar os itens do menu
             id: 5,
             nome: "Bradford Smogur"
         },
+        
         {
             id: 6,
             nome: "Amelina Lesaunier"

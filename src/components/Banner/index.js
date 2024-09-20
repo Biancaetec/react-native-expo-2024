@@ -12,27 +12,33 @@ export function Banner() {
 
     return (
         <View style={styles.container}>
-            <PagerView 
-                initialPage={0} 
-                style={styles.content} 
+            <PagerView
+                initialPage={0}
+                style={styles.content}
                 onPageSelected={onPageSelected}
             >
                 <View key="1" style={styles.page}>
-                    <Text style={styles.text}>PROMOÇÃO</Text> 
-                
+                    <Text style={styles.text}>PROMOÇÃO</Text>
+
                 </View>
                 <View key="2" style={styles.page2}>
-                    <Image 
-                        source={require('../../../src/assets/images/banner2.png')} 
-                        style={styles.image2}
+                    <Image
+                        source={require('../../../src/assets/images/banner.png')}
+                        style={{
+                            flex: 1,
+                            width: '100%',
+                            height: '100%',
+                            resizeMode: 'contain',
+                        }}
+
                     />
                 </View>
                 <View key="3" style={styles.page}>
-                    <Text style={styles.text}>HIDRATANTE</Text> 
-                    <Text style={styles.text}>CORPORAL</Text> 
+                    <Text style={styles.text}>HIDRATANTE</Text>
+                    <Text style={styles.text}>CORPORAL</Text>
 
-                    <Image 
-                        source={require('../../../src/assets/images/hidratantepromocao.png')} 
+                    <Image
+                        source={require('../../../src/assets/images/hidratantepromocao.png')}
                         style={styles.image3}
                     />
                 </View>
@@ -62,26 +68,22 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: "#20B2AA",
         padding: 10,
-        borderRadius: 24,
-        margin: 8,
     },
     page2: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#9f7b82",
+        backgroundColor: "#20B2AA",
         padding: 10,
-        borderRadius: 24,
-        margin: 8,
     },
-    image2: {
-        width: "100%",
-        height: "100%",
-        borderRadius: 24, 
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        resizeMode: "cover",
-    },
+    // image2: {
+    //     width: "100%",
+    //     height: "100%",
+    //     borderRadius: 24,
+    //     position: 'absolute',
+    //     top: 0,
+    //     left: 0,
+    //     resizeMode: "cover",
+    // },
     image3: {
         width: "100%",
         height: 280,
@@ -100,7 +102,7 @@ const styles = StyleSheet.create({
         height: 10,
         borderRadius: 5,
         margin: 10,
-        backgroundColor: "#D3D3D3", 
+        backgroundColor: "#D3D3D3",
     },
     activeBullet: {
         backgroundColor: "#A9A9A9",
