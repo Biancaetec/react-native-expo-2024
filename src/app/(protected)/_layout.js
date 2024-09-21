@@ -60,7 +60,7 @@ const DrawerLayout = () => {
           <Drawer.Screen 
           name="index"  
           options={{
-            drawerLabel: "Home", 
+            drawerLabel: "Promoção", 
             headerTitle:"Promoção",
             headerTitleAlign: 'center',
             drawerIcon: () => (
@@ -89,6 +89,7 @@ const DrawerLayout = () => {
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <Ionicons name="diamond-outline" size={20} color="black" />
+            
             ),
           }} 
           />

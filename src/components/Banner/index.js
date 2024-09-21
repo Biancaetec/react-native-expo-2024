@@ -18,10 +18,18 @@ export function Banner() {
                 onPageSelected={onPageSelected}
             >
                 <View key="1" style={styles.page}>
-                    <Text style={styles.text}>PROMOÇÃO</Text>
+                <Image
+                        source={require('../../../src/assets/images/banner1.png')}
+                        style={{
+                            flex: 1,
+                            width: '200%',
+                            height: '200%',
+                            resizeMode: 'contain',
+                        }}
 
+                    />
                 </View>
-                <View key="2" style={styles.page2}>
+                <View key="2" style={styles.page}>
                     <Image
                         source={require('../../../src/assets/images/banner2.png')}
                         style={{
@@ -34,12 +42,15 @@ export function Banner() {
                     />
                 </View>
                 <View key="3" style={styles.page}>
-                    <Text style={styles.text}>HIDRATANTE</Text>
-                    <Text style={styles.text}>CORPORAL</Text>
+                <Image
+                        source={require('../../../src/assets/images/banner3.png')}
+                        style={{
+                            flex: 1,
+                            width: '200%',
+                            height: '200%',
+                            resizeMode: 'contain',
+                        }}
 
-                    <Image
-                        source={require('../../../src/assets/images/hidratantepromocao.png')}
-                        style={styles.image3}
                     />
                 </View>
             </PagerView>
@@ -66,31 +77,8 @@ const styles = StyleSheet.create({
     page: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "#20B2AA",
-        padding: 10,
-    },
-    page2: {
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: "f8a1e0",
         padding: 10,
-    },
-    // image2: {
-    //     width: "100%",
-    //     height: "100%",
-    //     borderRadius: 24,
-    //     position: 'absolute',
-    //     top: 0,
-    //     left: 0,
-    //     resizeMode: "cover",
-    // },
-    image3: {
-        width: "100%",
-        height: 280,
-        borderRadius: 16,
-        resizeMode: "cover",
-        marginBottom: "-24%",
-        marginLeft: "-30%",
     },
     bulletContent: {
         flexDirection: "row",
@@ -107,8 +95,4 @@ const styles = StyleSheet.create({
     activeBullet: {
         backgroundColor: "#A9A9A9",
     },
-    text: {
-        fontSize: 18,
-        fontFamily: "MontserratLight",
-    }
 });
