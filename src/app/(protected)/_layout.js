@@ -6,8 +6,6 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAuth } from "../../hooks/Auth/index";
 
-// estilizando o Drawer (menu)
-
 function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
 
@@ -65,7 +63,7 @@ const DrawerLayout = () => {
             headerTitle:"Promoção",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-          <AntDesign name="bells" size={24} color="black" />
+        <AntDesign name="bells" size={24} color="black" />
             ),
             }} 
           /> 
