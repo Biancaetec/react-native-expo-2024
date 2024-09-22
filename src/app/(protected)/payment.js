@@ -229,7 +229,7 @@ const styles = StyleSheet.create({ // eu estilizei a pagina
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,
-        backgroundColor: '#f2f2f2',
+        backgroundColor: '#ffffff',
 
     },
     inputView: {

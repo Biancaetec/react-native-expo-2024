@@ -1,4 +1,5 @@
 import { Ionicons } from "@expo/vector-icons";
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { DrawerContentScrollView, DrawerItemList} from '@react-navigation/drawer';
 import { Drawer } from 'expo-router/drawer';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
@@ -64,7 +65,7 @@ const DrawerLayout = () => {
             headerTitle:"Promoção",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="home-outline" size={20} color="black" />
+          <AntDesign name="bells" size={24} color="black" />
             ),
             }} 
           /> 
@@ -90,6 +91,18 @@ const DrawerLayout = () => {
             drawerIcon: () => (
             <Ionicons name="diamond-outline" size={20} color="black" />
             
+            ),
+          }} 
+          />
+           <Drawer.Screen 
+          name="perfil"  
+          options={{
+            drawerLabel: "Perfil", 
+            headerTitle:"Perfil",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+            // <Ionicons name="person-outline" size={24} color="black" /> 
+            <Ionicons name="person-circle-outline" size={24} color="black" />           
             ),
           }} 
           />

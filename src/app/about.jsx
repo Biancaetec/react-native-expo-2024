@@ -1,13 +1,16 @@
 import { router } from "expo-router";
 import { Button, Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import Entypo from '@expo/vector-icons/Entypo';
 
 export default function About() {
     return (
         <View style={styles.container}>
+
             <Image
                 source={require('../assets/images/logocabanni.png')}
                 style={styles.image}
             />
+
             <Text style={styles.titulo}>
                 SEJA BEM-VINDO!
             </Text>
@@ -17,14 +20,32 @@ export default function About() {
                     O aplicativo Cabanni traz uma seleção exclusiva que aprimora a experiência de cuidado pessoal.
                 </Text>
             </View>
-            <View style={styles.sobre}>
-                 <Text style={styles.vermais}>
+
+            <View style={styles.subtextocontainer}>
+                <Text style={styles.subtexto}>
                 O que você encontrará :
                 </Text>
+                {/* tópico 1 */}
+                <Entypo name="check" size={24} color="#ac0c24" />
+                <Text style={styles.topico1}>
+                Hidratantes de alta qualidade
+                </Text>
+                {/* tópico 2 */}
+                <Entypo name="check" size={24} color="#ac0c24" />
+                <Text style={styles.topico2}>
+                Sabonetes líquidos exclusivos
+                </Text>
+                {/* tópico 3 */}
+                <Entypo name="check" size={24} color="#ac0c24" />
+                <Text style={styles.topico3}>
+                Promoções imperdíveis
+                </Text>
             </View>
+
             <TouchableOpacity style={styles.button} onPress={() => { router.replace("/") }}>
                 <Text style={styles.buttonText}>Voltar</Text>
             </TouchableOpacity>
+
         </View>
     );
 }
@@ -43,17 +64,18 @@ const styles = StyleSheet.create({
     },
     titulo: {
         fontSize: 22,
+        fontWeight: "700",
         fontFamily: "RobotoRegular",
         color: "black",
         textAlign: "left", 
         alignSelf: 'flex-start', // Faz com que o título se alinhe ao início do container pai
-        marginHorizontal: 20, // Adiciona margem lateral para ajustar o espaçamento
-        marginVertical: 8,
+        marginHorizontal: "5%", // Adiciona margem lateral para ajustar o espaçamento
+        marginVertical: "2%",
     },
     retangulo: {
         padding: 10,
         borderRadius: 15,
-        margin: 10,
+        margin: "4%",
         backgroundColor: "#c2a0a5",
         alignItems: 'center',
     },
@@ -64,18 +86,43 @@ const styles = StyleSheet.create({
         textAlign: "left", 
         
     },
-    sobre: {
+    subtextocontainer: {
         textAlign: "left", 
         alignSelf: 'flex-start', // Faz com que o título se alinhe ao início do container pai
-        marginHorizontal: 20, // Adiciona margem lateral para ajustar o espaçamento
-        marginVertical: 8,
+        marginHorizontal: "6%", // Adiciona margem lateral para ajustar o espaçamento
+        marginVertical: "1%",
     },
-    vermais: {
-        fontSize: 21,
+    subtexto: {
+        fontSize: 22,
         fontFamily: "RobotoRegular",
         color: "black",
-        marginTop: 20,
+        marginTop: "6%",
+        marginBottom: "9%",
         
+    },
+    topico1: {
+        fontSize: 20,
+        fontFamily: "OpenSansMedium",
+        color: "black",
+        marginTop: "-8%",
+        marginLeft: "9%",
+        marginBottom: "3%",
+    },
+    topico2: {
+        fontSize: 20,
+        fontFamily: "OpenSansMedium",
+        color: "black",
+        marginTop: "-8%",
+        marginLeft: "9%",
+        marginBottom: "3%",
+    },
+    topico3: {
+        fontSize: 20,
+        fontFamily: "OpenSansMedium",
+        color: "black",
+        marginTop: "-8%",
+        marginLeft: "9%",
+        marginBottom: "7%",
     },
     button: {
         backgroundColor: '#ac0c24', // Cor de fundo do botão

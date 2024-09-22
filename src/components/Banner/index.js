@@ -2,7 +2,6 @@ import { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import PagerView from "react-native-pager-view";
 
-
 export function Banner() {
     const [page, setPage] = useState(0);
 
@@ -18,39 +17,21 @@ export function Banner() {
                 onPageSelected={onPageSelected}
             >
                 <View key="1" style={styles.page}>
-                <Image
+                    <Image
                         source={require('../../../src/assets/images/banner1.png')}
-                        style={{
-                            flex: 1,
-                            width: '200%',
-                            height: '200%',
-                            resizeMode: 'contain',
-                        }}
-
+                        style={styles.image}
                     />
                 </View>
                 <View key="2" style={styles.page}>
                     <Image
                         source={require('../../../src/assets/images/banner2.png')}
-                        style={{
-                            flex: 1,
-                            width: '200%',
-                            height: '200%',
-                            resizeMode: 'contain',
-                        }}
-
+                        style={styles.image}
                     />
                 </View>
                 <View key="3" style={styles.page}>
-                <Image
+                    <Image
                         source={require('../../../src/assets/images/banner3.png')}
-                        style={{
-                            flex: 1,
-                            width: '200%',
-                            height: '200%',
-                            resizeMode: 'contain',
-                        }}
-
+                        style={styles.image}
                     />
                 </View>
             </PagerView>
@@ -66,30 +47,39 @@ export function Banner() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        borderRadius: 15, 
+        overflow: 'hidden', 
+        alignItems: 'center', 
     },
     content: {
-        marginTop: 20,
-        height: 230,
+        height: 197, 
+        width: "110%", 
         alignItems: "center",
         justifyContent: "center",
-        width: "100%",
     },
     page: {
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: "f8a1e0",
         padding: 10,
+    },
+    image: {
+        flex: 1,
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover', 
+        borderRadius: 16, 
     },
     bulletContent: {
         flexDirection: "row",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: 2,
     },
     bullet: {
-        width: 10,
-        height: 10,
+        width: 8,
+        height: 8,
         borderRadius: 5,
-        margin: 10,
+        margin: 5,
         backgroundColor: "#D3D3D3",
     },
     activeBullet: {
