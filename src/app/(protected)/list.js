@@ -12,7 +12,7 @@ export default function Hidratante() {
             <View style={styles.quadrado}>
                 <View style={styles.containerimagem}>
                     <Image
-                        source={require('../../../src/assets/images/produto.png')}
+                        source={require('../../../src/assets/images/hidratante.png')}
                         style={styles.imagem}
                     />
                 </View>
@@ -23,6 +23,7 @@ export default function Hidratante() {
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho}>
+                    
                         <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
                         <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>

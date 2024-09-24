@@ -67,6 +67,18 @@ const DrawerLayout = () => {
             ),
             }} 
           /> 
+           <Drawer.Screen 
+          name="sabonete"  
+          options={{
+            drawerLabel: "Sabonete líquido", 
+            headerTitle:"Sabonete Líquido",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+            <Ionicons name="diamond-outline" size={20} color="black" />
+            
+            ),
+          }} 
+          />
 {/* antigo listagem: */}
           <Drawer.Screen 
           name="list"  
@@ -80,18 +92,7 @@ const DrawerLayout = () => {
             }} 
           />
 {/*  */}
-          <Drawer.Screen 
-          name="sabonete"  
-          options={{
-            drawerLabel: "Sabonete líquido", 
-            headerTitle:"Sabonete Líquido",
-            headerTitleAlign: 'center',
-            drawerIcon: () => (
-            <Ionicons name="diamond-outline" size={20} color="black" />
-            
-            ),
-          }} 
-          />
+         
            <Drawer.Screen 
           name="perfil"  
           options={{
@@ -109,6 +110,19 @@ const DrawerLayout = () => {
           options={{
             drawerLabel: "Pagamento", 
             headerTitle:"Pagamento",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+            <Ionicons name="diamond-outline" size={20} color="black" />
+            ),
+          }} 
+          />
+
+
+          <Drawer.Screen 
+          name="estrutura"  
+          options={{
+            drawerLabel: "Estrutura", 
+            headerTitle:"Estrutura",
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <Ionicons name="diamond-outline" size={20} color="black" />
