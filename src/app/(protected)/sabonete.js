@@ -1,29 +1,55 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Fontisto from '@expo/vector-icons/Fontisto';
 
 export default function Sabonete() {
-    const adicionarAoCarrinho = () => {
-        Alert.alert("Adicionado!", "Item adicionado ao carrinho");
+    const adicionarAoCarrinho = (nomeProduto) => {
+        Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
     };
 
     return (
         <View style={styles.container}>
-            <View style={styles.quadrado}>
-                {/* <View style={styles.containerimagem}>
+            {/* produto 1 */}
+            <View style={styles.produtoContainer}>
+                <View style={styles.containerimagem}>
                     <Image
-                        source={require('../../src/assets/images/sabonete1.png')}
+                        source={require('../../../src/assets/images/sabonete1.png')}
                         style={styles.imagem}
                     />
-                </View> */}
+                </View>
                 <View style={styles.informacoes}>
                     <Text style={styles.nomeProduto}>Sabonete Líquido CHARMM</Text>
                     <Text style={styles.especificacao}>
-                       texto
+                        Com uma incrível fragância de cereja, disponível em 250ml.
                     </Text>
-                    <Text style={styles.preco}>R$ valor</Text>
-                    <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho}>
-                    
+                    <Text style={styles.preco}>R$ 29,90</Text>
+                    <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho("Sabonete Líquido cereja")}>
+                        <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
+                        <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={styles.icone}>
+                    <Fontisto name="shopping-sale" size={30} color="red" />
+                </View>
+            </View>
+
+            {/* produto 2 */}
+            <View style={styles.produtoContainer}>
+                <View style={styles.containerimagem}>
+                    <Image
+                        source={require('../../../src/assets/images/sabonete2.png')}
+                        style={styles.imagem}
+                    />
+                </View>
+                <View style={styles.informacoes}>
+                    <Text style={styles.nomeProduto}>Sabonete Líquido CHARMM</Text>
+                    <Text style={styles.especificacao}>
+                        Com aroma de baunilha disponível em 200ml.
+                    </Text>
+                    <Text style={styles.preco}>R$ 49,90</Text>
+                    <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho("Sabonete Líquido baunilha")}>
                         <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
                         <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>
@@ -41,60 +67,60 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         padding: 20,
     },
-    quadrado: {
-        flexDirection: 'column',
+    produtoContainer: {
+        flexDirection: 'row',
         backgroundColor: '#f9f9f9',
         borderRadius: 15,
-        padding: 20,
+        padding: 13,
         elevation: 5,
-        width: '90%',
+        width: '100%',
+        position: 'relative',
+        marginTop: 40,
     },
-    // containerimagem: {
-    //     borderRadius: 10,
-    //     alignItems: 'center',
-    //     justifyContent: 'center',
-    //     marginBottom: 15,
-    //     width: "100%",
-    //     height: 200,
-    // },
-    // imagem: {
-    //     width: '300%',
-    //     height: '300%',
-    //     borderRadius: 10,
-    //     resizeMode: 'contain',
-    // },
+    containerimagem: {
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 130,
+        height: 130,
+    },
+    imagem: {
+        width: '290%',
+        height: '290%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginTop: "50%",
+       
+    },
     informacoes: {
-        alignItems: 'flex-start', // Alinhando à esquerda
-        width: '100%', 
+        flex: 1,
+        marginLeft: 10,
     },
     nomeProduto: {
-        fontSize: 23,
+        fontSize: 20,
         fontFamily: "OpenSansMedium",
         color: 'black',
         marginBottom: 5,
     },
     especificacao: {
-        fontSize: 15,
+        fontSize: 16,
         fontFamily: "RobotoRegular",
         color: 'black',
         marginBottom: 10,
-        textAlign: 'left', 
     },
     preco: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: "RobotoRegular",
         color: '#cd779e',
         marginBottom: 10,
-        textAlign: 'left', 
     },
     botao: {
         flexDirection: 'row',
         backgroundColor: '#cd779e',
-        padding: 10,
+        padding: 7,
         borderRadius: 5,
         alignItems: 'center',
         elevation: 3,
-        width: "100%",
         justifyContent: 'center',
     },
     botaoTexto: {
@@ -102,5 +128,14 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
         marginLeft: 8,
+    },
+    icone: {
+        position: 'absolute',
+        marginTop: -19,
+        right: "-5%",
+        backgroundColor: 'white',
+        borderRadius: 50,
+        padding: 5,
+        elevation: 3,
     },
 });

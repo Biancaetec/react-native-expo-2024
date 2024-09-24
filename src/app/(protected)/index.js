@@ -12,7 +12,7 @@ export default function Promocao() {
 
                 <View style={styles.row}>
                     <AntDesign name="tagso" size={28} color="#ac0c24" style={styles.icone} />
-                    <Text style={styles.texto}>Sabonete líquido de 200ml com a incrível fragrância de cereja.</Text>
+                    <Text style={styles.texto}>Sabonete líquido de 250ml com a incrível fragrância de cereja.</Text>
                 </View>
 
                 <View style={styles.row}>
@@ -25,6 +25,7 @@ export default function Promocao() {
                 </View>
             </View>
         </View>
+
     );
 }
 

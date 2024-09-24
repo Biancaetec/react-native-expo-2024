@@ -71,11 +71,10 @@ const DrawerLayout = () => {
           name="sabonete"  
           options={{
             drawerLabel: "Sabonete líquido", 
-            headerTitle:"Sabonete Líquido",
+            headerTitle:"Sabonete líquido",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-            <Ionicons name="diamond-outline" size={20} color="black" />
-            
+              <Ionicons name="list-circle-outline" size={20} color="black" />
             ),
           }} 
           />
@@ -84,7 +83,7 @@ const DrawerLayout = () => {
           name="list"  
           options={{
             drawerLabel: "Hidratante", 
-            headerTitle:"Hidratante",
+            headerTitle:"Hidratante corporal",
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <Ionicons name="list-circle-outline" size={20} color="black" />
@@ -92,7 +91,19 @@ const DrawerLayout = () => {
             }} 
           />
 {/*  */}
-         
+
+        <Drawer.Screen 
+          name="carrinho"  
+          options={{
+            drawerLabel: "Minhas compras", 
+            headerTitle:"Sacola",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+            <AntDesign name="shoppingcart" size={24} color="black" />
+            ),
+          }} 
+          />
+
            <Drawer.Screen 
           name="perfil"  
           options={{
@@ -105,6 +116,7 @@ const DrawerLayout = () => {
             ),
           }} 
           />
+
           <Drawer.Screen 
           name="payment"  
           options={{
@@ -118,19 +130,7 @@ const DrawerLayout = () => {
           />
 
 
-          <Drawer.Screen 
-          name="estrutura"  
-          options={{
-            drawerLabel: "Estrutura", 
-            headerTitle:"Estrutura",
-            headerTitleAlign: 'center',
-            drawerIcon: () => (
-            <Ionicons name="diamond-outline" size={20} color="black" />
-            ),
-          }} 
-          />
-
-          </Drawer>
+        </Drawer>
 
         </GestureHandlerRootView>
       );

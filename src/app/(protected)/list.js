@@ -1,10 +1,12 @@
 import React from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Fontisto from '@expo/vector-icons/Fontisto';
+
 
 export default function Hidratante() {
-    const adicionarAoCarrinho = () => {
-        Alert.alert("Adicionado!", "Item adicionado ao carrinho");
+    const adicionarAoCarrinho = (nomeProduto) => {
+        Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
     };
 
     return (
@@ -22,11 +24,13 @@ export default function Hidratante() {
                         Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
-                    <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho}>
-                    
+                    <TouchableOpacity style={styles.botao}  onPress={() => adicionarAoCarrinho("Hidratante Corporal")}>
                         <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
                         <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>
+                </View>
+                <View style={styles.icone}>
+                    <Fontisto name="shopping-sale" size={30} color="red" />
                 </View>
             </View>
         </View>
@@ -55,33 +59,34 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         marginBottom: 15,
         width: "100%",
-        height: 200,
+        height: 220,
     },
     imagem: {
-        width: '300%',
-        height: '300%',
+        width: '280%',
+        height: '280%',
         borderRadius: 10,
         resizeMode: 'contain',
+        marginBottom: 10,
     },
     informacoes: {
-        alignItems: 'flex-start', // Alinhando à esquerda
+        alignItems: 'flex-start', 
         width: '100%', 
     },
     nomeProduto: {
-        fontSize: 23,
+        fontSize: 20,
         fontFamily: "OpenSansMedium",
         color: 'black',
-        marginBottom: 5,
+        marginBottom: 9,
     },
     especificacao: {
-        fontSize: 15,
+        fontSize: 16,
         fontFamily: "RobotoRegular",
         color: 'black',
         marginBottom: 10,
         textAlign: 'left', 
     },
     preco: {
-        fontSize: 20,
+        fontSize: 19,
         fontFamily: "RobotoRegular",
         color: '#cd779e',
         marginBottom: 10,
@@ -103,4 +108,13 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 8,
     },
+    icone: {
+        position: 'absolute', 
+        marginTop: -17, 
+        right: "-5%", 
+        backgroundColor: 'white', 
+        borderRadius: 50, 
+        padding: 5,
+        elevation: 3,
+    }
 });
