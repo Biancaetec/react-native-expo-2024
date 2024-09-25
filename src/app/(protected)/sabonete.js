@@ -4,16 +4,37 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import { useCart } from '../../hooks/Cart';
 
-export default function Sabonete() {
-    const { addCart } = useCart();
-    const adicionarAoCarrinho = (nomeProduto) => {
-        addCart({ id: 1, name: nomeProduto, quantity: 1, value: 1 })
-        Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
-    };
-    const adicionarAoCarrinho = (nomeProduto2) => {
-        addCart({ id: 1, name: nomeProduto2, quantity: 1, value: 1 })
-        Alert.alert("Produto adicionado!", `${nomeProduto2} foi adicionado ao carrinho.`);
-    };
+    export default function Sabonete() {
+        const { addCart } = useCart();
+    
+        const adicionarAoCarrinho = () => {
+            const nomeProduto = "Sabonete Líquido cereja";
+            const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
+            const preco = "R$ 29,90";
+            addCart({ 
+                id: 1, 
+                name: nomeProduto, 
+                productespecificacao: especificacao, 
+                valor: preco,
+                quantity: 1 
+            });
+            Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
+        };
+    
+        const adicionarAoCarrinho2 = () => {
+            const nomeProduto = "Sabonete Líquido baunilha";
+            const especificacao = "Com aroma de baunilha, disponível em 200ml.";
+            const preco = "R$ 49,90"; 
+            addCart({ 
+                id: 2, 
+                name: nomeProduto, 
+                productespecificacao: especificacao,
+                valor: preco,
+                quantity: 1 
+            });
+            Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
+        };
+    
 
     return (
         <View style={styles.container}>
@@ -26,7 +47,7 @@ export default function Sabonete() {
                     />
                 </View>
                 <View style={styles.informacoes}>
-                    <Text style={styles.nomeProduto2}>Sabonete Líquido CHARMM</Text>
+                    <Text style={styles.nomeProduto}>Sabonete Líquido CHARMM</Text>
                     <Text style={styles.especificacao}>
                         Com uma incrível fragância de cereja, disponível em 250ml.
                     </Text>
@@ -56,7 +77,7 @@ export default function Sabonete() {
                         Com aroma de baunilha disponível em 200ml.
                     </Text>
                     <Text style={styles.preco}>R$ 49,90</Text>
-                    <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho("Sabonete Líquido baunilha")}>
+                    <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho2("Sabonete Líquido baunilha")}>
                         <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
                         <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
                     </TouchableOpacity>
@@ -104,12 +125,6 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     nomeProduto:{
-        fontSize: 20,
-        fontFamily: "OpenSansMedium",
-        color: 'black',
-        marginBottom: 5,
-    },
-    nomeProduto2:{
         fontSize: 20,
         fontFamily: "OpenSansMedium",
         color: 'black',
