@@ -6,8 +6,20 @@ import { useCart } from '../../hooks/Cart';
 
 export default function Hidratante() {
     const { addCart } = useCart();
-    const adicionarAoCarrinho = (nomeProduto) => {
-        addCart({ id: 3, name: nomeProduto, quantity: 1, value: 1 })
+    
+    const adicionarAoCarrinho = () => {
+        const imagem = require('../../../src/assets/images/hidratante.png');
+        const nomeProduto = "Hidratante Corporal";
+        const especificacao = "Delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.";
+        const preco = "R$ 29,90";
+        addCart({ 
+            id: 3, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao, 
+            precoproduto: preco,
+            quantity: 1 
+        });
         Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
     };
 

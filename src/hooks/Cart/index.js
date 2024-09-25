@@ -5,7 +5,7 @@ const CartContext = createContext({})
 export function CartProvider({ children }) {
     const [cart, setCart] = useState([])
 
-    const addCart = async ({ id, name, especificacao, preco,  quantity, value }) => {
+    const addCart = async ({ id, imagemproduto, name, especificacaoproduto, precoproduto, quantity, value }) => {
         // setCart((prevItens) => [...prevItens, { id, name, quantity, value }])
 
         setCart((prevItens) => {
@@ -20,7 +20,7 @@ export function CartProvider({ children }) {
                 );
             } else {
                 // Se não existe, adiciona o novo item com quantidade 1
-                return [...prevItens, { id, name, especificacao, preco,  quantity, value }];
+                return [...prevItens, { id, imagemproduto, name, especificacaoproduto, precoproduto, quantity, value }];
             }
         });
     }
