@@ -2,10 +2,17 @@ import React from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
+import { useCart } from '../../hooks/Cart';
 
 export default function Sabonete() {
+    const { addCart } = useCart();
     const adicionarAoCarrinho = (nomeProduto) => {
+        addCart({ id: 1, name: nomeProduto, quantity: 1, value: 1 })
         Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
+    };
+    const adicionarAoCarrinho = (nomeProduto2) => {
+        addCart({ id: 1, name: nomeProduto2, quantity: 1, value: 1 })
+        Alert.alert("Produto adicionado!", `${nomeProduto2} foi adicionado ao carrinho.`);
     };
 
     return (
@@ -19,7 +26,7 @@ export default function Sabonete() {
                     />
                 </View>
                 <View style={styles.informacoes}>
-                    <Text style={styles.nomeProduto}>Sabonete Líquido CHARMM</Text>
+                    <Text style={styles.nomeProduto2}>Sabonete Líquido CHARMM</Text>
                     <Text style={styles.especificacao}>
                         Com uma incrível fragância de cereja, disponível em 250ml.
                     </Text>
@@ -90,13 +97,19 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         resizeMode: 'contain',
         marginTop: "50%",
-       
+
     },
     informacoes: {
         flex: 1,
         marginLeft: 10,
     },
-    nomeProduto: {
+    nomeProduto:{
+        fontSize: 20,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    nomeProduto2:{
         fontSize: 20,
         fontFamily: "OpenSansMedium",
         color: 'black',

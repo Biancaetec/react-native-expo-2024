@@ -93,7 +93,7 @@ const DrawerLayout = () => {
 {/*  */}
 
         <Drawer.Screen 
-          name="carrinho"  
+          name="cart"  
           options={{
             drawerLabel: "Minhas compras", 
             headerTitle:"Sacola",

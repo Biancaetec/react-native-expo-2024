@@ -26,7 +26,7 @@ export default function Perfil() {
                 </Text>
                 <TextInput
                     style={styles.input}
-                    placeholder="Email"
+                    placeholder="super@email.com"
                     
                     value={user?.email}
                     editable={false}
@@ -34,7 +34,7 @@ export default function Perfil() {
                 <TextInput
                     style={styles.input}
                     placeholder="Senha"
-                    value="********"
+                    value="A123456a!"
                     editable={false}
                 />
                 <TouchableOpacity onPress={handleLogout} style={styles.botao}>

@@ -2,10 +2,12 @@ import React from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
-
+import { useCart } from '../../hooks/Cart';
 
 export default function Hidratante() {
+    const { addCart } = useCart();
     const adicionarAoCarrinho = (nomeProduto) => {
+        addCart({ id: 3, name: nomeProduto, quantity: 1, value: 1 })
         Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
     };
 

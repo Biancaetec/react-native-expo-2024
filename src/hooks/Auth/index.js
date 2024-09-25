@@ -21,26 +21,26 @@ export function AuthProvider({ children }) {
     const { authUser } = useUsersDatabase();
 
     useEffect(() => { //procura se ja tem um usuario cadastrado
-        const loadStoragedData  = async () => {
-        const storagedUser = await AsyncStorage.getItem("@payment:user");
-    
-        if (storagedUser) {
-            setUser({
-                autenticated: true,
-                user: JSON.parse(storagedUser), //user = usuario armazenado
-                role: JSON.parse(storagedUser).role, // role dele = role que esta ai 
-            });
-        }  else {  // caso contrario
-            setUser({
-                autenticated: false,
-                user: null,
-                role: null,
-            });
-        }
-    };
+        const loadStoragedData = async () => {
+            const storagedUser = await AsyncStorage.getItem("@payment:user");
 
-    loadStoragedData();
-    },[]);
+            if (storagedUser) {
+                setUser({
+                    autenticated: true,
+                    user: JSON.parse(storagedUser), //user = usuario armazenado
+                    role: JSON.parse(storagedUser).role, // role dele = role que esta ai 
+                });
+            } else {  // caso contrario
+                setUser({
+                    autenticated: false,
+                    user: null,
+                    role: null,
+                });
+            }
+        };
+
+        loadStoragedData();
+    }, []);
 
     const signIn = async ({ email, password }) => {
         const response = await authUser({ email, password });
@@ -55,11 +55,11 @@ export function AuthProvider({ children }) {
 
         await AsyncStorage.setItem("@payment:user", JSON.stringify(response)); //transforma os dados em texto para gravar os dados
 
-            setUser({ //dados certos:
-                autenticated: true,
-                user: response,
-                role: response.role,
-            });
+        setUser({ //dados certos:
+            autenticated: true,
+            user: response,
+            role: response.role,
+        });
     };
 
     const signOut = async () => {
@@ -69,14 +69,14 @@ export function AuthProvider({ children }) {
 
     if (user?.autenticated === null) {
         return (
-         <View style= {{flex:1, justifyContent:"center", alignItems: "center" }}>
-             <Text style={{fontSize: 28, marginTop: 15}}> 
-                 Carregando Dados do Usuário 
-             </Text>
-             <ActivityIndicator size="large" color= "#0000ff"/> 
-        </View>
-       );
-       }
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+                <Text style={{ fontSize: 28, marginTop: 15 }}>
+                    Carregando Dados do Usuário
+                </Text>
+                <ActivityIndicator size="large" color="#0000ff" />
+            </View>
+        );
+    }
 
     return (
         <AuthContext.Provider value={{ user, signIn, signOut }}>
