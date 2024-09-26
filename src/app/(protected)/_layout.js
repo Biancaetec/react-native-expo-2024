@@ -99,7 +99,7 @@ const DrawerLayout = () => {
             headerTitle:"Sacola",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-            <AntDesign name="shoppingcart" size={24} color="black" />
+        <Ionicons name="bag-handle-outline" size={24} color="black" />
             ),
           }} 
           />
