@@ -86,7 +86,10 @@ export default function Cart() {
             {cart.length > 0 && (
                 <View style={styles.footer}>
                     <Text style={styles.total}>
-                        Total: R$ {total}
+                        Total:
+                    </Text>
+                    <Text style={styles.totalvalor}>
+                         R$ {total}
                     </Text>
                     <TouchableOpacity style={styles.finalizar} onPress={handleWhatsApp}>
                         <Text style={styles.textofinalizar}>Finalizar compra</Text>
@@ -102,7 +105,7 @@ export default function Cart() {
 const styles = StyleSheet.create({
     containerprincipal: {
         flex: 1,
-        backgroundColor: '#EAEAEA', 
+        backgroundColor: '#ffffff', 
         padding: 14,
     },
     scrollContainer: {
@@ -122,7 +125,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         paddingVertical: 10,
         paddingHorizontal: 10,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#f9f9f9',
         borderRadius: 10, 
         elevation: 3,  
     },
@@ -139,19 +142,19 @@ const styles = StyleSheet.create({
     },
     nome: {
         fontSize: 18,
-        fontWeight: 'bold',
-        color: '#8B004C',
+        color: '#000',
+        fontFamily: "RobotoRegular",
         marginBottom: 5,
     },
     descricao: {
         fontSize: 14,
-        color: '#6E5E65',
+        color: '#000',
         marginBottom: 8,
     },
     valor: {
         fontSize: 16,
-        fontWeight: 'bold',
-        color: '#CD5C82',
+        fontWeight: '500',
+        color: '#000',
         marginBottom: 5,
     },
     quantidade: {
@@ -175,14 +178,14 @@ const styles = StyleSheet.create({
     },
     linha: {
         height: 1,
-        backgroundColor: '#DAB3C8',  
+        backgroundColor: '#f2f3f5',  
         marginVertical: 10,
     },
     aviso: {
         textAlign: 'center',
-        color: '#8B004C',
+        color: '#000',
         fontSize: 18,
-        marginTop: 50,
+        marginTop: "90%",
     },
     footer: {
 
@@ -212,9 +215,17 @@ const styles = StyleSheet.create({
     },
     total: {
         fontSize: 18,
-        fontWeight: 'bold',
-        color: '#8B004C',
+        fontWeight: '400',
+        color: '#000',
         marginTop: 10,
         textAlign: 'center',
+        alignSelf: 'flex-start',
+    },
+    totalvalor: {
+        fontSize: 18,
+        fontWeight: '400',
+        color: '#000',
+        marginTop: "-20",
+        alignSelf: 'flex-end',
     },
 });

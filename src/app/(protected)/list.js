@@ -33,7 +33,7 @@ export default function Hidratante() {
                     />
                 </View>
                 <View style={styles.informacoes}>
-                    <Text style={styles.nomeProduto}>Hidratante Facial CHARMM</Text>
+                    <Text style={styles.nomeProduto}>Hidratante Corporal CHARMM</Text>
                     <Text style={styles.especificacao}>
                         Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
                     </Text>
