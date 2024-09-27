@@ -11,7 +11,7 @@ export default function Hidratante() {
         const imagem = require('../../../src/assets/images/hidratante.png');
         const nomeProduto = "Hidratante Corporal";
         const especificacao = "Delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.";
-        const preco = "R$ 29,90";
+        const preco = "29.90";
         addCart({ 
             id: 3, 
             imagemproduto: imagem,

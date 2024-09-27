@@ -5,7 +5,7 @@ import { useCart } from "../../hooks/Cart";
 
 export default function Cart() {
     const { cart, removeCart } = useCart();
-    const [total, setTotal] = useState(0);
+    const [total, setTotal] = useState(0.00);
 
     const handleRemoveOne = (id) => {
         removeCart({ id });
@@ -22,17 +22,19 @@ export default function Cart() {
 
     const calculototal = () => {
         const total = cart.reduce((acc, element) => {
-            const precoproduto = parseFloat(element.precoproduto) || 0; // Garante que o preço seja um número
-            const quantity = element.quantity || 0; // Garante que a quantidade seja um número
-            console.log(`Preço: ${precoproduto}, Quantidade: ${quantity}`); // Log de preço e quantidade
-            return acc + (precoproduto * quantity); // Calcula o total
+            const precoproduto = parseFloat(element.precoproduto) || 0; 
+            const quantity = element.quantity || 0; 
+            console.log(`Preço: ${precoproduto}, Quantidade: ${quantity}`); 
+            return acc + (precoproduto * quantity);
         }, 0);
     
-        const totalFormatado = total.toFixed(2); // Formata o total com 2 casas decimais
-        console.log("Total calculado:", totalFormatado); // Adicione esta linha para verificar o total calculado
-        return totalFormatado;
+        const totalFormatado = total.toFixed(2); 
+        console.log("Total calculado:", totalFormatado); 
+        return parseFloat(totalFormatado); // Retornar como número
     };
-
+    
+    // Exibição do total
+    <Text style={styles.totalvalor}>R$ {total.toFixed(2)}</Text>
     useEffect(() => {
         setTotal(calculototal());
     }, [cart]);
@@ -84,20 +86,18 @@ export default function Cart() {
 
             {/* Exibir o total dos produtos */}
             {cart.length > 0 && (
-                <View style={styles.footer}>
-                    <Text style={styles.total}>
-                        Total:
-                    </Text>
-                    <Text style={styles.totalvalor}>
-                         R$ {total}
-                    </Text>
-                    <TouchableOpacity style={styles.finalizar} onPress={handleWhatsApp}>
-                        <Text style={styles.textofinalizar}>Finalizar compra</Text>
-                    </TouchableOpacity>
-                    <Fontisto style={styles.icone} name="whatsapp" size={24} color="white" />
+    <View style={styles.footer}>
+        <View style={styles.totalContainer}>
+            <Text style={styles.total}>Total:</Text>
+            <Text style={styles.totalvalor}>R$ {total}</Text>
+        </View>
+        <TouchableOpacity style={styles.finalizar} onPress={handleWhatsApp}>
+            <Text style={styles.textofinalizar}>Finalizar compra</Text>
+        </TouchableOpacity>
+        <Fontisto style={styles.icone} name="whatsapp" size={24} color="white" />
+    </View>
+)}
 
-                </View>
-            )}
         </View>
     );
 }
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         padding: 14,
     },
     scrollContainer: {
-        paddingBottom: 20, // Para dar espaço no final do ScrollView
+        paddingBottom: 50, // Para dar espaço no final do ScrollView
     },
     totalprodutos: {
         fontSize: 18,
@@ -189,11 +189,28 @@ const styles = StyleSheet.create({
     },
     footer: {
 
-        paddingTop: 1,
+        paddingTop: "-10%",
         borderColor: '#DAB3C8',
-        position: 'fixed', 
+        position: 'relative', 
         paddingBottom: 17,
     },
+    totalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 2,
+    paddingHorizontal: 10,
+    alignItems: 'center',
+},
+total: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+},
+totalvalor: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
+},
     icone: {
         marginTop: "-11%",
         marginLeft: "7%",
@@ -211,13 +228,13 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '500',
         color: '#ffffff',
-        marginBottom: 5,
+        marginBottom: 1,
     },
     total: {
         fontSize: 18,
         fontWeight: '400',
         color: '#000',
-        marginTop: 10,
+        marginTop: 8,
         textAlign: 'center',
         alignSelf: 'flex-start',
     },

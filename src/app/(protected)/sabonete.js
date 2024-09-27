@@ -11,7 +11,7 @@ import { useCart } from '../../hooks/Cart';
             const imagem = require('../../../src/assets/images/sabonete1.png');
             const nomeProduto = "Sabonete Líquido cereja";
             const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
-            const preco = "R$ 29,90";
+            const preco = "29.90";
             addCart({ 
                 id: 1, 
                 imagemproduto: imagem,
@@ -27,7 +27,7 @@ import { useCart } from '../../hooks/Cart';
             const imagem = require('../../../src/assets/images/sabonete2.png');
             const nomeProduto = "Sabonete Líquido baunilha";
             const especificacao = "Com aroma de baunilha, disponível em 200ml.";
-            const preco = "R$ 49,90"; 
+            const preco = "49.90"; 
             addCart({ 
                 id: 2, 
                 imagemproduto: imagem,
