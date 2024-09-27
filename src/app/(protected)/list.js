@@ -39,8 +39,8 @@ export default function Hidratante() {
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
                     <TouchableOpacity style={styles.botao}  onPress={() => adicionarAoCarrinho("Hidratante Corporal")}>
-                        <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
-                        <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
+                        <Text style={styles.botaoTexto}>Adicionar ao carrinho</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.icone}>
@@ -86,29 +86,27 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start', 
         width: '100%', 
     },
-    nomeProduto: {
-        fontSize: 20,
+    nomeProduto:{
+        fontSize: 18,
         fontFamily: "OpenSansMedium",
         color: 'black',
-        marginBottom: 9,
+        marginBottom: 5,
     },
     especificacao: {
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
         marginBottom: 10,
-        textAlign: 'left', 
     },
     preco: {
-        fontSize: 19,
+        fontSize: 17,
         fontFamily: "RobotoRegular",
-        color: '#cd779e',
+        color: '#8B004C',
         marginBottom: 10,
-        textAlign: 'left', 
     },
     botao: {
         flexDirection: 'row',
-        backgroundColor: '#cd779e',
+        backgroundColor: '#8B004C',
         padding: 10,
         borderRadius: 5,
         alignItems: 'center',

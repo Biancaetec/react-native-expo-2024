@@ -57,8 +57,8 @@ import { useCart } from '../../hooks/Cart';
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho("Sabonete Líquido cereja")}>
-                        <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
-                        <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
+                        <Text style={styles.botaoTexto}>Comprar</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -82,8 +82,8 @@ import { useCart } from '../../hooks/Cart';
                     </Text>
                     <Text style={styles.preco}>R$ 49,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho2("Sabonete Líquido baunilha")}>
-                        <MaterialCommunityIcons name="cart-heart" size={27} color="white" />
-                        <Text style={styles.botaoTexto}>Adicionar ao Carrinho</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
+                        <Text style={styles.botaoTexto}>Comprar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -129,27 +129,27 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
     nomeProduto:{
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: "OpenSansMedium",
         color: 'black',
         marginBottom: 5,
     },
     especificacao: {
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
         marginBottom: 10,
     },
     preco: {
-        fontSize: 18,
+        fontSize: 17,
         fontFamily: "RobotoRegular",
-        color: '#cd779e',
+        color: '#8B004C',
         marginBottom: 10,
     },
     botao: {
         flexDirection: 'row',
-        backgroundColor: '#cd779e',
-        padding: 7,
+        backgroundColor: '#8B004C',
+        padding: 6,
         borderRadius: 5,
         alignItems: 'center',
         elevation: 3,
@@ -157,7 +157,7 @@ const styles = StyleSheet.create({
     },
     botaoTexto: {
         color: '#ffffff',
-        fontWeight: 'bold',
+        fontWeight: '500',
         fontSize: 16,
         marginLeft: 8,
     },

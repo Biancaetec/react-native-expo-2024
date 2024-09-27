@@ -113,8 +113,8 @@ const styles = StyleSheet.create({
     },
     totalprodutos: {
         fontSize: 18,
-        fontWeight: 'bold',
-        color: '#8B004C',
+        fontWeight: '400',
+        color: '#000',
         marginBottom: 20,
         textAlign: 'center',
     },
