@@ -1,9 +1,27 @@
 import { router } from "expo-router";
-import { useState } from "react";
-import { View, StyleSheet, TextInput, Button, Text, KeyboardAvoidingView, Platform } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { View, 
+    StyleSheet, 
+    TextInput, 
+    Button, 
+    Text, 
+    KeyboardAvoidingView, 
+    Platform,
+ } from "react-native";
+ import { z } from "zod";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import {useAuth} from "../../hooks/Auth/index";
+
+    const paymentSchema = z.object({ //o que ele quer validar
+        valor_pago: z.number().gt(0),
+        user_id: z.number().int().positive(),
+        user_cadastro: z.number().int().positive(),
+        data_pagamento: z.date(),
+        observacao: z.string(),
+
+    });
 
 export default function Payment() { //criar os itens do menu -pagamento
     const [valor, setValor] = useState("0,00");
@@ -154,14 +172,74 @@ export default function Payment() { //criar os itens do menu -pagamento
     const [data, setData] = useState(new Date());
     const [viewCalendar, setViewCalendar] = useState(false)
     const [observacao, setObservacao] = useState ("");
+    const valueRef = useRef();
+    const { user } = useAuth();
 
     const handlerCalendar = (event, selectedDate) => {
         setViewCalendar(false);
         setData(selectedDate); 
     };
+    
+useEffect(()=> {
+    valueRef?.current?.focus();
+}, []);
+
+    const handleChangeValor = (value)=> {
+        try {
+        let valorLimpo = value.replace(",","").replace(".", "");
+        let valorConvertido = Number(valorLimpo) / 100;
+        if(valorConvertido === 0 || isNaN(valorConvertido)){
+            setValor("0,00");
+            return;
+        }
+        let valorPtBR = Intl.NumberFormat("pt-BR", {
+            style: "decimal",
+            minimumFractionDigits: 2,
+        }).format(valorConvertido);
+        setValor(valorPtBR);
+
+        } catch (error) {
+            setValor("0,00");
+        }
+    };        
+
+    const convertValue = (value) => {
+            try {
+            let valorLimpo = value.replace(",","").replace(".", "");
+            let valorConvertido = Number(valorLimpo) / 100;
+            if(valorConvertido === 0 || isNaN(valorConvertido)){
+                return 0;
+            }
+          return valorConvertido;
+    
+            } catch (error) {
+                return valorConvertido;
+
+            }
+    };
+
+    const handleSubmit = async () => {
+    const payment = {
+        user_id: id,
+        user_cadastro: Number(user.user.id),
+        valor_pago: convertValue(valor),
+        data_pagamento: data,
+        observacao,
+    };
+
+    try{
+        const result = await paymentSchema.parseAsync(payment);
+        console.log(result);
+    } catch (error) {
+        console.log(error);
+    }
+    };
 
     return (
-        <KeyboardAvoidingView style= {{flex: 1} behavior={Platform.OS === 'ios' ? 'padding'}}>
+        <KeyboardAvoidingView 
+        style= {{flex: 1}} 
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        >
         <View style={styles.content}>
             <Text>Inserir Pagamentos</Text>
             <View style={styles.inputView}>
@@ -171,7 +249,8 @@ export default function Payment() { //criar os itens do menu -pagamento
                     keyboardType="decimal-pad"
                     style={styles.inputValor}
                     value={valor}
-                    onChangeText={setValor}
+                    onChangeText={(newValue)=> handleChangeValor(newValue)}
+                    ref={valueRef}
 
                 />
             </View>
@@ -196,7 +275,7 @@ export default function Payment() { //criar os itens do menu -pagamento
                 {viewCalendar && (
                 <DateTimePicker
                 value={data}
-                onChange={handlerCalendar}
+                onChange={handleCalendar}
                 mode="date"
                 textID="dateTimePicker"
                 />
@@ -213,7 +292,7 @@ export default function Payment() { //criar os itens do menu -pagamento
             </View>
 
             <View style={styles.contentButtons}>
-                <Button title="Salvar" />
+                <Button title="Salvar" onPress={handleSubmit}/>
                 <Button title="Continuar" />
                 <Button title="Cancelar" onPress={() => router.back()} />
 

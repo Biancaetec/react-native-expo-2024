@@ -1,14 +1,25 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TextInput, ScrollView, TouchableOpacity } from "react-native";
 import { Banner } from "../../components/Banner";
-import AntDesign from '@expo/vector-icons/AntDesign';
+import { AntDesign } from '@expo/vector-icons'; 
 
 export default function Promocao() {
     return (
         <View style={styles.container}>
-            <Banner />
+            {/* <View style={styles.containerpesquisa}>
+                <TextInput
+                    style={styles.pesquisar}
+                    placeholder="Buscar produtos"
+                    keyboardType="default"
+                />
+                <AntDesign name="search1" size={18} color="black" style={styles.icone} />
+            </View> */}
+            
+            <View style={styles.bannerContainer}>
+                <Banner style={styles.banner} />
+            </View>
             
             <View style={styles.container2}>
-                <Text style={styles.titulo}>Detalhes da Promoção</Text>
+                <Text style={styles.textoDetalhes}>Detalhes da Promoção</Text>
 
                 <View style={styles.row}>
                     <AntDesign name="tagso" size={28} color="#ac0c24" style={styles.icone} />
@@ -25,49 +36,76 @@ export default function Promocao() {
                 </View>
             </View>
         </View>
-
     );
 }
 
 const styles = StyleSheet.create({
+    containerpesquisa: {
+        flexDirection: 'row', 
+        alignItems: 'center',
+        width: '100%', 
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderRadius: 15, 
+        paddingHorizontal: 8, 
+        marginBottom: 10,
+    },
+    pesquisar: {
+        flex: 1, 
+        height: 35, 
+        paddingHorizontal: 8,
+        fontSize: 14, 
+    },
+    icone: {
+        marginLeft: 8, 
+    },
     container: {
         flex: 1,
         backgroundColor: '#ffffff',
         paddingHorizontal: "5%",
     },
+    bannerContainer: {
+        width: '100%', 
+        height: 250, 
+        marginBottom: "-10%", 
+    },
+    banner: {
+        width: '100%', 
+        height: '100%', 
+        resizeMode: 'cover', 
+    },
     container2: {
-        top: "-8%", 
         width: "100%", 
         paddingHorizontal: "5%",
         paddingVertical: "10%", 
         borderRadius: 15,
-        
     },
-    titulo: {
+    textoDetalhes: {
         fontSize: 24,
         fontFamily: "RobotoMedium",
         color: '#333',
         textAlign: 'center',
         marginBottom: "10%",
     },
-    row: {
-      width: '110%', // Limita a largura da row
-      alignSelf: 'center', //centraliza no meio
-      flexDirection: 'row',
-      alignItems: 'center',
-      backgroundColor: '#fff',
-      borderRadius: 10,
-      padding: 20,
-      marginBottom: 15,
-      shadowColor: '#000',
-      shadowOpacity: 0.1,
-      shadowOffset: { width: 0, height: 2 },
-      shadowRadius: 5,
-      elevation: 5,
+    
+    promocao: {
+        fontSize: 14, 
+        color: '#333', 
     },
-    icone: {
-        marginRight: 15,
-        color: "#ac0c24",
+    row: {
+        width: '100%', 
+        alignSelf: 'center', 
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+        borderRadius: 10,
+        padding: 20,
+        marginBottom: 15,
+        shadowColor: '#000',
+        shadowOpacity: 0.1,
+        shadowOffset: { width: 0, height: 2 },
+        shadowRadius: 5,
+        elevation: 5,
     },
     texto: {
         fontSize: 18,
