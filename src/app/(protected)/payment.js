@@ -1,6 +1,6 @@
 import { router } from "expo-router";
 import { useState } from "react";
-import { View, StyleSheet, TextInput, Button, Text } from "react-native";
+import { View, StyleSheet, TextInput, Button, Text, KeyboardAvoidingView, Platform } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -161,6 +161,7 @@ export default function Payment() { //criar os itens do menu -pagamento
     };
 
     return (
+        <KeyboardAvoidingView style= {{flex: 1} behavior={Platform.OS === 'ios' ? 'padding'}}>
         <View style={styles.content}>
             <Text>Inserir Pagamentos</Text>
             <View style={styles.inputView}>
@@ -219,6 +220,7 @@ export default function Payment() { //criar os itens do menu -pagamento
             </View>
 
         </View>
+        </KeyboardAvoidingView>
     );
 }
 
