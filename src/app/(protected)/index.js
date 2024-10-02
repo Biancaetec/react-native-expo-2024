@@ -5,14 +5,14 @@ import { AntDesign } from '@expo/vector-icons';
 export default function Promocao() {
     return (
         <View style={styles.container}>
-            {/* <View style={styles.containerpesquisa}>
+            <View style={styles.containerpesquisa}>
                 <TextInput
                     style={styles.pesquisar}
                     placeholder="Buscar produtos"
                     keyboardType="default"
                 />
-                <AntDesign name="search1" size={18} color="black" style={styles.icone} />
-            </View> */}
+                <AntDesign name="search1" size={18} color="black" style={styles.iconepesquisa} />
+            </View> 
             
             <View style={styles.bannerContainer}>
                 <Banner style={styles.banner} />
@@ -22,12 +22,12 @@ export default function Promocao() {
                 <Text style={styles.textoDetalhes}>Detalhes da Promoção</Text>
 
                 <View style={styles.row}>
-                    <AntDesign name="tagso" size={28} color="#ac0c24" style={styles.icone} />
+                    <AntDesign name="tagso" size={28} color="#8B004C" style={styles.icone} />
                     <Text style={styles.texto}>Sabonete líquido de 250ml com a incrível fragrância de cereja.</Text>
                 </View>
 
                 <View style={styles.row}>
-                    <AntDesign name="tagso" size={28} color="#ac0c24" style={styles.icone} />
+                    <AntDesign name="tagso" size={28} color="#8B004C" style={styles.icone} />
                     <Text style={styles.texto}>Creme Nutritivo Para o Corpo Cereja e lavanda de 200ml</Text>
                 </View>
 
@@ -56,8 +56,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 8,
         fontSize: 14, 
     },
-    icone: {
-        marginLeft: 8, 
+    iconepesquisa: {
+        marginLeft: 6,
+        marginRight: 10, 
     },
     container: {
         flex: 1,
@@ -113,10 +114,14 @@ const styles = StyleSheet.create({
         fontFamily: "RobotoRegular",
         flexShrink: 1,
     },
+    icone: {
+        marginLeft: 5,
+        marginRight: 10, 
+    },
     container3: {
         marginTop: 20,
         padding: 15,
-        backgroundColor: '#ac0c24',
+        backgroundColor: '#8B004C',
         borderRadius: 10,
         alignItems: 'center',
     },
