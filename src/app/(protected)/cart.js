@@ -11,32 +11,49 @@ export default function Cart() {
         removeCart({ id });
     };
 
-    const handleWhatsApp = () => {
-        const numero = '18996152301'; 
-        const mensagem = 'Olá, gostaria finalizar meu pedido!';
-        const url = `whatsapp://send?text=${encodeURIComponent(mensagem)}&phone=${numero}`;
-
-        Linking.openURL(url)
-            .catch(err => console.error('Erro ao abrir o WhatsApp:', err));
-    };
-
-    const calculototal = () => {
+    const calcularTotal = () => {
         const total = cart.reduce((acc, element) => {
             const precoproduto = parseFloat(element.precoproduto) || 0; 
             const quantity = element.quantity || 0; 
-            console.log(`Preço: ${precoproduto}, Quantidade: ${quantity}`); 
             return acc + (precoproduto * quantity);
         }, 0);
-    
-        const totalFormatado = total.toFixed(2); 
-        console.log("Total calculado:", totalFormatado); 
-        return parseFloat(totalFormatado); // Retornar como número
+        return total.toFixed(2);
     };
-    
-    // Exibição do total
-    <Text style={styles.totalvalor}>R$ {total.toFixed(2)}</Text>
+
+    const gerarMensagem = () => {
+        let mensagem = 'Olá, gostaria de finalizar seu pedido?\n\n';
+        cart.forEach((element, index) => {
+            mensagem += `${element.name} - R$ ${element.precoproduto} (Quantidade: ${element.quantity})`;
+            if (index < cart.length - 1) {
+                mensagem += '\n\n'; // Adiciona um espaço extra entre os produtos
+            }
+        });
+        mensagem += '\n\n'; // Adiciona um espaço extra antes do total
+        mensagem += `Total: R$ ${calcularTotal()}`;
+        return encodeURIComponent(mensagem);
+    };
+
+    const handleWhatsApp = () => {
+        if (cart.length === 0) {
+            alert("Seu carrinho está vazio.");
+            return;
+        }
+
+        const numero = '18996152301'; 
+        const mensagem = gerarMensagem();
+        const url = `whatsapp://send?text=${mensagem}&phone=${numero}`;
+
+        Linking.openURL(url)
+            .then((supported) => {
+                if (!supported) {
+                    alert('O WhatsApp não está instalado ou não pode ser aberto.');
+                }
+            })
+            .catch(err => console.error('Erro ao abrir o WhatsApp:', err));
+    };
+
     useEffect(() => {
-        setTotal(calculototal());
+        setTotal(calcularTotal());
     }, [cart]);
 
     return (
@@ -53,8 +70,7 @@ export default function Cart() {
                         <View key={element.id}>
                             <View style={styles.produtos}>
                                 <Image 
-                                    source={
-                                        typeof element.imagemproduto === 'number' 
+                                    source={typeof element.imagemproduto === 'number' 
                                         ? element.imagemproduto
                                         : { uri: element.imagemproduto || 'URL_DE_FALHA' }
                                     } 
@@ -63,7 +79,7 @@ export default function Cart() {
                                 <View style={styles.informacao}>
                                     <Text style={styles.nome}>{element.name}</Text>
                                     <Text style={styles.descricao}>{element.especificacaoproduto}</Text>
-                                    <Text style={styles.valor}>{element.precoproduto}</Text>
+                                    <Text style={styles.valor}>R$ {element.precoproduto}</Text>
                                     <Text style={styles.quantidade}>Quantidade: {element.quantity || 0}</Text>
                                 </View>
                                 <TouchableOpacity
@@ -84,24 +100,21 @@ export default function Cart() {
                 )}
             </ScrollView>
 
-            {/* Exibir o total dos produtos */}
             {cart.length > 0 && (
-    <View style={styles.footer}>
-        <View style={styles.totalContainer}>
-            <Text style={styles.total}>Total:</Text>
-            <Text style={styles.totalvalor}>R$ {total}</Text>
-        </View>
-        <TouchableOpacity style={styles.finalizar} onPress={handleWhatsApp}>
-            <Text style={styles.textofinalizar}>Finalizar compra</Text>
-        </TouchableOpacity>
-        <Fontisto style={styles.icone} name="whatsapp" size={24} color="white" />
-    </View>
-)}
-
+                <View style={styles.footer}>
+                    <View style={styles.totalContainer}>
+                        <Text style={styles.total}>Total:</Text>
+                        <Text style={styles.totalvalor}>R$ {total}</Text>
+                    </View>
+                    <TouchableOpacity style={styles.finalizar} onPress={handleWhatsApp}>
+                        <Text style={styles.textofinalizar}>Finalizar compra</Text>
+                    </TouchableOpacity>
+                    <Fontisto style={styles.icone} name="whatsapp" size={24} color="white" />
+                </View>
+            )}
         </View>
     );
 }
-
 const styles = StyleSheet.create({
     containerprincipal: {
         flex: 1,

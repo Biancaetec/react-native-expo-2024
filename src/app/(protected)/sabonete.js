@@ -167,7 +167,7 @@ const styles = StyleSheet.create({
         right: "-5%",
         backgroundColor: 'white',
         borderRadius: 50,
-        padding: 5,
+        padding: 2,
         elevation: 3,
     },
 });
