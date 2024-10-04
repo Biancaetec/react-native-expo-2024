@@ -13,6 +13,8 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import {useAuth} from "../../hooks/Auth/index";
+import { usePaymentsDatabase } from "../../database/usePaymentsDatabase";
+import { useUsersDatabase } from "../../database/useUsersDatabase";
 
     const paymentSchema = z.object({ //o que ele quer validar
         valor_pago: z.number().gt(0),
@@ -25,163 +27,32 @@ import {useAuth} from "../../hooks/Auth/index";
 
 export default function Payment() { //criar os itens do menu -pagamento
     const [valor, setValor] = useState("0,00");
-    const [sugestoes, setSugestoes] = useState([
-        {
-            id: 1,
-            nome: "Barbaraanne Farnall"
-        },
-        {
-            id: 2,
-            nome: "Joey Najera"
-        },
-        {
-            id: 3,
-            nome: "Farrah Bramer"
-        },
-        {
-            id: 4,
-            nome: "Marquita Polle"
-        },
-        {
-            id: 5,
-            nome: "Bradford Smogur"
-        },
-        
-        {
-            id: 6,
-            nome: "Amelina Lesaunier"
-        },
-        {
-            id: 7,
-            nome: "Gloriana Bentz"
-        },
-        {
-            id: 8,
-            nome: "Cullin Cutten"
-        },
-        {
-            id: 9,
-            nome: "Ginny Yakobovicz"
-        },
-        {
-            id: 10,
-            nome: "Carlos Baugham"
-        },
-        {
-            id: 11,
-            nome: "Frannie Cuttler"
-        },
-        {
-            id: 12,
-            nome: "Dita Sprowles"
-        },
-        {
-            id: 13,
-            nome: "Rosalia Cuvley"
-        },
-        {
-            id: 14,
-            nome: "Annelise Barnwille"
-        },
-        {
-            id: 15,
-            nome: "Dud Joule"
-        },
-        {
-            id: 16,
-            nome: "Kathi Pedroli"
-        },
-        {
-            id: 17,
-            nome: "Tomasina Agar"
-        },
-        {
-            id: 18,
-            nome: "Matelda Albany"
-        },
-        {
-            id: 19,
-            nome: "Wilfred Treves"
-        },
-        {
-            id: 20,
-            nome: "Thadeus Freeborn"
-        },
-        {
-            id: 21,
-            nome: "Leonidas Giovanazzi"
-        },
-        {
-            id: 22,
-            nome: "Delmar Anderton"
-        },
-        {
-            id: 23,
-            nome: "Lizbeth Lambillion"
-        },
-        {
-            id: 24,
-            nome: "Thorsten Linturn"
-        },
-        {
-            id: 25,
-            nome: "Cyndi Fancet"
-        },
-        {
-            id: 26,
-            nome: "Ediva Jirek"
-        },
-        {
-            id: 27,
-            nome: "Godfrey Camilio"
-        },
-        {
-            id: 28,
-            nome: "Richart Bramer"
-        },
-        {
-            id: 29,
-            nome: "Goldia Korn"
-        },
-        {
-            id: 30,
-            nome: "Goldy Males"
-        },
-        {
-            id: 31,
-            nome: "Gussy Duck"
-        },
-        {
-            id: 32,
-            nome: "Helaine Tills"
-        },
-        {
-            id: 33,
-            nome: "Carolin Menicomb"
-        },
-        {
-            id: 34,
-            nome: "Ephraim Iliffe"
-        },
-        {
-            id: 35,
-            nome: "Heriberto Enevoldsen"
-        }
-    ]);
+    const [sugestoes, setSugestoes] = useState([]);
     const [id, setId] = useState(1);
     const [data, setData] = useState(new Date());
     const [viewCalendar, setViewCalendar] = useState(false)
     const [observacao, setObservacao] = useState ("");
     const valueRef = useRef();
     const { user } = useAuth();
+    const { createPayment } = usePaymentsDatabase();
+    const { getAllUsers } = useUsersDatabase();
 
-    const handlerCalendar = (event, selectedDate) => {
+    const handleCalendar = (event, selectedDate) => {
         setViewCalendar(false);
         setData(selectedDate); 
     };
     
-useEffect(()=> {
+useEffect(() => {
+    (async () => {
     valueRef?.current?.focus();
+    try{
+        const users = await getAllUsers();
+        setSugestoes(users);
+        setId(users[0].id);
+    } catch (error) {
+        console.log(error);
+    }
+    }) ();
 }, []);
 
     const handleChangeValor = (value)=> {
@@ -229,7 +100,13 @@ useEffect(()=> {
 
     try{
         const result = await paymentSchema.parseAsync(payment);
-        console.log(result);
+        const { insertedID } = await createPayment(payment);
+        console.log(insertedID);
+        setValor("0,00");
+        setId(sugestoes[0].id);
+        setData(new Date());
+        setObservacao("");
+        valueRef?.current?.focus();
     } catch (error) {
         console.log(error);
     }

@@ -26,17 +26,17 @@ export default function About() {
                 O que você encontrará :
                 </Text>
                 {/* tópico 1 */}
-                <Entypo name="check" size={24} color="#ac0c24" />
+                <Entypo name="check" size={24} color="#8B004C" />
                 <Text style={styles.topico1}>
                 Hidratantes de alta qualidade
                 </Text>
                 {/* tópico 2 */}
-                <Entypo name="check" size={24} color="#ac0c24" />
+                <Entypo name="check" size={24} color="#8B004C" />
                 <Text style={styles.topico2}>
                 Sabonetes líquidos exclusivos
                 </Text>
                 {/* tópico 3 */}
-                <Entypo name="check" size={24} color="#ac0c24" />
+                <Entypo name="check" size={24} color="#8B004C" />
                 <Text style={styles.topico3}>
                 Promoções imperdíveis
                 </Text>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         marginBottom: "7%",
     },
     button: {
-        backgroundColor: '#ac0c24', // Cor de fundo do botão
+        backgroundColor: '#8B004C', // Cor de fundo do botão
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 8,
