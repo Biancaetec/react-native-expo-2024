@@ -60,25 +60,29 @@ const DrawerLayout = () => {
       <Drawer drawerContent={(props) => <CustomDrawerContent {...props} />}>
 
 
-        <Drawer.Screen
-          name="index"
-          options={{
-            drawerLabel: "Promoção",
-            headerTitle: "Promoção",
-            headerTitleAlign: 'center',
-            drawerIcon: () => (
-              <AntDesign name="bells" size={24} color="black" />
-            ),
-            headerRight: () => ( // Ícone de perfil
-              <FontAwesome
-                name="user-circle"
-                size={24}
-                color="black"
-                style={{ marginRight: 10 }}
-              />
-            ),
-          }}
-        />
+      <Drawer.Screen
+    name="index"
+    options={{
+    drawerLabel: "Início",
+    headerTitle: "CABANNI",
+    headerTitleAlign: 'center',
+    headerTitleStyle: {
+      fontFamily: 'BonaNovaSCRegular', 
+      fontSize: 23,
+    },
+    drawerIcon: () => (
+      <AntDesign name="bells" size={24} color="black" />
+    ),
+    headerRight: () => ( // Ícone de perfil
+      <FontAwesome
+        name="user-circle"
+        size={24}
+        color="black"
+        style={{ marginRight: 10 }}
+      />
+    ),
+  }}
+/>
         <Drawer.Screen
           name="sabonete"
           options={{
