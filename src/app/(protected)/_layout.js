@@ -71,7 +71,7 @@ const DrawerLayout = () => {
       fontSize: 23,
     },
     drawerIcon: () => (
-      <AntDesign name="bells" size={24} color="black" />
+    <AntDesign name="home" size={24} color="black" />
     ),
     headerRight: () => ( // Ícone de perfil
       <FontAwesome
