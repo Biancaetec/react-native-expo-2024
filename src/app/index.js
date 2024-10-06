@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, Button, StyleSheet, TextInput, Text, View, Alert, Image } from 'react-native';
+import { BackHandler, Button, StyleSheet, TextInput, Text, View, Alert, Image, TouchableOpacity } from 'react-native';
 import { useAuth } from "../hooks/Auth";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -27,14 +27,16 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.botaoSobre} onPress={() => router.push("/about")}>
+        <Text style={styles.botaoSobreTexto}>Sobre</Text>
+      </TouchableOpacity>
       <View style={styles.retangulo}>
         <Image
           source={{ uri: 'https://www.github.com/biancaetec.png' }}
           style={styles.imagem}
         />
-
-        <View style={styles.input1}>
-          <Ionicons name="mail-open-outline" size={20} color="black" />
+        <View style={styles.inputContainer}>
+          <Ionicons name="mail-open-outline" size={20} color="#8B004C" />
           <TextInput
             style={styles.emailinput}
             placeholder="E-mail"
@@ -42,9 +44,8 @@ export default function App() {
             onChangeText={setEmail}
           />
         </View>
-
-        <View style={styles.input2}>
-          <Ionicons name="lock-closed-outline" size={20} color="black" />
+        <View style={styles.inputContainer}>
+          <Ionicons name="lock-closed-outline" size={20} color="#8B004C" />
           <TextInput
             style={styles.emailinput}
             placeholder="Senha"
@@ -55,36 +56,19 @@ export default function App() {
           <Ionicons
             name={passwordVisibility ? "eye-off-outline" : "eye-outline"}
             size={20}
-            color="black"
+            color="#8B004C"
             onPress={togglePasswordVisibility}
           />
         </View>
-     <View style={styles.botao1}>
-        <Button
-          title="Entrar"
-          onPress={handleEntrarSuper}
-          
-        />
+        {/* Adicionei uma margem superior para mover o botão Entrar mais para baixo */}
+        <TouchableOpacity style={styles.botao1} onPress={handleEntrarSuper}>
+          <Text style={styles.botaoTexto}>Entrar</Text>
+        </TouchableOpacity>
+        {/* Mover a saída do aplicativo mais para baixo também */}
+        <TouchableOpacity style={styles.botao3} onPress={() => BackHandler.exitApp()}>
+          <Text style={styles.botaoTexto3}>Sair do Aplicativo</Text>
+        </TouchableOpacity>
       </View>
-
-      <View style={styles.botao2}>
-        <Button
-          title="Sobre"
-          onPress={() => router.push("/about")}
-          
-        />
-       </View> 
-
-       <View style={styles.botao3}>
-        <Button
-          title="Sair do Aplicativo"
-          onPress={() => BackHandler.exitApp()}
-          
-        />
-       </View>
- 
-      
-  </View>    
       <StatusBar style="auto" />
     </View>
   );
@@ -93,68 +77,78 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f2f2f2',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: 15,
+    padding: 20,
+    backgroundColor: '#f7f7f7', 
   },
   retangulo: {
-    backgroundColor: 'white',
-    borderRadius: 10,
+    backgroundColor: '#ffffff',
+    borderRadius: 15,
     width: "90%",
-    height: "64%",
     padding: 20,
     alignItems: 'center',
+    shadowRadius: 4,
+    elevation: 5,
   },
   imagem: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
-    marginBottom: 20,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 50,
   },
-  input1: {
+  inputContainer: {
     flexDirection: "row",
-    gap: 10,
-    marginVertical: 10,
-    alignItems: "center",
-    width: "100%", 
-    borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 10, 
-    padding: 10,
-    marginTop: '15%',
-  },
-  input2: {
-    flexDirection: "row",
-    gap: 10,
-    marginVertical: 10,
     alignItems: "center",
     width: "100%",
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 10, 
-    padding: 10,
-    marginBottom: 60,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    padding: 9,
+    marginVertical: 10,
+    backgroundColor: '#f9f9f9', 
   },
   emailinput: {
     flex: 1,
     fontFamily: "OpenSansMedium",
-    fontSize: 19,
+    fontSize: 18,
+    marginLeft: 10,
+    color: '#333',
   },
   botao1: {
     width: "100%",
-    borderRadius: 20,
-    paddingBottom: 10,
-  },
-  botao2: {
-    width: "100%",
-    borderRadius: 8,
-    paddingBottom: 10,
+    backgroundColor: '#8B004C',
+    borderRadius: 10,
+    paddingVertical: 10,
+    alignItems: 'center',
+    marginTop: 60, // Aumente a margem superior para mover mais para baixo
   },
   botao3: {
     width: "100%",
-    borderRadius: 8,
-    paddingBottom: 10,
-    
+    borderRadius: 10,
+    paddingVertical: 15,
+    alignItems: 'center',
+    marginTop: 1, // Aumente a margem superior para mover mais para baixo
+  },
+  botaoTexto3: {
+    color: '#8B004C',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  botaoTexto: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  botaoSobre: {
+    position: 'absolute',
+    top: 33,
+    right: 20,
+    backgroundColor: 'transparent',
+  },
+  botaoSobreTexto: {
+    fontSize: 16,
+    color: '#8B004C',
+    fontWeight: 'bold',
   },
 });

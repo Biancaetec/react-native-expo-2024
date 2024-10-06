@@ -11,7 +11,7 @@ function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#f2f2f2" }}>
+    <View style={{ flex: 1, backgroundColor: "#fffff" }}>
       <View style={{
         marginTop: 28,
         justifyContent: "center",
@@ -42,11 +42,12 @@ function CustomDrawerContent(props) {
           alignItems: "center",
           height: 50,
           margin: 10,
-          backgroundColor: "#1c75fa",
+          backgroundColor: "#8B004C",
           borderRadius: 5,
         }}
       >
-        <Text style={{ color: "white", fontFamily: "RobotoMedium" }}>Deslogar</Text>
+        <Text style={{ color: "white", fontFamily: "RobotoMedium",  fontSize: 16,
+ }}>Deslogar</Text>
       </TouchableOpacity>
     </View>
   );

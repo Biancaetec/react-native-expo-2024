@@ -47,7 +47,7 @@ import { useCart } from '../../hooks/Cart';
                 <View style={styles.containerimagem}>
                     <Image
                         source={require('../../../src/assets/images/sabonete1.png')}
-                        style={styles.imagem}
+                        style={styles.imagem1}
                     />
                 </View>
                 <View style={styles.informacoes}>
@@ -72,7 +72,7 @@ import { useCart } from '../../hooks/Cart';
                 <View style={styles.containerimagem}>
                     <Image
                         source={require('../../../src/assets/images/sabonete2.png')}
-                        style={styles.imagem}
+                        style={styles.imagem2}
                     />
                 </View>
                 <View style={styles.informacoes}>
@@ -116,12 +116,21 @@ const styles = StyleSheet.create({
         width: 130,
         height: 130,
     },
-    imagem: {
+    imagem1: {
         width: '290%',
         height: '290%',
         borderRadius: 10,
         resizeMode: 'contain',
-        marginTop: "50%",
+        marginTop: "32%",
+        marginLeft: "-10%",
+
+    },
+    imagem2: {
+        width: '290%',
+        height: '290%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginTop: "30%",
 
     },
     informacoes: {

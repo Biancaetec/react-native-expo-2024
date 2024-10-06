@@ -11,8 +11,6 @@ export default function Promocao() {
     const handlePress = (index) => {
         setSelectedLink(index);
         
-        // Adicione um console.log para depuração
-
         if (index === 0) {
             navigation.navigate('index'); 
         } else if (index === 1) {
@@ -51,36 +49,75 @@ export default function Promocao() {
                         style={[styles.linkContainer, 
                             { 
                                 backgroundColor: selectedLink === index ? '#ccc' : 'transparent',
-                                borderColor: '#8B004C',
+                                borderColor: '#ac0c24',
                                 borderWidth: selectedLink === index ? 0 : 1,
                             }
                         ]}
                         onPress={() => handlePress(index)}  
                     >
-                        <Text style={styles.linkText}>{link}</Text>
+                        <Text style={styles.link}>{link}</Text>
                     </TouchableOpacity>
                 ))}
             </ScrollView>
 
-            <View style={styles.containerproduto1}>
-                <View style={styles.view1}>
+            {/* Contêiner que agrupa os produtos */}
+            <View style={styles.produtoContainer}>
+                <View style={styles.containerproduto1}>
                     <View style={styles.containerimagem}>
                         <Image
                             source={require('../../../src/assets/images/sabonete1.png')}
                             style={styles.imagem}
                         />
                     </View>
+                    <View style={styles.containerpromocao1}>
+                        <Text style={styles.promocao1}>Promoção</Text>
+                    </View>
+                    <View style={styles.informacoes}>
+                        <Text style={styles.marca}>CHARMM</Text>
+                        <Text style={styles.nomeProduto}>Sabonete Líquido</Text>
+                        <Text style={styles.especificacao}>
+                            Com uma incrível fragância de cereja, disponível em 250ml.
+                        </Text>
+                        <Text style={styles.preco}>R$ 29,90</Text>
+                    </View>
                 </View>
-                <View style={styles.containerpromocao1}>
-                    <Text style={styles.promocao1}>Promoção</Text>
+
+                <View style={styles.containerproduto2}>
+                    <View style={styles.containerimagem}>
+                        <Image
+                            source={require('../../../src/assets/images/sabonete2.png')}
+                            style={styles.imagem2}
+                        />
+                    </View>
+                    <View style={styles.informacoes2}>
+                        <Text style={styles.marca2}>CHARMM</Text>
+                        <Text style={styles.nomeProduto2}>Sabonete Líquido</Text>
+                        <Text style={styles.especificacao2}>
+                        Com aroma de baunilha disponível em 200ml.
+                        </Text>
+                        <Text style={styles.preco2}>R$ 49,90</Text>
+                    </View>
                 </View>
-                <View style={styles.informacoes}>
-                    <Text style={styles.marca}>CHARMM</Text>
-                    <Text style={styles.nomeProduto}>Sabonete Líquido</Text>
-                    <Text style={styles.especificacao}>
-                        Com uma incrível fragância de cereja, disponível em 250ml.
+            </View>
+
+            {/* Produto 3 abaixo do Sabonete Cereja */}
+            <View style={styles.containerproduto3}>
+                <View style={styles.containerimagem}>
+                    <Image
+                        source={require('../../../src/assets/images/hidratante.png')}
+                        style={styles.imagem3}
+                    />
+                </View>
+                <View style={styles.informacoes3}>
+                <View style={styles.containerpromocao3}>
+                        <Text style={styles.promocao3}>Promoção</Text>
+                    </View>
+                    <Text style={styles.marca3}>CHARMM</Text>
+                    <Text style={styles.nomeProduto3}>Hidratante Corporal</Text>
+                    <Text style={styles.especificacao3}>
+                    Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
                     </Text>
-                    <Text style={styles.preco}>R$ 29,90</Text>
+                    <Text style={styles.preco3}>R$ 29,90</Text>
                 </View>
             </View>
         </ScrollView>
@@ -98,7 +135,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row', 
         alignItems: 'center',
         width: '100%', 
-        borderColor: '#ccc',
+        borderColor: '#eee',
         borderWidth: 1,
         borderRadius: 15, 
         paddingHorizontal: 8, 
@@ -144,39 +181,43 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    linkText: {
-        color: '#8B004C',  
+    link: {
+        color: '#ac0c24',  
         fontSize: 14, 
         fontFamily: "RobotoMedium",
     },
-    containerproduto1: {
-        position: "relative",
-        marginTop: "10%",
+    produtoContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: '10%',
     },
-    view1: {
-        backgroundColor: "#eee",
-        borderColor: '#eee',
-        borderWidth: 1,
-        borderRadius: 5, 
-        width: "40%",
-        height: 185, 
-        justifyContent: 'center',
-        alignSelf: 'flex-start',  
+    containerproduto1: {
+        width: '48%',
+    },
+    containerproduto2: {
+        width: '48%',
     },
     containerimagem: {
-        borderRadius: 10,
+        backgroundColor: "#eee", 
+        borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 130,
-        height: 130,
+        width: 150,
+        height: 150,
     },
     imagem: {
-        width: '290%',
-        height: '290%',
+        width: '210%',
+        height: '210%',
         borderRadius: 10,
         resizeMode: 'contain',
-        marginTop: "3%",
-        marginLeft: "-5%",
+        marginLeft: "-10%",
+    },  
+    imagem2: {
+        width: '210%',
+        height: '210%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginLeft: "10%",
     },  
     containerpromocao1: {
         backgroundColor: '#3baf2c',
@@ -184,7 +225,6 @@ const styles = StyleSheet.create({
         width: 90,
         height: 22,
         alignItems: "center",
-        alignSelf: 'flex-start',  
         justifyContent: "center",
         position: "absolute",
         marginTop: "3%",
@@ -194,11 +234,18 @@ const styles = StyleSheet.create({
         color: "#fff",
     },
     informacoes: {
-        flex: 1,
         marginTop: "2%",
-        width: "45%",
+    },
+    informacoes2: {
+        marginTop: "2%",
     },
     marca:{
+        fontSize: 12,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    marca2:{
         fontSize: 12,
         fontFamily: "OpenSansMedium",
         color: 'black',
@@ -210,11 +257,22 @@ const styles = StyleSheet.create({
         color: 'black',
         marginBottom: 5,
     },
+    nomeProduto2:{
+        fontSize: 15,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
     especificacao: {
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
-        width: "94%",
+        marginBottom: 10,
+    },
+    especificacao2: {
+        fontSize: 14,
+        fontFamily: "RobotoRegular",
+        color: 'black',
         marginBottom: 10,
     },
     preco: {
@@ -222,6 +280,69 @@ const styles = StyleSheet.create({
         fontFamily: "RobotoRegular",
         color: '#8B004C',
         fontWeight: '600',
+    },
+    preco2: {
+        fontSize: 16,
+        fontFamily: "RobotoRegular",
+        color: '#8B004C',
+        fontWeight: '600',
+    },
+    // produto 3
+    containerproduto3: {
+        width: '48%',  
+        marginTop: '10%', 
+    },
+    
+    imagem3: {
+        width: '230%',
+        height: '230%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginLeft: "-6%",
+        marginTop: '16%', 
+
+    },
+    
+    containerpromocao3: {
+        backgroundColor: '#3baf2c',
+        borderRadius: 20,
+        width: 90,
+        height: 22,
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
+        top: "-90%", 
+        left: 4,
+    },
+    promocao3: {
+        color: "#fff",
+    },
+    informacoes3: {
+        marginTop: "3%",
+
+    },
+    marca3:{
+        fontSize: 12,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    nomeProduto3:{
+        fontSize: 15,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    especificacao3: {
+        fontSize: 14,
+        fontFamily: "RobotoRegular",
+        color: 'black',
         marginBottom: 10,
+    },
+    preco3: {
+        fontSize: 16,
+        fontFamily: "RobotoRegular",
+        color: '#8B004C',
+        fontWeight: '600',
     },
 });

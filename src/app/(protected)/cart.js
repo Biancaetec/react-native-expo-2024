@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
-import Fontisto from '@expo/vector-icons/Fontisto';
+import Fontisto from '@expo/vector-icons/Fontisto'; // Importando Fontisto para os ícones
+import { MaterialIcons } from '@expo/vector-icons'; // Adicionando MaterialIcons
 import { useCart } from "../../hooks/Cart";
 
 export default function Cart() {
@@ -96,7 +97,10 @@ export default function Cart() {
                         </View>
                     ))
                 ) : (
-                    <Text style={styles.aviso}>Nenhum produto no carrinho</Text>
+                    <View style={styles.sacolaVaziaContainer}>
+                        <Text style={styles.aviso}>Adicione um produto na sacola e volte depois.</Text>
+                        <MaterialIcons name="shopping-bag" size={100} color="#8B004C" />
+                    </View>
                 )}
             </ScrollView>
 
@@ -115,6 +119,7 @@ export default function Cart() {
         </View>
     );
 }
+
 const styles = StyleSheet.create({
     containerprincipal: {
         flex: 1,
@@ -122,7 +127,7 @@ const styles = StyleSheet.create({
         padding: 14,
     },
     scrollContainer: {
-        paddingBottom: 50, // Para dar espaço no final do ScrollView
+        paddingBottom: 50, 
     },
     totalprodutos: {
         fontSize: 18,
@@ -135,34 +140,36 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        marginBottom: 10,
-        paddingVertical: 10,
+        marginBottom: 4,
+        paddingVertical: 5,  // Altura do retângulo reduzida
         paddingHorizontal: 10,
         backgroundColor: '#f9f9f9',
         borderRadius: 10, 
         elevation: 3,  
     },
     imagemproduto: {
-        width: 150,
-        height: 150,
-        marginLeft: -30,
-        alignSelf: 'flex-start',
-        marginRight: "-6%",
+        width: 180,  // Mantive o tamanho proporcional
+        height: 180,
+        marginLeft: "-10%", 
     },
     informacao: {
         flex: 1,
-        marginRight: 10,  
+        marginRight: "-8%",  
+        marginLeft: "-8%",
+        paddingEnd: "15%",
     },
     nome: {
         fontSize: 18,
         color: '#000',
         fontFamily: "RobotoRegular",
-        marginBottom: 5,
+        marginBottom: 10,
+        width: "150%",
     },
     descricao: {
-        fontSize: 14,
+        fontSize: 15,
         color: '#000',
-        marginBottom: 8,
+        marginBottom: 15,
+        width: "140%",
     },
     valor: {
         fontSize: 16,
@@ -182,7 +189,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        marginBottom: "-35%",
+        marginTop: "32%",
     },
     textobotao: {
         color: '#FFFFFF',
@@ -194,36 +201,40 @@ const styles = StyleSheet.create({
         backgroundColor: '#f2f3f5',  
         marginVertical: 10,
     },
+    sacolaVaziaContainer: {
+        alignItems: 'center',
+        marginTop: "60%", 
+    },
     aviso: {
         textAlign: 'center',
         color: '#000',
         fontSize: 18,
-        marginTop: "90%",
+        marginTop: 25,
+        marginBottom: "10%",
     },
     footer: {
-
         paddingTop: "-10%",
         borderColor: '#DAB3C8',
         position: 'relative', 
         paddingBottom: 17,
     },
     totalContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginBottom: 2,
-    paddingHorizontal: 10,
-    alignItems: 'center',
-},
-total: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-},
-totalvalor: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#000',
-},
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginBottom: 2,
+        paddingHorizontal: 10,
+        alignItems: 'center',
+    },
+    total: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+    },
+    totalvalor: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: '#000',
+    },
     icone: {
         marginTop: "-11%",
         marginLeft: "7%",
@@ -242,20 +253,5 @@ totalvalor: {
         fontWeight: '500',
         color: '#ffffff',
         marginBottom: 1,
-    },
-    total: {
-        fontSize: 18,
-        fontWeight: '400',
-        color: '#000',
-        marginTop: 8,
-        textAlign: 'center',
-        alignSelf: 'flex-start',
-    },
-    totalvalor: {
-        fontSize: 18,
-        fontWeight: '400',
-        color: '#000',
-        marginTop: "-20",
-        alignSelf: 'flex-end',
     },
 });

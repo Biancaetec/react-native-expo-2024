@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 15,
         margin: "4%",
-        backgroundColor: "#c2a0a5",
+        backgroundColor: "#8B004C",
         alignItems: 'center',
     },
     frase: {
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     },
     subtextocontainer: {
         textAlign: "left", 
-        alignSelf: 'flex-start', // Faz com que o título se alinhe ao início do container pai
-        marginHorizontal: "6%", // Adiciona margem lateral para ajustar o espaçamento
+        alignSelf: 'flex-start', 
+        marginHorizontal: "6%", 
         marginVertical: "1%",
     },
     subtexto: {
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
     },
     topico1: {
         fontSize: 20,
-        fontFamily: "OpenSansMedium",
+        fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "-8%",
         marginLeft: "9%",
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     },
     topico2: {
         fontSize: 20,
-        fontFamily: "OpenSansMedium",
+        fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "-8%",
         marginLeft: "9%",
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     },
     topico3: {
         fontSize: 20,
-        fontFamily: "OpenSansMedium",
+        fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "-8%",
         marginLeft: "9%",
