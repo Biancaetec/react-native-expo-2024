@@ -22,7 +22,7 @@ function CustomDrawerContent(props) {
       >
         <Image
           source={{
-            uri: 'https://www.github.com/biancaetec.png', //img do usuario
+            uri: 'https://www.github.com/biancaetec.png',
           }}
           style={{ width: 100, height: 100, borderRadius: 50, margin: 10 }}
         />
@@ -74,7 +74,7 @@ const DrawerLayout = () => {
     drawerIcon: () => (
     <AntDesign name="home" size={24} color="black" />
     ),
-    headerRight: () => ( // Ícone de perfil
+    headerRight: () => ( 
       <FontAwesome
         name="user-circle"
         size={24}
@@ -95,7 +95,7 @@ const DrawerLayout = () => {
             ),
           }}
         />
-        {/* antigo listagem: */}
+       
         <Drawer.Screen
           name="list"
           options={{
@@ -128,7 +128,6 @@ const DrawerLayout = () => {
             headerTitle: "Perfil",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              // <Ionicons name="person-outline" size={24} color="black" /> 
               <Ionicons name="person-circle-outline" size={24} color="black" />
             ),
           }}

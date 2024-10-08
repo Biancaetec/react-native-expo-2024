@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
         fontFamily: "RobotoRegular",
         color: "black",
         textAlign: "left", 
-        alignSelf: 'flex-start', // Faz com que o título se alinhe ao início do container pai
-        marginHorizontal: "5%", // Adiciona margem lateral para ajustar o espaçamento
+        alignSelf: 'flex-start', 
+        marginHorizontal: "5%", 
         marginVertical: "2%",
     },
     retangulo: {
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
         marginBottom: "7%",
     },
     button: {
-        backgroundColor: '#8B004C', // Cor de fundo do botão
+        backgroundColor: '#8B004C', 
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 8,

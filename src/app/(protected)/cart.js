@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
-import Fontisto from '@expo/vector-icons/Fontisto'; // Importando Fontisto para os ícones
-import { MaterialIcons } from '@expo/vector-icons'; // Adicionando MaterialIcons
+import Fontisto from '@expo/vector-icons/Fontisto'; 
+import { MaterialIcons } from '@expo/vector-icons'; 
 import { useCart } from "../../hooks/Cart";
 
 export default function Cart() {
@@ -26,10 +26,10 @@ export default function Cart() {
         cart.forEach((element, index) => {
             mensagem += `${element.name} - R$ ${element.precoproduto} (Quantidade: ${element.quantity})`;
             if (index < cart.length - 1) {
-                mensagem += '\n\n'; // Adiciona um espaço extra entre os produtos
+                mensagem += '\n\n'; 
             }
         });
-        mensagem += '\n\n'; // Adiciona um espaço extra antes do total
+        mensagem += '\n\n'; 
         mensagem += `Total: R$ ${calcularTotal()}`;
         return encodeURIComponent(mensagem);
     };
@@ -141,14 +141,14 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 4,
-        paddingVertical: 5,  // Altura do retângulo reduzida
+        paddingVertical: 5,  
         paddingHorizontal: 10,
         backgroundColor: '#f9f9f9',
         borderRadius: 10, 
         elevation: 3,  
     },
     imagemproduto: {
-        width: 180,  // Mantive o tamanho proporcional
+        width: 180,  
         height: 180,
         marginLeft: "-10%", 
     },

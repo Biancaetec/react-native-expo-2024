@@ -29,7 +29,6 @@ export default function Perfil() {
     return (
         <View style={styles.container}>
             <View style={styles.principal}>
-                {/* Botão de Editar na parte superior direita */}
                 <TouchableOpacity onPress={handleEdit} style={styles.botaoeditar}>
                     <Ionicons name="pencil-outline" size={24} color="#8B004C" />
                 </TouchableOpacity>
@@ -80,13 +79,13 @@ export default function Perfil() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff', // Fundo branco
+        backgroundColor: '#ffffff', 
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
     },
     principal: {
-        backgroundColor: "#f1f1f1", // Retângulo cinza claro
+        backgroundColor: "#f1f1f1", 
         width: "95%",
         padding: 20,
         borderRadius: 15,
@@ -104,8 +103,8 @@ const styles = StyleSheet.create({
         right: 20,
         padding: 10,
         borderRadius: 20,
-        backgroundColor: '#ffffff', // Fundo do botão
-        elevation: 3, // Sombra do botão
+        backgroundColor: '#ffffff',
+        elevation: 3, 
     },
     imagem: {
         width: 100, 
@@ -128,7 +127,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#ddd',
         borderRadius: 10,
-        backgroundColor: '#ffffff', // Fundo dos campos de entrada
+        backgroundColor: '#ffffff', 
         marginVertical: 10,
         paddingHorizontal: 10,
         width: '100%',
