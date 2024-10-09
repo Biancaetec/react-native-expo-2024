@@ -12,7 +12,7 @@ export default function Promocao() {
         setSelectedLink(index);
         
         if (index === 0) {
-            navigation.navigate('index'); 
+            navigation.navigate('index') ; 
         } else if (index === 1) {
             navigation.navigate('sabonete'); 
         } else if (index === 2) {

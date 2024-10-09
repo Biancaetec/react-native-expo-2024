@@ -17,19 +17,19 @@ export default function Perfil() {
         setPasswordVisibility(!passwordVisibility);
     };
 
-    const handleLogout = () => {
+    const handlesair = () => {
         signOut();
         navigation.navigate('index'); 
     };
 
-    const handleEdit = () => {
+    const handleeditar = () => {
         setIsEditing(!isEditing);
     };
 
     return (
         <View style={styles.container}>
             <View style={styles.principal}>
-                <TouchableOpacity onPress={handleEdit} style={styles.botaoeditar}>
+                <TouchableOpacity onPress={handleeditar} style={styles.botaoeditar}>
                     <Ionicons name="pencil-outline" size={24} color="#8B004C" />
                 </TouchableOpacity>
 <Image  source={{uri: 'src/assets/images/fundo perfil.jpg'}} style={styles.imagemfundo}/>
@@ -68,7 +68,7 @@ export default function Perfil() {
                         />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity onPress={handleLogout} style={styles.botaoLogout}>
+                <TouchableOpacity onPress={handlesair} style={styles.botaosair}>
                     <Text style={styles.botaoTexto}>Deslogar</Text>
                 </TouchableOpacity>
             </View>
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         marginBottom: 10,
         borderWidth: 3, 
-        borderColor: '#d40851',
+        borderColor: '#000',
     },
     titulo: {
         fontSize: 24,
@@ -138,8 +138,8 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#333',
     },
-    botaoLogout: {
-        backgroundColor: '#1c75fa',
+    botaosair: {
+        backgroundColor: '#8B004C',
         padding: 14, 
         borderRadius: 10,
         alignItems: 'center',
