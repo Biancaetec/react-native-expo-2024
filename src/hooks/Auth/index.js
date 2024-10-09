@@ -13,7 +13,7 @@ export const Role = {
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState({ // usuario nulo
-        autenticated: null,
+        autenticated: false,
         user: null,
         role: null,
     });
@@ -64,7 +64,11 @@ export function AuthProvider({ children }) {
 
     const signOut = async () => {
         await AsyncStorage.removeItem("@payment:user");
-        setUser({});
+        setUser({
+            autenticated: false,
+            user: null,
+            role: null,
+        });
     };
 
     if (user?.autenticated === null) {

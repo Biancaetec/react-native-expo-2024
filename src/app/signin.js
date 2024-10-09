@@ -18,7 +18,6 @@ export default function App() {
   const handleEntrarSuper = async () => {
     try {
       await signIn({ email, password });
-      router.replace("/");
     } catch (error) {
       Alert.alert("Erro", error.message);
       console.log(error);
@@ -27,7 +26,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.botaoSobre} onPress={() => router.push("/about")}>
+      <TouchableOpacity style={styles.botaoSobre} onPress={() => router.push("about")}>
         <Text style={styles.botaoSobreTexto}>Sobre</Text>
       </TouchableOpacity>
       <View style={styles.retangulo}>
@@ -60,11 +59,9 @@ export default function App() {
             onPress={togglePasswordVisibility}
           />
         </View>
-        {/* Adicionei uma margem superior para mover o botão Entrar mais para baixo */}
         <TouchableOpacity style={styles.botao1} onPress={handleEntrarSuper}>
           <Text style={styles.botaoTexto}>Entrar</Text>
         </TouchableOpacity>
-        {/* Mover a saída do aplicativo mais para baixo também */}
         <TouchableOpacity style={styles.botao3} onPress={() => BackHandler.exitApp()}>
           <Text style={styles.botaoTexto3}>Sair do Aplicativo</Text>
         </TouchableOpacity>
@@ -121,14 +118,14 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingVertical: 10,
     alignItems: 'center',
-    marginTop: 60, // Aumente a margem superior para mover mais para baixo
+    marginTop: 60, 
   },
   botao3: {
     width: "100%",
     borderRadius: 10,
     paddingVertical: 15,
     alignItems: 'center',
-    marginTop: 1, // Aumente a margem superior para mover mais para baixo
+    marginTop: 1, 
   },
   botaoTexto3: {
     color: '#8B004C',
@@ -142,7 +139,7 @@ const styles = StyleSheet.create({
   },
   botaoSobre: {
     position: 'absolute',
-    top: 33,
+    top: 46,
     right: 20,
     backgroundColor: 'transparent',
   },

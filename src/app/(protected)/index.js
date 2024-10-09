@@ -3,6 +3,9 @@ import { View, StyleSheet, Text, TextInput, ScrollView, TouchableOpacity, Image 
 import { Banner } from "../../components/Banner";
 import { AntDesign } from '@expo/vector-icons'; 
 import { useNavigation } from '@react-navigation/native';  
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { useCart } from '../../hooks/Cart';
+
 
 export default function Promocao() {
     const [selectedLink, setSelectedLink] = useState(0);
@@ -21,6 +24,8 @@ export default function Promocao() {
     };
 
     const links = ["Produtos", "Sabonete", "Hidratante"];
+
+   
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
@@ -60,7 +65,6 @@ export default function Promocao() {
                 ))}
             </ScrollView>
 
-            {/* Contêiner que agrupa os produtos */}
             <View style={styles.produtoContainer}>
                 <View style={styles.containerproduto1}>
                     <View style={styles.containerimagem}>
@@ -80,6 +84,7 @@ export default function Promocao() {
                         </Text>
                         <Text style={styles.preco}>R$ 29,90</Text>
                     </View>
+                   
                 </View>
 
                 <View style={styles.containerproduto2}>
@@ -100,7 +105,6 @@ export default function Promocao() {
                 </View>
             </View>
 
-            {/* Produto 3 abaixo do Sabonete Cereja */}
             <View style={styles.containerproduto3}>
                 <View style={styles.containerimagem}>
                     <Image
@@ -287,6 +291,7 @@ const styles = StyleSheet.create({
         color: '#8B004C',
         fontWeight: '600',
     },
+   
     // produto 3
     containerproduto3: {
         width: '48%',  

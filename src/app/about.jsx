@@ -42,7 +42,7 @@ export default function About() {
                 </Text>
             </View>
 
-            <TouchableOpacity style={styles.button} onPress={() => { router.replace("/") }}>
+            <TouchableOpacity style={styles.button} onPress={() => { router.replace("signin") }}>
                 <Text style={styles.buttonText}>Voltar</Text>
             </TouchableOpacity>
 
@@ -57,10 +57,10 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     image: {
-        width: 400,
-        height: 300,
+        width: 430,
+        height: 330,
         resizeMode: 'contain',
-        marginTop: "-10%",
+        marginTop: "-1%",
     },
     titulo: {
         fontSize: 22,
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
         textAlign: "left", 
         alignSelf: 'flex-start', 
         marginHorizontal: "5%", 
-        marginVertical: "2%",
+        marginVertical: "-1%",
     },
     retangulo: {
         padding: 10,
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontFamily: "RobotoRegular",
         color: "black",
-        marginTop: "6%",
+        marginTop: "12%",
         marginBottom: "9%",
         
     },
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 8,
-        marginTop: 20,
+        marginTop: 30,
     },
     buttonText: {
         color: 'white',
