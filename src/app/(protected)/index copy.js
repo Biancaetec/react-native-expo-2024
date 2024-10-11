@@ -1,78 +1,51 @@
-import React from "react";
-import { View, StyleSheet, Text, ScrollView, Button, TouchableOpacity, Image } from "react-native";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, TextInput, ScrollView, TouchableOpacity, Image, Button, Alert } from "react-native";
 import { Banner } from "../../components/Banner";
-import { router } from "expo-router";
+import { AntDesign } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useCart } from '../../hooks/Cart';
-import { Alert } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import { router } from "expo-router";
 
 
 export default function Promocao() {
     const { addCart } = useCart();
+
     const addCart1 = () => {
-        const imagem = require('../../../src/assets/images/sabonete1.png');
-        const nomeProduto = "Sabonete Líquido cereja";
-        const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
-        const preco = "29.90";
-        addCart({ 
-            id: 1, 
-            imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
-            precoproduto: preco,
-            quantity: 1 
-        });
-        Alert.alert("Sabonete adicionado!");
-    };
 
-    const addCart2 = () => {
-        const imagem = require('../../../src/assets/images/sabonete2.png');
-        const nomeProduto = "Sabonete Líquido baunilha";
-        const especificacao = "Com aroma de baunilha, disponível em 200ml.";
-        const preco = "49.90"; 
-        addCart({ 
-            id: 2, 
-            imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao,
-            precoproduto: preco,
-            quantity: 1 
-        });
-        Alert.alert("Sabonete adicionado!");
-    };
-
-    const addCart3 = () => {
-        const imagem = require('../../../src/assets/images/hidratante.png');
-        const nomeProduto = "Hidratante Corporal";
-        const especificacao = "Delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.";
-        const preco = "29.90";
-        addCart({ 
-            id: 3, 
-            imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
-            precoproduto: preco,
-            quantity: 1 
-        });
-        Alert.alert("Produto adicionado!");
-    };
+        addCart({ id: 1, imagemproduto: "", name: "Sabonete Liquido", especificacaoproduto: "", precoproduto: 29.9, quantity: 1, value: 29.9 })
+        Alert.alert("Sabonete Liquido Adicionado");
+    }
+    
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+            <View style={styles.containerpesquisa}>
+                <TextInput
+                    style={styles.pesquisar}
+                    placeholder="Buscar produtos"
+                    keyboardType="default"
+                />
+                <AntDesign name="search1" size={18} color="black" style={styles.iconepesquisa} />
+            </View>
+
             <Banner style={styles.banner} />
-            <Text style={styles.titulo}>Encontre a categoria perfeita para você</Text>
 
-            <TouchableOpacity
-                style={styles.link1}
-                onPress={() => router.push("sabonete")}>
-                <Text style={styles.textolink1}>Sabonete</Text>
-            </TouchableOpacity>
+            <View style={styles.containertitulo}>
+                <Text style={styles.titulo}>Encontre a categoria perfeita para você</Text>
+            </View>
 
-            <TouchableOpacity
-                style={styles.link2}
-                onPress={() => router.push("list")}>
-                <Text style={styles.textolink2}>Hidratante</Text>
-            </TouchableOpacity>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.scrollContainer}>
+                <TouchableOpacity
+                    style={styles.linkContainer}
+                    onPress={() => router.push("sabonete")}>
+                    <Text style={styles.link}>Sabonete</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.linkContainer}
+                    onPress={() => router.push("list")}>
+                    <Text style={styles.link}>Hidratante</Text>
+                </TouchableOpacity>
+            </ScrollView>
 
             <View style={styles.produtoContainer}>
                 <View style={styles.containerproduto1}>
@@ -93,11 +66,7 @@ export default function Promocao() {
                         </Text>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco}>R$ 29,90</Text>
-
-                            <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
-                                <Ionicons name="add" size={20} color="#000" />
-                            </TouchableOpacity>
-
+                            <Button title="adicionar" onPress={addCart1} />
                         </View>
                     </View>
 
@@ -118,11 +87,8 @@ export default function Promocao() {
                         </Text>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco}>R$ 49,90</Text>
-                            <TouchableOpacity onPress={addCart2} style={{ padding: 20 }}>
-                                <Ionicons name="add" size={20} color="#000" />
-                            </TouchableOpacity>
+                              {/* <Button title="adicionar" onPress={addCart2} /> */}
                         </View>
-                        
                     </View>
                 </View>
             </View>
@@ -144,12 +110,9 @@ export default function Promocao() {
                         Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
                     </Text>
                     <Text style={styles.preco3}>R$ 29,90</Text>
-                    <TouchableOpacity onPress={addCart3} style={{ padding: 20 }}>
-                                <Ionicons name="add" size={20} color="#000" />
-                    </TouchableOpacity>
                 </View>
             </View>
-        </ScrollView >
+        </ScrollView>
     );
 }
 
@@ -158,54 +121,67 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         backgroundColor: '#ffffff',
         paddingHorizontal: "5%",
+        paddingBottom: 60,
     },
-
+    containerpesquisa: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        borderColor: '#eee',
+        borderWidth: 1,
+        borderRadius: 15,
+        paddingHorizontal: 8,
+        marginBottom: 10,
+    },
+    pesquisar: {
+        flex: 1,
+        height: 40,
+        paddingHorizontal: 10,
+        fontSize: 14,
+    },
+    iconepesquisa: {
+        marginLeft: 6,
+    },
+    bannerContainer: {
+        width: '100%',
+        height: 250,
+        marginBottom: 10,
+    },
     banner: {
         width: '100%',
         height: '100%',
+        resizeMode: 'cover',
+    },
+    containertitulo: {
+        marginTop: "-2%",
+        marginBottom: "3%",
     },
     titulo: {
         fontSize: 18,
         fontWeight: "400",
-        marginTop: "70%",
-        marginLeft: "7%",
-        width: "100%",
-        position: "absolute",
     },
-    link1: {
-        marginTop: "82%",
-        marginLeft: "8%",
+    scrollContainer: {
+        paddingVertical: 10,
+        marginTop: "-1%",
+    },
+    linkContainer: {
+        paddingVertical: 8,
         paddingHorizontal: 12,
         height: 40,
         borderRadius: 10,
-        position: "absolute",
-        backgroundColor: '#ac0c24',
+        marginRight: 15,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
-    textolink1: {
-        marginTop: 10,
-        color: "white",
-        fontSize: 15,
-        fontFamily: "RobotoMedium",
-    },
-    link2: {
-        marginTop: "82%",
-        marginLeft: "40%",
-        paddingHorizontal: 12,
-        height: 40,
-        borderRadius: 10,
-        position: "absolute",
-        backgroundColor: '#ac0c24',
-    },
-    textolink2: {
-        marginTop: 10,
-        color: "white",
-        fontSize: 15,
+    link: {
+        color: '#ac0c24',
+        fontSize: 14,
         fontFamily: "RobotoMedium",
     },
     produtoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: '50%',
+        marginTop: '10%',
     },
     containerproduto1: {
         width: '48%',
