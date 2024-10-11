@@ -1,4 +1,3 @@
-import { Ionicons } from "@expo/vector-icons";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { FontAwesome } from '@expo/vector-icons';
 import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
@@ -6,6 +5,8 @@ import { Drawer } from 'expo-router/drawer';
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAuth } from "../../hooks/Auth/index";
+import { router } from "expo-router";
+import Ionicons from '@expo/vector-icons/Ionicons';
 
 function CustomDrawerContent(props) {
   const { user, signOut } = useAuth();
@@ -75,12 +76,17 @@ const DrawerLayout = () => {
     <AntDesign name="home" size={24} color="black" />
     ),
     headerRight: () => ( 
-      <FontAwesome
+      <TouchableOpacity 
+        onPress={() => router.push("perfil")} 
+        style={{ marginRight: 10 }}>
+           <FontAwesome
         name="user-circle"
         size={24}
         color="black"
         style={{ marginRight: 10 }}
       />
+        </TouchableOpacity>
+     
     ),
   }}
 />
@@ -117,6 +123,20 @@ const DrawerLayout = () => {
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <Ionicons name="bag-handle-outline" size={24} color="black" />
+            ),
+            headerRight: () => ( 
+              <TouchableOpacity 
+                onPress={() => router.back("index.js")} 
+                style={{ marginRight: 10 }}>
+                  
+              <Ionicons 
+              name="bag-add" 
+              size={24} 
+              color="black"
+                style={{ marginRight: 10 }}
+              />
+                </TouchableOpacity>
+             
             ),
           }}
         />

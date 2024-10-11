@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
 import Fontisto from '@expo/vector-icons/Fontisto'; 
-import { MaterialIcons } from '@expo/vector-icons'; 
+import { router } from "expo-router";
 import { useCart } from "../../hooks/Cart";
 
 export default function Cart() {
@@ -98,8 +98,13 @@ export default function Cart() {
                     ))
                 ) : (
                     <View style={styles.sacolaVaziaContainer}>
-                        <Text style={styles.aviso}>Adicione um produto na sacola e volte depois.</Text>
-                        <MaterialIcons name="shopping-bag" size={100} color="#8B004C" />
+                        <Text style={styles.aviso}>Você não tem nenhum produto na sacola.</Text>
+                        <Text style={styles.aviso2}>quando você escolher seus produtos, mostraremos aqui.</Text>
+                        <TouchableOpacity
+                            style={styles.botaopginical}
+                            onPress={() => router.back("index.js")}>
+                            <Text style={styles.textolink1}>Ver produtos</Text>
+                        </TouchableOpacity>
                     </View>
                 )}
             </ScrollView>
@@ -207,10 +212,30 @@ const styles = StyleSheet.create({
     },
     aviso: {
         textAlign: 'center',
+        fontWeight: 'bold',
         color: '#000',
         fontSize: 18,
         marginTop: 25,
+    },
+    aviso2: {
+        textAlign: 'center',
+        color: '#000',
+        fontSize: 18,
+        marginTop: 5,
         marginBottom: "10%",
+    },
+    botaopginical: {
+        backgroundColor: '#25D366',
+        paddingVertical: 12,
+        paddingHorizontal: 17,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    textolink1: {
+        fontSize: 18,
+        fontWeight: '500',
+        color: '#ffffff',
     },
     footer: {
         paddingTop: "-10%",

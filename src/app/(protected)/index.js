@@ -1,10 +1,11 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Button, TouchableOpacity, Image } from "react-native";
+import { View, StyleSheet, Text, ScrollView, Button, TouchableOpacity, Image, TextInput } from "react-native";
 import { Banner } from "../../components/Banner";
 import { router } from "expo-router";
 import { useCart } from '../../hooks/Cart';
 import { Alert } from 'react-native';
-import Ionicons from '@expo/vector-icons/Ionicons';
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { AntDesign } from '@expo/vector-icons';
 
 
 export default function Promocao() {
@@ -54,11 +55,20 @@ export default function Promocao() {
             precoproduto: preco,
             quantity: 1 
         });
-        Alert.alert("Produto adicionado!");
+        Alert.alert("Hidratante adicionado!");
     };
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
+             <View style={styles.containerpesquisa}>
+                <TextInput
+                    style={styles.pesquisar}
+                    placeholder="Buscar produtos"
+                    keyboardType="default"
+                />
+                <AntDesign name="search1" size={18} color="black" style={styles.iconepesquisa} />
+            </View>
+
             <Banner style={styles.banner} />
             <Text style={styles.titulo}>Encontre a categoria perfeita para você</Text>
 
@@ -89,13 +99,13 @@ export default function Promocao() {
                         <Text style={styles.marca}>CHARMM</Text>
                         <Text style={styles.nomeProduto}>Sabonete Líquido</Text>
                         <Text style={styles.especificacao}>
-                            Com uma incrível fragância de cereja, disponível em 250ml.
+                            Com uma incrível fragância de cereja.
                         </Text>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco}>R$ 29,90</Text>
 
                             <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
-                                <Ionicons name="add" size={20} color="#000" />
+                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                             </TouchableOpacity>
 
                         </View>
@@ -119,7 +129,7 @@ export default function Promocao() {
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco}>R$ 49,90</Text>
                             <TouchableOpacity onPress={addCart2} style={{ padding: 20 }}>
-                                <Ionicons name="add" size={20} color="#000" />
+                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                             </TouchableOpacity>
                         </View>
                         
@@ -141,11 +151,11 @@ export default function Promocao() {
                     <Text style={styles.marca3}>CHARMM</Text>
                     <Text style={styles.nomeProduto3}>Hidratante Corporal</Text>
                     <Text style={styles.especificacao3}>
-                        Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
+                        Hidratação intensa, e uma delicada fragrância de cereja e lavanda. 
                     </Text>
                     <Text style={styles.preco3}>R$ 29,90</Text>
-                    <TouchableOpacity onPress={addCart3} style={{ padding: 20 }}>
-                                <Ionicons name="add" size={20} color="#000" />
+                    <TouchableOpacity onPress={addCart3} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
+                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -158,8 +168,28 @@ const styles = StyleSheet.create({
         flexGrow: 1,
         backgroundColor: '#ffffff',
         paddingHorizontal: "5%",
+        paddingBottom: "19%",
     },
-
+containerpesquisa: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        borderColor: '#eee',
+        borderWidth: 1,
+        borderRadius: 15,
+        paddingHorizontal: 8,
+        marginTop: 20,        
+        marginBottom: 10,
+    },
+    pesquisar: {
+        flex: 1,
+        height: 40,
+        paddingHorizontal: 10,
+        fontSize: 14,
+    },
+    iconepesquisa: {
+        marginLeft: 6,
+    },
     banner: {
         width: '100%',
         height: '100%',
@@ -167,13 +197,13 @@ const styles = StyleSheet.create({
     titulo: {
         fontSize: 18,
         fontWeight: "400",
-        marginTop: "70%",
+        marginTop: "87%",
         marginLeft: "7%",
         width: "100%",
         position: "absolute",
     },
     link1: {
-        marginTop: "82%",
+        marginTop: "100%",
         marginLeft: "8%",
         paddingHorizontal: 12,
         height: 40,
@@ -188,7 +218,7 @@ const styles = StyleSheet.create({
         fontFamily: "RobotoMedium",
     },
     link2: {
-        marginTop: "82%",
+        marginTop: "100%",
         marginLeft: "40%",
         paddingHorizontal: 12,
         height: 40,
@@ -205,13 +235,14 @@ const styles = StyleSheet.create({
     produtoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: '50%',
+        marginTop: '42%',
     },
     containerproduto1: {
-        width: '48%',
+        width: '49%',
     },
     containerproduto2: {
-        width: '48%',
+        width: '52%',
+        marginLeft: "6%",
     },
     containerimagem: {
         backgroundColor: "#eee",
@@ -283,26 +314,26 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
-        marginBottom: 10,
+        marginBottom: 7,
     },
     especificacao2: {
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
-        marginBottom: 10,
+        marginBottom: 7,
     },
     preco: {
         fontSize: 16,
         fontFamily: "RobotoRegular",
-        color: '#8B004C',
-        fontWeight: '600',
+        color: '#000',
+        fontWeight: '700',
         flex: 1
     },
     preco2: {
         fontSize: 16,
         fontFamily: "RobotoRegular",
-        color: '#8B004C',
-        fontWeight: '600',
+        color: '#000',
+        fontWeight: '700',
     },
 
     // produto 3
@@ -329,7 +360,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        top: "-90%",
+        marginTop: "-92%",
         left: 4,
     },
     promocao3: {
@@ -355,12 +386,12 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
-        marginBottom: 10,
+        marginBottom: 20,
     },
     preco3: {
         fontSize: 16,
         fontFamily: "RobotoRegular",
-        color: '#8B004C',
-        fontWeight: '600',
+        color: '#000',
+        fontWeight: '700',
     },
 });
