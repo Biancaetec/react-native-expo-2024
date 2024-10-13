@@ -6,6 +6,7 @@ import { useCart } from '../../hooks/Cart';
 import { Alert } from 'react-native';
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { AntDesign } from '@expo/vector-icons';
+import { Banner2 } from "../../components/Banner2";
 
 
 export default function Promocao() {
@@ -58,6 +59,13 @@ export default function Promocao() {
         Alert.alert("Hidratante adicionado!");
     };
 
+    const saibamaisalert = () => {
+        Alert.alert(
+            "Em breve",
+            "Todas as informações destes produtos estarão disponíveis em breve!",
+
+        );
+    }
     return (
         <ScrollView contentContainerStyle={styles.container}>
              <View style={styles.containerpesquisa}>
@@ -159,6 +167,52 @@ export default function Promocao() {
                     </TouchableOpacity>
                 </View>
             </View>
+            <View style={styles.containerembreve}>
+                <Text style={styles.tituloembreve}>
+                    Em breve
+                </Text>
+
+            <View style={styles.banner2} />
+                <Banner2 />
+            <View style={styles.embreve1}>
+            <View style={styles.imgembreve1}>
+                    <Image
+                        source={require('../../../src/assets/images/esfoliante1.png')}
+                        style={styles.img1}
+                    />
+                </View>
+                <View style={styles.infembreve1}>
+                   
+                    <Text style={styles.marcaembreve1}>EKOS</Text>
+                    <Text style={styles.nomeembreve1}>Sabonete esfoliante</Text>
+                    <Text style={styles.espembreve1}>
+                        Sabonete em barra vegetal com esfoliante natural de semente de damasco. 
+                    </Text>
+                   </View>
+                </View>
+
+                <View style={styles.embreve2}>
+            <View style={styles.imgembreve2}>
+                    <Image
+                        source={require('../../../src/assets/images/perfume1.png')}
+                        style={styles.img2}
+                    />
+                </View>
+                <View style={styles.infembreve2}>
+                   
+                    <Text style={styles.marcaembreve2}>EKOS</Text>
+                    <Text style={styles.nomeembreve2}>Perfume</Text>
+                    <Text style={styles.espembreve2}>
+                        Perfume com aroma fresco e envolvente.                    
+                    </Text>
+                    
+                </View>
+                </View>
+
+                <TouchableOpacity style={styles.saibamais} onPress={saibamaisalert}>
+                    <Text style={styles.saibamaisText}>Saiba mais</Text>
+                </TouchableOpacity>
+        </View>
         </ScrollView >
     );
 }
@@ -360,7 +414,7 @@ containerpesquisa: {
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        marginTop: "-92%",
+        marginTop: "-88%",
         left: 4,
     },
     promocao3: {
@@ -394,4 +448,130 @@ containerpesquisa: {
         color: '#000',
         fontWeight: '700',
     },
+    // em breve
+    containerembreve: {
+        marginTop: "10%",
+        height: 690,
+    },
+    tituloembreve: {  
+        fontSize: 22,
+        marginTop: "10%",
+        textAlign: "center",        
+        width: "100%",
+        position: "absolute",
+        marginBottom: "20%",
+        fontFamily: "RobotoRegular",
+    },
+    banner2: { 
+        marginTop: "-35%",
+        width: '100%',
+        height: 200,
+    },
+    embreve1: {
+        backgroundColor: "#eee",
+        width: '48%',
+        height: 250,
+        borderRadius: 10,
+        marginTop: '15%',
+    },
+    imgembreve1: {
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 150,
+        height: 150,
+        marginTop: "-12%",
+    },
+    img1: {
+        width: '215%',
+        height: '215%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginLeft: "10%",
+    },
+    infembreve1: {
+        marginTop: "-7%",
+        marginLeft: "3%",
+    },
+    marcaembreve1: {
+        fontSize: 12,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    nomeembreve1: {
+        fontSize: 15,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    espembreve: {
+        fontSize: 14,
+        fontFamily: "RobotoRegular",
+        color: 'black',
+        marginBottom: 7,
+    },
+
+    embreve2: {
+        backgroundColor: "#eee",
+        width: '48%',
+        height: 250,
+        borderRadius: 10,
+        marginTop: '-74%',
+        marginLeft: "52%",
+        marginBottom: "20%",
+    },
+    imgembreve2: {
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: 160,
+        height: 160,
+        marginTop: "-12%",
+    },
+    img2: {
+        width: '219%',
+        height: '219%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginLeft: "2%",
+    },
+    infembreve2: {
+        marginTop: "-7%",
+        marginLeft: "3%",
+    },
+    marcaembreve2: {
+        fontSize: 12,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    nomeembreve2: {
+        fontSize: 15,
+        fontFamily: "OpenSansMedium",
+        color: 'black',
+        marginBottom: 5,
+    },
+    espembreve2: {
+        fontSize: 14,
+        fontFamily: "RobotoRegular",
+        color: 'black',
+    },
+    saibamais: {
+        backgroundColor: '#ac0c24',
+        padding: 10,
+        borderRadius: 5,
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: "210%",
+        marginLeft: "36%",
+        marginBottom: "15%",
+        position: "absolute",
+    },
+    saibamaisText: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    
 });

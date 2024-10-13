@@ -2,7 +2,7 @@ import { useState } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import PagerView from "react-native-pager-view";
 
-export function Banner() {
+export function Banner2() {
     const [page, setPage] = useState(0);
 
     const onPageSelected = (e) => {
@@ -18,27 +18,21 @@ export function Banner() {
             >
                 <View key="1" style={styles.page}>
                     <Image
-                        source={require('../../../src/assets/images/banner1.png')}
+                        source={require('../../../src/assets/images/embreve1.png')}
                         style={styles.image}
                     />
                 </View>
                 <View key="2" style={styles.page}>
                     <Image
-                        source={require('../../../src/assets/images/banner2.png')}
+                        source={require('../../../src/assets/images/embreve2.png')}
                         style={styles.image}
                     />
                 </View>
-                <View key="3" style={styles.page}>
-                    <Image
-                        source={require('../../../src/assets/images/banner3.png')}
-                        style={styles.image}
-                    />
-                </View>
+                
             </PagerView>
             <View style={styles.bulletContent}>
                 <View style={[styles.bullet, page === 0 && styles.activeBullet]}></View>
                 <View style={[styles.bullet, page === 1 && styles.activeBullet]}></View>
-                <View style={[styles.bullet, page === 2 && styles.activeBullet]}></View>
             </View>
         </View>
     );
@@ -47,7 +41,6 @@ export function Banner() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        borderRadius: 15, 
         alignItems: 'center', 
     },
     content: {

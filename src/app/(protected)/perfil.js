@@ -111,8 +111,7 @@ const styles = StyleSheet.create({
         height: 100,
         borderRadius: 50,
         marginBottom: 10,
-        borderWidth: 3, 
-        borderColor: '#000',
+    
     },
     titulo: {
         fontSize: 24,
