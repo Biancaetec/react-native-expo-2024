@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Text, ScrollView, Button, TouchableOpacity, Image, TextInput } from "react-native";
+import { View, StyleSheet, Text, ScrollView, TouchableOpacity, Image, TextInput } from "react-native";
 import { Banner } from "../../components/Banner";
 import { router } from "expo-router";
 import { useCart } from '../../hooks/Cart';
@@ -11,6 +11,7 @@ import { Banner2 } from "../../components/Banner2";
 
 export default function Promocao() {
     const { addCart } = useCart();
+    
     const addCart1 = () => {
         const imagem = require('../../../src/assets/images/sabonete1.png');
         const nomeProduto = "Sabonete Líquido cereja";
@@ -78,19 +79,31 @@ export default function Promocao() {
             </View>
 
             <Banner style={styles.banner} />
-            <Text style={styles.titulo}>Encontre a categoria perfeita para você</Text>
+            <Text style={styles.titulo}>Categorias</Text>
+            <View style={styles.containerveja}>
+            <Text style={styles.subtitulo}>Veja todas</Text>
+            <AntDesign name="arrowright" size={14} color="#ac0c24" style={styles.icone} />
+            </View>
 
-            <TouchableOpacity
-                style={styles.link1}
-                onPress={() => router.push("sabonete")}>
+            <View style={styles.links}>
+
+            <TouchableOpacity style={styles.link}
+                    onPress={() => router.push("index")}>
+                <Text style={styles.textolink}>Todos</Text>
+                </TouchableOpacity>
+
+
+                <TouchableOpacity style={styles.link1}
+                    onPress={() => router.push("sabonete")}>
                 <Text style={styles.textolink1}>Sabonete</Text>
-            </TouchableOpacity>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                style={styles.link2}
-                onPress={() => router.push("list")}>
+                <TouchableOpacity style={styles.link2}
+                    onPress={() => router.push("list")}>
                 <Text style={styles.textolink2}>Hidratante</Text>
-            </TouchableOpacity>
+                 </TouchableOpacity>
+            </View>
+        
 
             <View style={styles.produtoContainer}>
                 <View style={styles.containerproduto1}>
@@ -112,9 +125,9 @@ export default function Promocao() {
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco}>R$ 29,90</Text>
 
-                            <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                            </TouchableOpacity>
+                           <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
+                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                           </TouchableOpacity>
 
                         </View>
                     </View>
@@ -212,6 +225,7 @@ export default function Promocao() {
                 <TouchableOpacity style={styles.saibamais} onPress={saibamaisalert}>
                     <Text style={styles.saibamaisText}>Saiba mais</Text>
                 </TouchableOpacity>
+                
         </View>
         </ScrollView >
     );
@@ -249,42 +263,87 @@ containerpesquisa: {
         height: '100%',
     },
     titulo: {
-        fontSize: 18,
-        fontWeight: "400",
+        fontSize: 19,
+        fontWeight: "600",
         marginTop: "87%",
         marginLeft: "7%",
         width: "100%",
         position: "absolute",
     },
-    link1: {
+    containerveja: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        marginTop: "91%",
+        marginLeft: "7%",
+        width: "100%",
+        position: "absolute",
+        paddingHorizontal: "8%", 
+    },
+    subtitulo: {
+        fontSize: 16,
+        fontWeight: "400",
+        marginLeft: "82%",
+        width: "100%",
+        position: "absolute",
+        color: '#ac0c24',
+
+    },
+    icone: {
+        marginLeft: "112%",
+        position: "absolute",
+    },
+    links: {
+        flexDirection: 'row',
         marginTop: "100%",
-        marginLeft: "8%",
-        paddingHorizontal: 12,
-        height: 40,
-        borderRadius: 10,
+        marginLeft: "39%",
+        width: "100%",
+        justifyContent: 'space-between',
+        position: "absolute",
+    },
+    link: {
+        marginLeft: "-33%",
+        paddingHorizontal: 30,
+        height: 36,
+        borderRadius: 8,
         position: "absolute",
         backgroundColor: '#ac0c24',
+    },
+    textolink: {
+        marginTop: 8,
+        color: "white",
+        fontSize: 15,
+        fontFamily: "RobotoRegular",
+    },
+    link1: {
+        paddingHorizontal: 20,
+        height: 36,
+        borderRadius: 8,
+        position: "absolute",
+        borderColor: '#ac0c24',
+        borderWidth: 1,   
     },
     textolink1: {
-        marginTop: 10,
-        color: "white",
+        marginTop: 8,
+        color: "black",
         fontSize: 15,
-        fontFamily: "RobotoMedium",
+        fontFamily: "RobotoRegular",
     },
     link2: {
-        marginTop: "100%",
-        marginLeft: "40%",
-        paddingHorizontal: 12,
-        height: 40,
-        borderRadius: 10,
+        marginLeft: "35%",
+        paddingHorizontal: 18,
+        height: 36,
+        borderRadius: 8,
         position: "absolute",
-        backgroundColor: '#ac0c24',
+        borderColor: '#ac0c24',
+        borderWidth: 1,
+
     },
     textolink2: {
-        marginTop: 10,
-        color: "white",
+        marginTop: 8,
+        color: "black",
         fontSize: 15,
-        fontFamily: "RobotoMedium",
+        fontFamily: "RobotoRegular",
     },
     produtoContainer: {
         flexDirection: 'row',
@@ -414,8 +473,8 @@ containerpesquisa: {
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        marginTop: "-88%",
-        left: 4,
+        marginTop: "-93%",
+        left: 3,
     },
     promocao3: {
         color: "#fff",
@@ -505,7 +564,7 @@ containerpesquisa: {
         color: 'black',
         marginBottom: 5,
     },
-    espembreve: {
+    espembreve1: {
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
@@ -560,18 +619,19 @@ containerpesquisa: {
     saibamais: {
         backgroundColor: '#ac0c24',
         padding: 10,
-        borderRadius: 5,
+        borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: "210%",
         marginLeft: "36%",
-        marginBottom: "15%",
+        marginBottom: "20%",
         position: "absolute",
     },
     saibamaisText: {
         color: 'white',
         fontSize: 16,
-        fontWeight: 'bold',
+        fontWeight: '600',
+        fontFamily: 'RobotoRegular',
     },
     
 });

@@ -80,9 +80,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#f7f7f7', 
   },
   retangulo: {
+    marginTop: 100,
     backgroundColor: '#ffffff',
     borderRadius: 15,
-    width: "90%",
+    width: "95%",
+    height: "70%",
     padding: 20,
     alignItems: 'center',
     shadowRadius: 4,
@@ -93,6 +95,7 @@ const styles = StyleSheet.create({
     height: 100,
     borderRadius: 50,
     marginBottom: 50,
+    marginTop: 20,
   },
   inputContainer: {
     flexDirection: "row",
@@ -114,11 +117,12 @@ const styles = StyleSheet.create({
   },
   botao1: {
     width: "100%",
+    height: 50,
     backgroundColor: '#8B004C',
     borderRadius: 10,
     paddingVertical: 10,
     alignItems: 'center',
-    marginTop: 60, 
+    marginTop: 70, 
   },
   botao3: {
     width: "100%",
@@ -130,22 +134,35 @@ const styles = StyleSheet.create({
   botaoTexto3: {
     color: '#8B004C',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
+
   },
   botaoTexto: {
     color: '#ffffff',
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
+
   },
   botaoSobre: {
     position: 'absolute',
-    top: 46,
-    right: 20,
+    top: 50,
+    right: 25,
     backgroundColor: 'transparent',
   },
   botaoSobreTexto: {
     fontSize: 16,
-    color: '#8B004C',
-    fontWeight: 'bold',
+    color: '#ffffff',
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
+    backgroundColor: '#8B004C',
+    width: 70,
+    height: 30,
+    borderRadius: 10,
+    textAlign: 'center',
+    paddingVertical: 4,
+
+    
   },
 });

@@ -116,9 +116,10 @@ const styles = StyleSheet.create({
     },
     botaoTexto: {
         color: '#ffffff',
-        fontWeight: 'bold',
+        fontWeight: '500',
         fontSize: 16,
         marginLeft: 8,
+        fontFamily: "RobotoRegular",
     },
     icone: {
         position: 'absolute', 

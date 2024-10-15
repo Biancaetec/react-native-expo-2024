@@ -169,6 +169,7 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         fontSize: 16,
         marginLeft: 8,
+        fontFamily: "RobotoRegular",
     },
     icone: {
         position: 'absolute',

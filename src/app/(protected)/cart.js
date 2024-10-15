@@ -1,15 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
 import Fontisto from '@expo/vector-icons/Fontisto'; 
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from "expo-router";
 import { useCart } from "../../hooks/Cart";
+// import {Video} from "src/assets/images/gifsacola.mp4";
 
 export default function Cart() {
-    const { cart, removeCart } = useCart();
+    const { cart, removeCart, adicionarCart } = useCart();
     const [total, setTotal] = useState(0.00);
 
     const handleRemoveOne = (id) => {
         removeCart({ id });
+    };
+
+    const handleAdicionarCart = (id) => {
+        adicionarCart({ id });
     };
 
     const calcularTotal = () => {
@@ -70,24 +77,39 @@ export default function Cart() {
                     cart.map((element, index) => (
                         <View key={element.id}>
                             <View style={styles.produtos}>
-                                <Image 
-                                    source={typeof element.imagemproduto === 'number' 
-                                        ? element.imagemproduto
-                                        : { uri: element.imagemproduto || 'URL_DE_FALHA' }
-                                    } 
-                                    style={styles.imagemproduto}
-                                />
-                                <View style={styles.informacao}>
-                                    <Text style={styles.nome}>{element.name}</Text>
-                                    <Text style={styles.descricao}>{element.especificacaoproduto}</Text>
-                                    <Text style={styles.valor}>R$ {element.precoproduto}</Text>
-                                    <Text style={styles.quantidade}>Quantidade: {element.quantity || 0}</Text>
+                                <View style={styles.containerimagem}>
+                                    <Image 
+                                        source={typeof element.imagemproduto === 'number' 
+                                            ? element.imagemproduto
+                                            : { uri: element.imagemproduto || 'URL_DE_FALHA' }
+                                        } 
+                                        style={styles.imagemproduto}
+                                    />
                                 </View>
+                                
+                                <View style={styles.nomecontainer}>
+                                <Text style={styles.nome}>{element.name}</Text>
+                                </View>
+
+                                <View style={styles.valorcontainer}>
+                                    <Text style={styles.valor}>R$ {element.precoproduto}</Text>
+                                </View>
+                                
+                                <View style={styles.quantidadeContainer}>
+                                    <Text style={styles.quantidade}>{element.quantity || 0}</Text>
+                                </View>
+
                                 <TouchableOpacity
                                     style={styles.botaoremover}
                                     onPress={() => handleRemoveOne(element.id)}
                                 >
-                                    <Text style={styles.textobotao}>-</Text>
+                                    <Ionicons name="remove" size={12} color="black" />
+                                </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={styles.botaoadicionar}
+                                    onPress={() => handleAdicionarCart(element.id)}
+                                >
+                                    <FontAwesome6 name="add" size={10} color="#25D366" />
                                 </TouchableOpacity>
                             </View>
 
@@ -98,8 +120,14 @@ export default function Cart() {
                     ))
                 ) : (
                     <View style={styles.sacolaVaziaContainer}>
+                        {/* <Video 
+                            source={require('../../assets/gifsacola.mp4')} 
+                            style={styles.video}
+                            resizeMode="cover"
+                            repeat={true}
+                        /> */}
                         <Text style={styles.aviso}>Você não tem nenhum produto na sacola.</Text>
-                        <Text style={styles.aviso2}>quando você escolher seus produtos, mostraremos aqui.</Text>
+                        <Text style={styles.aviso2}>Quando você escolher seus produtos, mostraremos aqui.</Text>
                         <TouchableOpacity
                             style={styles.botaopginical}
                             onPress={() => router.back("index.js")}>
@@ -138,7 +166,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '400',
         color: '#000',
-        marginBottom: 20,
+        marginTop: 16,  
+        marginBottom: 40,
         textAlign: 'center',
     },
     produtos: {
@@ -148,58 +177,75 @@ const styles = StyleSheet.create({
         marginBottom: 4,
         paddingVertical: 5,  
         paddingHorizontal: 10,
-        backgroundColor: '#f9f9f9',
         borderRadius: 10, 
-        elevation: 3,  
+    },
+    containerimagem: {
+        width: 130,
+        height: 130,
+        backgroundColor: '#f2f3f5',
+        marginLeft: "-3%",   
+        borderRadius: 10,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     imagemproduto: {
-        width: 180,  
+        width: 190,  
         height: 180,
-        marginLeft: "-10%", 
     },
-    informacao: {
-        flex: 1,
-        marginRight: "-8%",  
-        marginLeft: "-8%",
-        paddingEnd: "15%",
+    nomecontainer: {
+        marginLeft: "2%",
+        marginTop: "-13%",
+        width: 160,
+        position: 'relative',
     },
     nome: {
         fontSize: 18,
         color: '#000',
         fontFamily: "RobotoRegular",
-        marginBottom: 10,
-        width: "150%",
+        marginBottom: 20,
     },
-    descricao: {
-        fontSize: 15,
-        color: '#000',
-        marginBottom: 15,
-        width: "140%",
+    quantidadeContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginTop: "19%",
+        marginLeft: "17%",
+        position: 'relative',
+    },
+    valorcontainer: {
+        marginLeft: "-51%",
+        marginTop: "19%",
+        position: 'relative',
     },
     valor: {
         fontSize: 16,
         fontWeight: '500',
         color: '#000',
-        marginBottom: 5,
     },
     quantidade: {
         fontSize: 14,  
-        color: '#8B004C',
-        marginBottom: 5,
+        color: 'black',
+        marginHorizontal: 10,
     },
     botaoremover: {
-        backgroundColor: '#8B004C',
         paddingVertical: 3,
         paddingHorizontal: 15,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        marginTop: "32%",
+        marginLeft: "-20%",
+        marginTop: "19%",
     },
-    textobotao: {
-        color: '#FFFFFF',
-        fontSize: 14,
-        fontWeight: 'bold',
+    botaoadicionar: {
+        paddingVertical: 3,
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: "5%",
+        marginTop: "19%",
+        borderColor: '#25D366',
+        borderWidth: 1,
+        height: 24,
+        width: 23,
     },
     linha: {
         height: 1,
@@ -228,7 +274,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#25D366',
         paddingVertical: 12,
         paddingHorizontal: 17,
-        borderRadius: 5,
+        borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -236,6 +282,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: '500',
         color: '#ffffff',
+        fontFamily: "RobotoRegular",
     },
     footer: {
         paddingTop: "-10%",
@@ -266,9 +313,9 @@ const styles = StyleSheet.create({
     },
     finalizar: {
         backgroundColor: '#25D366', 
-        paddingVertical: 12,
-        paddingHorizontal: 17,
-        borderRadius: 5,
+        borderRadius: 12,
+        width: '100%',
+        height: 50,        
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 20,
@@ -279,4 +326,8 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         marginBottom: 1,
     },
+    // video: {
+    //     width: 200, 
+    //     height: 200,
+    // },
 });

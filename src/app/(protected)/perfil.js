@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image } from "react-native";
+import { Text, View, StyleSheet, TextInput, TouchableOpacity, Image, KeyboardAvoidingView, Platform } from "react-native";
 import { useAuth } from "../../hooks/Auth/index";
 import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from "@expo/vector-icons";
@@ -27,20 +27,23 @@ export default function Perfil() {
     };
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
             <View style={styles.principal}>
                 <TouchableOpacity onPress={handleeditar} style={styles.botaoeditar}>
-                    <Ionicons name="pencil-outline" size={24} color="#8B004C" />
+                    <Text style={styles.editarsalvar}>{isEditing ? "Salvar" : "Editar"}</Text>
                 </TouchableOpacity>
-<Image  source={{uri: 'src/assets/images/fundo perfil.jpg'}} style={styles.imagemfundo}/>
-
+                <Image source={{ uri: 'src/assets/images/fundo perfil.jpg' }} style={styles.imagemfundo} />
 
                 <Image
                     source={{ uri: 'https://www.github.com/biancaetec.png' }}
                     style={styles.imagem}
                 />
                 <Text style={styles.titulo}>{user?.user?.nome}</Text>
-                <View style={styles.inputContainer}>
+                
+                <View style={styles.inputContainer1}>
                     <Ionicons name="mail-open-outline" size={20} color="#8B004C" />
                     <TextInput
                         style={styles.emailinput}
@@ -50,7 +53,8 @@ export default function Perfil() {
                         editable={isEditing}
                     />
                 </View>
-                <View style={styles.inputContainer}>
+                
+                <View style={styles.inputContainer2}>
                     <Ionicons name="lock-closed-outline" size={20} color="#8B004C" />
                     <TextInput
                         style={styles.emailinput}
@@ -68,25 +72,27 @@ export default function Perfil() {
                         />
                     </TouchableOpacity>
                 </View>
+                
                 <TouchableOpacity onPress={handlesair} style={styles.botaosair}>
                     <Text style={styles.botaoTexto}>Deslogar</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#ffffff', 
+        backgroundColor: '#f1f1f1', 
         justifyContent: 'center',
         alignItems: 'center',
         padding: 20,
     },
     principal: {
-        backgroundColor: "#f1f1f1", 
-        width: "95%",
+        backgroundColor: "#ffffff", 
+        width: "98%",
+        height: "80%",
         padding: 20,
         borderRadius: 15,
         elevation: 5,
@@ -99,19 +105,25 @@ const styles = StyleSheet.create({
     },
     botaoeditar: {
         position: 'absolute',
-        top: 20,
-        right: 20,
+        marginTop: "150%",
+        height: 40,
+        width: "99%",
         padding: 10,
-        borderRadius: 20,
-        backgroundColor: '#ffffff',
+        borderRadius: 10,
+        backgroundColor: '#eee',
         elevation: 3, 
+    },
+    editarsalvar: {
+        color: '#8B004C',
+        fontWeight: 'bold',
+        marginRight: 5,
+        textAlign: 'center',
     },
     imagem: {
         width: 100, 
         height: 100,
         borderRadius: 50,
         marginBottom: 10,
-    
     },
     titulo: {
         fontSize: 24,
@@ -120,7 +132,19 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         textAlign: 'center',
     },
-    inputContainer: {
+    inputContainer1: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderColor: '#ddd',
+        borderRadius: 10,
+        backgroundColor: '#ffffff', 
+        marginVertical: 10,
+        paddingHorizontal: 10,
+        marginTop: "10%",
+        width: '100%',
+    },
+    inputContainer2: {
         flexDirection: 'row',
         alignItems: 'center',
         borderWidth: 1,
@@ -140,14 +164,15 @@ const styles = StyleSheet.create({
     botaosair: {
         backgroundColor: '#8B004C',
         padding: 14, 
-        borderRadius: 10,
+        borderRadius: 12,
         alignItems: 'center',
         width: '100%',
-        marginTop: 10,
+        marginTop: "52%",
     },
     botaoTexto: {
         color: '#ffffff',
-        fontWeight: 'bold',
+        fontWeight: '600',
         fontSize: 18, 
+        fontFamily: 'RobotoRegular',
     },
 });

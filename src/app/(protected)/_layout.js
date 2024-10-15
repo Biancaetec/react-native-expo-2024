@@ -17,8 +17,8 @@ function CustomDrawerContent(props) {
         marginTop: 28,
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#DCDCDC",
         paddingVertical: 10,
+      
       }}
       >
         <Image
@@ -27,7 +27,7 @@ function CustomDrawerContent(props) {
           }}
           style={{ width: 100, height: 100, borderRadius: 50, margin: 10 }}
         />
-        <Text style={{ textAlign: "center", fontSize: 16, fontFamily: "OpenSansMedium" }}
+        <Text style={{ textAlign: "center", fontSize: 20, fontFamily: "RobotoLight" }}
         >
           {user?.user?.nome}
         </Text>
@@ -44,10 +44,10 @@ function CustomDrawerContent(props) {
           height: 50,
           margin: 10,
           backgroundColor: "#8B004C",
-          borderRadius: 5,
+          borderRadius: 12,
         }}
       >
-        <Text style={{ color: "white", fontFamily: "RobotoMedium",  fontSize: 16,
+        <Text style={{ color: "white", fontFamily: "RobotoRegular",  fontSize: 16,
  }}>Deslogar</Text>
       </TouchableOpacity>
     </View>
