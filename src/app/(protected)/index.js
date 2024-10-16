@@ -25,7 +25,7 @@ export default function Promocao() {
             precoproduto: preco,
             quantity: 1 
         });
-        Alert.alert("Sabonete adicionado!");
+        Alert.alert("Produto adicionado!");
     };
 
     const addCart2 = () => {
@@ -41,7 +41,7 @@ export default function Promocao() {
             precoproduto: preco,
             quantity: 1 
         });
-        Alert.alert("Sabonete adicionado!");
+        Alert.alert("Produto adicionado!");
     };
 
     const addCart3 = () => {
@@ -57,16 +57,42 @@ export default function Promocao() {
             precoproduto: preco,
             quantity: 1 
         });
-        Alert.alert("Hidratante adicionado!");
+        Alert.alert("Produto adicionado!");
     };
 
-    const saibamaisalert = () => {
-        Alert.alert(
-            "Em breve",
-            "Todas as informações destes produtos estarão disponíveis em breve!",
+    const addCart4 = () => {
+        const imagem = require('../../../src/assets/images/esfoliante1.png');
+        const nomeProduto = "Sabonete esfoliante";
+        const especificacao = "Sabonete vegetal com esfoliante natural.";
+        const preco = "79.90";
+        addCart({ 
+            id: 4, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao, 
+            precoproduto: preco,
+            quantity: 1 
+        });
+        Alert.alert("Produto adicionado!");
+    };
 
-        );
-    }
+    const addCart5 = () => {
+        const imagem = require('../../../src/assets/images/perfume1.png');
+        const nomeProduto = "Perfume";
+        const especificacao = "Perfume com aroma fresco e envolvente.";
+        const preco = "59.90";
+        addCart({ 
+            id: 5, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao, 
+            precoproduto: preco,
+            quantity: 1 
+        });
+        Alert.alert("Produto adicionado!");
+    };
+
+
     return (
         <ScrollView contentContainerStyle={styles.container}>
              <View style={styles.containerpesquisa}>
@@ -125,9 +151,9 @@ export default function Promocao() {
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco}>R$ 29,90</Text>
 
-                           <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
+                            <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
                             <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                           </TouchableOpacity>
+                            </TouchableOpacity>
 
                         </View>
                     </View>
@@ -176,55 +202,60 @@ export default function Promocao() {
                     </Text>
                     <Text style={styles.preco3}>R$ 29,90</Text>
                     <TouchableOpacity onPress={addCart3} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                    <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
                 </View>
             </View>
-            <View style={styles.containerembreve}>
-                <Text style={styles.tituloembreve}>
-                    Em breve
+            <View style={styles.containerlancamento}>
+                <Text style={styles.titulolancamento}>
+                    Lançamentos
                 </Text>
 
             <View style={styles.banner2} />
                 <Banner2 />
-            <View style={styles.embreve1}>
-            <View style={styles.imgembreve1}>
+            <View style={styles.lancamento1}>
+                <View style={styles.contlancamento1}>
                     <Image
                         source={require('../../../src/assets/images/esfoliante1.png')}
                         style={styles.img1}
                     />
                 </View>
-                <View style={styles.infembreve1}>
+                <View style={styles.inflancamento1}>
                    
-                    <Text style={styles.marcaembreve1}>EKOS</Text>
-                    <Text style={styles.nomeembreve1}>Sabonete esfoliante</Text>
-                    <Text style={styles.espembreve1}>
-                        Sabonete em barra vegetal com esfoliante natural de semente de damasco. 
+                    <Text style={styles.marcalancamento1}>EKOS</Text>
+                    <Text style={styles.nomelancamento1}>Sabonete esfoliante</Text>
+                    <Text style={styles.esplancamento1}>
+                        Sabonete vegetal com esfoliante natural . 
                     </Text>
+                    <Text style={styles.preco4}>R$ 79,90</Text>
+                    <TouchableOpacity onPress={addCart4} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
+                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                    </TouchableOpacity>
                    </View>
                 </View>
 
-                <View style={styles.embreve2}>
-            <View style={styles.imgembreve2}>
+                <View style={styles.lancamento2}>
+            <View style={styles.contlancamento2}>
                     <Image
                         source={require('../../../src/assets/images/perfume1.png')}
                         style={styles.img2}
                     />
                 </View>
-                <View style={styles.infembreve2}>
+                <View style={styles.inflancamento2}>
                    
-                    <Text style={styles.marcaembreve2}>EKOS</Text>
-                    <Text style={styles.nomeembreve2}>Perfume</Text>
-                    <Text style={styles.espembreve2}>
+                    <Text style={styles.marcalancamento2}>EKOS</Text>
+                    <Text style={styles.nomelancamento2}>Perfume</Text>
+                    <Text style={styles.esplancamento2}>
                         Perfume com aroma fresco e envolvente.                    
                     </Text>
-                    
+                    <Text style={styles.preco5}>R$ 59,90</Text>
+                    <TouchableOpacity onPress={addCart5} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
+                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                    </TouchableOpacity>
                 </View>
                 </View>
 
-                <TouchableOpacity style={styles.saibamais} onPress={saibamaisalert}>
-                    <Text style={styles.saibamaisText}>Saiba mais</Text>
-                </TouchableOpacity>
+               
                 
         </View>
         </ScrollView >
@@ -507,12 +538,12 @@ containerpesquisa: {
         color: '#000',
         fontWeight: '700',
     },
-    // em breve
-    containerembreve: {
+    // lançamentos
+    containerlancamento: {
         marginTop: "10%",
         height: 690,
     },
-    tituloembreve: {  
+    titulolancamento: {  
         fontSize: 22,
         marginTop: "10%",
         textAlign: "center",        
@@ -526,14 +557,15 @@ containerpesquisa: {
         width: '100%',
         height: 200,
     },
-    embreve1: {
-        backgroundColor: "#eee",
+    lancamento1: {
+        backgroundColor: "#ffffff",
         width: '48%',
         height: 250,
         borderRadius: 10,
         marginTop: '15%',
     },
-    imgembreve1: {
+    contlancamento1: {
+        backgroundColor: "#eee",
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
@@ -548,31 +580,36 @@ containerpesquisa: {
         resizeMode: 'contain',
         marginLeft: "10%",
     },
-    infembreve1: {
-        marginTop: "-7%",
+    inflancamento1: {
+        marginTop: "3%",
         marginLeft: "3%",
     },
-    marcaembreve1: {
+    marcalancamento1: {
         fontSize: 12,
         fontFamily: "OpenSansMedium",
         color: 'black',
         marginBottom: 5,
     },
-    nomeembreve1: {
+    nomelancamento1: {
         fontSize: 15,
         fontFamily: "OpenSansMedium",
         color: 'black',
         marginBottom: 5,
     },
-    espembreve1: {
+    esplancamento1: {
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
-        marginBottom: 7,
+        marginBottom: 20,
     },
-
-    embreve2: {
-        backgroundColor: "#eee",
+    preco4: {
+        fontSize: 16,
+        fontFamily: "RobotoRegular",
+        color: '#000',
+        fontWeight: '700',
+    },
+    lancamento2: {
+        backgroundColor: "#ffffff",
         width: '48%',
         height: 250,
         borderRadius: 10,
@@ -580,12 +617,13 @@ containerpesquisa: {
         marginLeft: "52%",
         marginBottom: "20%",
     },
-    imgembreve2: {
+    contlancamento2: {
+        backgroundColor: "#eee",
         borderRadius: 5,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 160,
-        height: 160,
+        width: 150,
+        height: 150,
         marginTop: "-12%",
     },
     img2: {
@@ -595,43 +633,35 @@ containerpesquisa: {
         resizeMode: 'contain',
         marginLeft: "2%",
     },
-    infembreve2: {
-        marginTop: "-7%",
+    inflancamento2: {
+        marginTop: "3%",
         marginLeft: "3%",
     },
-    marcaembreve2: {
+    marcalancamento2: {
         fontSize: 12,
         fontFamily: "OpenSansMedium",
         color: 'black',
         marginBottom: 5,
     },
-    nomeembreve2: {
+    nomelancamento2: {
         fontSize: 15,
         fontFamily: "OpenSansMedium",
         color: 'black',
         marginBottom: 5,
     },
-    espembreve2: {
+    esplancamento2: {
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
+        marginBottom: 20,
+
     },
-    saibamais: {
-        backgroundColor: '#ac0c24',
-        padding: 10,
-        borderRadius: 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: "210%",
-        marginLeft: "36%",
-        marginBottom: "20%",
-        position: "absolute",
-    },
-    saibamaisText: {
-        color: 'white',
+    preco5: {
         fontSize: 16,
-        fontWeight: '600',
-        fontFamily: 'RobotoRegular',
+        fontFamily: "RobotoRegular",
+        color: '#000',
+        fontWeight: '700',
     },
     
 });
+

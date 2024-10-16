@@ -18,7 +18,7 @@ function CustomDrawerContent(props) {
         justifyContent: "center",
         alignItems: "center",
         paddingVertical: 10,
-      
+
       }}
       >
         <Image
@@ -47,8 +47,9 @@ function CustomDrawerContent(props) {
           borderRadius: 12,
         }}
       >
-        <Text style={{ color: "white", fontFamily: "RobotoRegular",  fontSize: 16,
- }}>Deslogar</Text>
+        <Text style={{
+          color: "white", fontFamily: "RobotoRegular", fontSize: 16,
+        }}>Deslogar</Text>
       </TouchableOpacity>
     </View>
   );
@@ -62,34 +63,36 @@ const DrawerLayout = () => {
       <Drawer drawerContent={(props) => <CustomDrawerContent {...props} />}>
 
 
-      <Drawer.Screen
-    name="index"
-    options={{
-    drawerLabel: "Início",
-    headerTitle: "CABANNI",
-    headerTitleAlign: 'center',
-    headerTitleStyle: {
-      fontFamily: 'BonaNovaSCRegular', 
-      fontSize: 23,
-    },
-    drawerIcon: () => (
-    <AntDesign name="home" size={24} color="black" />
-    ),
-    headerRight: () => ( 
-      <TouchableOpacity 
-        onPress={() => router.push("perfil")} 
-        style={{ marginRight: 10 }}>
-           <FontAwesome
-        name="user-circle"
-        size={24}
-        color="black"
-        style={{ marginRight: 10 }}
-      />
-        </TouchableOpacity>
-     
-    ),
-  }}
-/>
+        <Drawer.Screen
+          name="index"
+          options={{
+            drawerLabel: "Início",
+            headerTitle: "CABANNI",
+            headerTitleAlign: 'center',
+            headerTitleStyle: {
+              fontFamily: 'BonaNovaSCRegular',
+              fontSize: 23,
+            },
+            drawerIcon: () => (
+              <AntDesign name="home" size={24} color="black" />
+            ),
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => router.push("perfil")}
+                style={{ marginRight: 10 }}>
+                <FontAwesome
+                  name="user-circle"
+                  size={24}
+                  color="black"
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
+
+            ),
+          }}
+        />
+
+
         <Drawer.Screen
           name="sabonete"
           options={{
@@ -101,7 +104,7 @@ const DrawerLayout = () => {
             ),
           }}
         />
-       
+
         <Drawer.Screen
           name="list"
           options={{
@@ -124,19 +127,19 @@ const DrawerLayout = () => {
             drawerIcon: () => (
               <Ionicons name="bag-handle-outline" size={24} color="black" />
             ),
-            headerRight: () => ( 
-              <TouchableOpacity 
-                onPress={() => router.back("index.js")} 
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => router.back("index.js")}
                 style={{ marginRight: 10 }}>
-                  
-              <Ionicons 
-              name="bag-add" 
-              size={24} 
-              color="black"
-                style={{ marginRight: 10 }}
-              />
-                </TouchableOpacity>
-             
+
+                <Ionicons
+                  name="bag-add"
+                  size={24}
+                  color="black"
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
+
             ),
           }}
         />

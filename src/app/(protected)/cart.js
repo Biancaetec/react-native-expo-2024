@@ -120,12 +120,14 @@ export default function Cart() {
                     ))
                 ) : (
                     <View style={styles.sacolaVaziaContainer}>
-                        {/* <Video 
-                            source={require('../../assets/gifsacola.mp4')} 
-                            style={styles.video}
-                            resizeMode="cover"
-                            repeat={true}
-                        /> */}
+                           {/* <Image 
+                            source={require('../../src/assets/images/gifsacola.gif')} 
+                            style={styles.gif}
+                            resizeMode="cover" 
+                             
+                            /> */}
+
+                            
                         <Text style={styles.aviso}>Você não tem nenhum produto na sacola.</Text>
                         <Text style={styles.aviso2}>Quando você escolher seus produtos, mostraremos aqui.</Text>
                         <TouchableOpacity
@@ -326,7 +328,7 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         marginBottom: 1,
     },
-    // video: {
+    // gif: {
     //     width: 200, 
     //     height: 200,
     // },
