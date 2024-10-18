@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Text, View, Image, StyleSheet, TouchableOpacity, Linking, ScrollView } from "react-native";
-import Fontisto from '@expo/vector-icons/Fontisto'; 
+import Fontisto from '@expo/vector-icons/Fontisto';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from "expo-router";
 import { useCart } from "../../hooks/Cart";
+import logo from "../../assets/images/gifsacola.gif";
+import Video, { VideoRef } from 'react-native-video';
 // import {Video} from "src/assets/images/gifsacola.mp4";
 
 export default function Cart() {
     const { cart, removeCart, adicionarCart } = useCart();
     const [total, setTotal] = useState(0.00);
+    const videoRef = useRef(null);
+    const background = require('../../assets/images/gifsacola.mp4');
 
     const handleRemoveOne = (id) => {
         removeCart({ id });
@@ -21,8 +25,8 @@ export default function Cart() {
 
     const calcularTotal = () => {
         const total = cart.reduce((acc, element) => {
-            const precoproduto = parseFloat(element.precoproduto) || 0; 
-            const quantity = element.quantity || 0; 
+            const precoproduto = parseFloat(element.precoproduto) || 0;
+            const quantity = element.quantity || 0;
             return acc + (precoproduto * quantity);
         }, 0);
         return total.toFixed(2);
@@ -33,10 +37,10 @@ export default function Cart() {
         cart.forEach((element, index) => {
             mensagem += `${element.name} - R$ ${element.precoproduto} (Quantidade: ${element.quantity})`;
             if (index < cart.length - 1) {
-                mensagem += '\n\n'; 
+                mensagem += '\n\n';
             }
         });
-        mensagem += '\n\n'; 
+        mensagem += '\n\n';
         mensagem += `Total: R$ ${calcularTotal()}`;
         return encodeURIComponent(mensagem);
     };
@@ -47,7 +51,7 @@ export default function Cart() {
             return;
         }
 
-        const numero = '18996152301'; 
+        const numero = '18996152301';
         const mensagem = gerarMensagem();
         const url = `whatsapp://send?text=${mensagem}&phone=${numero}`;
 
@@ -78,23 +82,23 @@ export default function Cart() {
                         <View key={element.id}>
                             <View style={styles.produtos}>
                                 <View style={styles.containerimagem}>
-                                    <Image 
-                                        source={typeof element.imagemproduto === 'number' 
+                                    <Image
+                                        source={typeof element.imagemproduto === 'number'
                                             ? element.imagemproduto
                                             : { uri: element.imagemproduto || 'URL_DE_FALHA' }
-                                        } 
+                                        }
                                         style={styles.imagemproduto}
                                     />
                                 </View>
-                                
+
                                 <View style={styles.nomecontainer}>
-                                <Text style={styles.nome}>{element.name}</Text>
+                                    <Text style={styles.nome}>{element.name}</Text>
                                 </View>
 
                                 <View style={styles.valorcontainer}>
                                     <Text style={styles.valor}>R$ {element.precoproduto}</Text>
                                 </View>
-                                
+
                                 <View style={styles.quantidadeContainer}>
                                     <Text style={styles.quantidade}>{element.quantity || 0}</Text>
                                 </View>
@@ -120,14 +124,15 @@ export default function Cart() {
                     ))
                 ) : (
                     <View style={styles.sacolaVaziaContainer}>
-                           {/* <Image 
-                            source={require('../../src/assets/images/gifsacola.gif')} 
+                        <Image
+                            source={logo}
                             style={styles.gif}
-                            resizeMode="cover" 
-                             
-                            /> */}
+                            resizeMode="cover"
 
-                            
+                        />
+                       
+
+
                         <Text style={styles.aviso}>Você não tem nenhum produto na sacola.</Text>
                         <Text style={styles.aviso2}>Quando você escolher seus produtos, mostraremos aqui.</Text>
                         <TouchableOpacity
@@ -158,17 +163,17 @@ export default function Cart() {
 const styles = StyleSheet.create({
     containerprincipal: {
         flex: 1,
-        backgroundColor: '#ffffff', 
+        backgroundColor: '#ffffff',
         padding: 14,
     },
     scrollContainer: {
-        paddingBottom: 50, 
+        paddingBottom: 50,
     },
     totalprodutos: {
         fontSize: 18,
         fontWeight: '400',
         color: '#000',
-        marginTop: 16,  
+        marginTop: 16,
         marginBottom: 40,
         textAlign: 'center',
     },
@@ -177,21 +182,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 4,
-        paddingVertical: 5,  
+        paddingVertical: 5,
         paddingHorizontal: 10,
-        borderRadius: 10, 
+        borderRadius: 10,
     },
     containerimagem: {
         width: 130,
         height: 130,
         backgroundColor: '#f2f3f5',
-        marginLeft: "-3%",   
+        marginLeft: "-3%",
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
     },
     imagemproduto: {
-        width: 190,  
+        width: 190,
         height: 180,
     },
     nomecontainer: {
@@ -224,7 +229,7 @@ const styles = StyleSheet.create({
         color: '#000',
     },
     quantidade: {
-        fontSize: 14,  
+        fontSize: 14,
         color: 'black',
         marginHorizontal: 10,
     },
@@ -251,12 +256,12 @@ const styles = StyleSheet.create({
     },
     linha: {
         height: 1,
-        backgroundColor: '#f2f3f5',  
+        backgroundColor: '#f2f3f5',
         marginVertical: 10,
     },
     sacolaVaziaContainer: {
         alignItems: 'center',
-        marginTop: "60%", 
+        marginTop: "60%",
     },
     aviso: {
         textAlign: 'center',
@@ -289,7 +294,7 @@ const styles = StyleSheet.create({
     footer: {
         paddingTop: "-10%",
         borderColor: '#DAB3C8',
-        position: 'relative', 
+        position: 'relative',
         paddingBottom: 17,
     },
     totalContainer: {
@@ -314,10 +319,10 @@ const styles = StyleSheet.create({
         marginLeft: "7%",
     },
     finalizar: {
-        backgroundColor: '#25D366', 
+        backgroundColor: '#25D366',
         borderRadius: 12,
         width: '100%',
-        height: 50,        
+        height: 50,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 20,
@@ -328,8 +333,8 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         marginBottom: 1,
     },
-    // gif: {
-    //     width: 200, 
-    //     height: 200,
-    // },
+    gif: {
+        width: 200,
+        height: 200,
+    },
 });
