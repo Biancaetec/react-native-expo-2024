@@ -16,15 +16,27 @@ export function Banner2() {
                 style={styles.content}
                 onPageSelected={onPageSelected}
             >
-                <View key="1" style={styles.page}>
+                 <View key="1" style={styles.page}>
                     <Image
-                        source={require('../../../src/assets/images/embreve1.png')}
+                        source={require('../../../src/assets/images/lancamento3.png')}
                         style={styles.image}
                     />
                 </View>
                 <View key="2" style={styles.page}>
                     <Image
-                        source={require('../../../src/assets/images/embreve2.png')}
+                        source={require('../../../src/assets/images/lancamento1.png')}
+                        style={styles.image}
+                    />
+                </View>
+                <View key="3" style={styles.page}>
+                    <Image
+                        source={require('../../../src/assets/images/lancamento2.png')}
+                        style={styles.image}
+                    />
+                </View>
+                <View key="4" style={styles.page}>
+                    <Image
+                        source={require('../../../src/assets/images/lancamento4.png')}
                         style={styles.image}
                     />
                 </View>
@@ -33,6 +45,10 @@ export function Banner2() {
             <View style={styles.bulletContent}>
                 <View style={[styles.bullet, page === 0 && styles.activeBullet]}></View>
                 <View style={[styles.bullet, page === 1 && styles.activeBullet]}></View>
+                <View style={[styles.bullet, page === 2 && styles.activeBullet]}></View>
+                <View style={[styles.bullet, page === 3 && styles.activeBullet]}></View>
+
+
             </View>
         </View>
     );

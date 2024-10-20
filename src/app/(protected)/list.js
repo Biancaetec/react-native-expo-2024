@@ -20,7 +20,7 @@ export default function Hidratante() {
             precoproduto: preco,
             quantity: 1 
         });
-        Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
+        Alert.alert("Produto adicionado!");
     };
 
     return (
@@ -38,7 +38,7 @@ export default function Hidratante() {
                         Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
-                    <TouchableOpacity style={styles.botao}  onPress={() => adicionarAoCarrinho("Hidratante Corporal")}>
+                    <TouchableOpacity style={styles.botao}  onPress={() => adicionarAoCarrinho("Produto adicionado!")}>
                         <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
                         <Text style={styles.botaoTexto}>Adicionar ao carrinho</Text>
                     </TouchableOpacity>

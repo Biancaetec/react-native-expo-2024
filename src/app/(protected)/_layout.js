@@ -67,7 +67,7 @@ const DrawerLayout = () => {
         <Drawer.Screen
           name="index"
           options={{
-            drawerLabel: "Início",
+            drawerLabel: "Produtos",
             headerTitle: "CABANNI",
             headerTitleAlign: 'center',
             headerTitleStyle: {
@@ -93,12 +93,22 @@ const DrawerLayout = () => {
           }}
         />
 
+        <Drawer.Screen
+          name="maisvendidos"
+          options={{
+            drawerLabel: "Mais vendidos",
+            headerTitle: "Mais vendidos",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+            <MaterialCommunityIcons name="medal-outline" size={23} color="black" />            ),
+          }}
+        />
 
         <Drawer.Screen
           name="sabonete"
           options={{
-            drawerLabel: "Sabonete líquido",
-            headerTitle: "Sabonete líquido",
+            drawerLabel: "Sabonetes",
+            headerTitle: "Sabonetes",
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <Ionicons name="list-circle-outline" size={23} color="black" />

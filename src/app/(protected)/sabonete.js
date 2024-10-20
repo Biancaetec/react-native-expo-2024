@@ -1,48 +1,78 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, Alert } from "react-native";
+import { Text, View, StyleSheet, Image, TouchableOpacity, Alert, ScrollView } from "react-native";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import { useCart } from '../../hooks/Cart';
 
-    export default function Sabonete() {
-        const { addCart } = useCart();
-    
-        const adicionarAoCarrinho = () => {
-            const imagem = require('../../../src/assets/images/sabonete1.png');
-            const nomeProduto = "Sabonete Líquido cereja";
-            const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
-            const preco = "29.90";
-            addCart({ 
-                id: 1, 
-                imagemproduto: imagem,
-                name: nomeProduto, 
-                especificacaoproduto: especificacao, 
-                precoproduto: preco,
-                quantity: 1 
-            });
-            Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
-        };
-    
-        const adicionarAoCarrinho2 = () => {
-            const imagem = require('../../../src/assets/images/sabonete2.png');
-            const nomeProduto = "Sabonete Líquido baunilha";
-            const especificacao = "Com aroma de baunilha, disponível em 200ml.";
-            const preco = "49.90"; 
-            addCart({ 
-                id: 2, 
-                imagemproduto: imagem,
-                name: nomeProduto, 
-                especificacaoproduto: especificacao,
-                precoproduto: preco,
-                quantity: 1 
-            });
-            Alert.alert("Produto adicionado!", `${nomeProduto} foi adicionado ao carrinho.`);
-        };
-    
+export default function Sabonete() {
+    const { addCart } = useCart();
+
+    const adicionarAoCarrinho = () => {
+        const imagem = require('../../../src/assets/images/sabonete1.png');
+        const nomeProduto = "Sabonete Líquido cereja";
+        const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
+        const preco = "29.90";
+        addCart({ 
+            id: 1, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao, 
+            precoproduto: preco,
+            quantity: 1 
+        });
+        Alert.alert("Produto adicionado!");
+    };
+
+    const adicionarAoCarrinho2 = () => {
+        const imagem = require('../../../src/assets/images/sabonete2.png');
+        const nomeProduto = "Sabonete Líquido baunilha";
+        const especificacao = "Com aroma de baunilha, disponível em 200ml.";
+        const preco = "49.90"; 
+        addCart({ 
+            id: 2, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao,
+            precoproduto: preco,
+            quantity: 1 
+        });
+        Alert.alert("Produto adicionado!");
+    };
+
+    const adicionarAoCarrinho3 = () => {
+        const imagem = require('../../../src/assets/images/lan1esfoliante.png');
+        const nomeProduto = "Sabonete esfoliante";
+        const especificacao = "Sabonete vegetal com esfoliante natural.";
+        const preco = "79.90"; 
+        addCart({ 
+            id: 5, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao,
+            precoproduto: preco,
+            quantity: 1 
+        });
+        Alert.alert("Produto adicionado!");
+    };
+
+    const adicionarAoCarrinho4 = () => {
+        const imagem = require('../../../src/assets/images/produto4-kitesfoliante.png');
+        const nomeProduto = "Esfoliante Corporal";
+        const especificacao = "Kit esfoliante com essência de maracujá.";
+        const preco = "69.90"; 
+        addCart({ 
+            id: 4, 
+            imagemproduto: imagem,
+            name: nomeProduto, 
+            especificacaoproduto: especificacao,
+            precoproduto: preco,
+            quantity: 1 
+        });
+        Alert.alert("Produto adicionado!");
+    };
 
     return (
-        <View style={styles.container}>
-            {/* produto 1 */}
+        <ScrollView style={styles.scrollContainer}>
             <View style={styles.produtoContainer}>
                 <View style={styles.containerimagem}>
                     <Image
@@ -51,23 +81,21 @@ import { useCart } from '../../hooks/Cart';
                     />
                 </View>
                 <View style={styles.informacoes}>
-                    <Text style={styles.nomeProduto}>Sabonete Líquido CHARMM</Text>
+                    <Text style={styles.nomeProduto}>Sabonete Líquido</Text>
                     <Text style={styles.especificacao}>
                         Com uma incrível fragância de cereja, disponível em 250ml.
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
-                    <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho("Sabonete Líquido cereja")}>
+                    <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho}>
                         <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
                         <Text style={styles.botaoTexto}>Comprar</Text>
                     </TouchableOpacity>
                 </View>
-
                 <View style={styles.icone}>
                     <Fontisto name="shopping-sale" size={30} color="red" />
                 </View>
             </View>
 
-            {/* produto 2 */}
             <View style={styles.produtoContainer}>
                 <View style={styles.containerimagem}>
                     <Image
@@ -76,28 +104,65 @@ import { useCart } from '../../hooks/Cart';
                     />
                 </View>
                 <View style={styles.informacoes}>
-                    <Text style={styles.nomeProduto}>Sabonete Líquido CHARMM</Text>
+                    <Text style={styles.nomeProduto}>Sabonete Líquido</Text>
                     <Text style={styles.especificacao}>
                         Com aroma de baunilha disponível em 200ml.
                     </Text>
                     <Text style={styles.preco}>R$ 49,90</Text>
-                    <TouchableOpacity style={styles.botao} onPress={() => adicionarAoCarrinho2("Sabonete Líquido baunilha")}>
+                    <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho2}>
                         <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
                         <Text style={styles.botaoTexto}>Comprar</Text>
                     </TouchableOpacity>
                 </View>
             </View>
-        </View>
+
+            <View style={styles.produtoContainer}>
+                <View style={styles.containerimagem}>
+                    <Image
+                        source={require('../../../src/assets/images/lan1esfoliante.png')}
+                        style={styles.imagem3}
+                    />
+                </View>
+                <View style={styles.informacoes}>
+                    <Text style={styles.nomeProduto}>Sabonete esfoliante</Text>
+                    <Text style={styles.especificacao}>
+                        Sabonete vegetal com esfoliante natural.
+                    </Text>
+                    <Text style={styles.preco}>R$ 79,90</Text>
+                    <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho3}>
+                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
+                        <Text style={styles.botaoTexto}>Comprar</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+            <View style={styles.produtoContainer}>
+                <View style={styles.containerimagem}>
+                    <Image
+                        source={require('../../../src/assets/images/produto4-kitesfoliante.png')}
+                        style={styles.imagem3}
+                    />
+                </View>
+                <View style={styles.informacoes}>
+                    <Text style={styles.nomeProduto}>Esfoliante Corporal</Text>
+                    <Text style={styles.especificacao}>
+                        Kit esfoliante com essência de maracujá.
+                    </Text>
+                    <Text style={styles.preco}>R$ 69,90</Text>
+                    <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho4}>
+                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
+                        <Text style={styles.botaoTexto}>Comprar</Text>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        </ScrollView>
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
+    scrollContainer: {
         flex: 1,
         backgroundColor: '#ffffff',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: 20,
     },
     produtoContainer: {
         flexDirection: 'row',
@@ -106,15 +171,14 @@ const styles = StyleSheet.create({
         padding: 13,
         elevation: 5,
         width: '100%',
-        position: 'relative',
         marginTop: 40,
     },
     containerimagem: {
         borderRadius: 10,
         alignItems: 'center',
         justifyContent: 'center',
-        width: 130,
-        height: 130,
+        width: 120,
+        height: 120,
     },
     imagem1: {
         width: '290%',
@@ -123,7 +187,6 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         marginTop: "32%",
         marginLeft: "-10%",
-
     },
     imagem2: {
         width: '290%',
@@ -131,13 +194,19 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         resizeMode: 'contain',
         marginTop: "30%",
-
+    },
+    imagem3: {
+        width: '220%',
+        height: '220%',
+        borderRadius: 10,
+        resizeMode: 'contain',
+        marginTop: "30%",
     },
     informacoes: {
         flex: 1,
         marginLeft: 10,
     },
-    nomeProduto:{
+    nomeProduto: {
         fontSize: 18,
         fontFamily: "OpenSansMedium",
         color: 'black',

@@ -63,23 +63,6 @@ export default function Promocao() {
         Alert.alert("Produto adicionado!");
     };
 
-// referente: esfoliante maracujá
-    const addCart4 = () => {
-        const imagem = require('../../../src/assets/images/produto4-kitesfoliante.png');
-        const nomeProduto = "Esfoliante Corporal";
-        const especificacao = "Kit esfoliante com essência de maracujá.";
-        const preco = "69.90";
-        addCart({ 
-            id: 4, 
-            imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
-            precoproduto: preco,
-            quantity: 1 
-        });
-        Alert.alert("Produto adicionado!");
-    };
-
 // referente aos lancamentos: sabonete esfoliante
     const addCart5 = () => {
         const imagem = require('../../../src/assets/images/lan1esfoliante.png');
@@ -160,62 +143,11 @@ export default function Promocao() {
                 <AntDesign name="search1" size={18} color="black" style={styles.iconepesquisa} />
             </View>
 
-            <Banner style={styles.banner} />
-            <Text style={styles.titulo}>Categorias</Text>
-            <View style={styles.containerveja}>
-            <Text style={styles.subtitulo}>Veja todas</Text>
-            <AntDesign name="arrowright" size={14} color="#ac0c24" style={styles.icone} />
-            </View>
-
-            <View style={styles.links}>
-
-            <TouchableOpacity style={styles.link}
-                    onPress={() => router.push("index")}>
-                <Text style={styles.textolink}>Todos</Text>
-                </TouchableOpacity>
-
-
-                <TouchableOpacity style={styles.link1}
-                    onPress={() => router.push("sabonete")}>
-                <Text style={styles.textolink1}>Sabonete</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.link2}
-                    onPress={() => router.push("list")}>
-                <Text style={styles.textolink2}>Hidratante</Text>
-                 </TouchableOpacity>
-            </View>
-        
+            <Text style={styles.titulo}>Confira os produtos mais vendidos: </Text>
 
             <View style={styles.produtoContainer}>
-                {/* sabonete cereja */}
-                <View style={styles.containerproduto1}>
-                    <View style={styles.containerimagem}>
-                        <Image
-                            source={require('../../../src/assets/images/sabonete1.png')}
-                            style={styles.imagem}
-                        />
-                    </View>
-                    <View style={styles.containerpromocao1}>
-                        <Text style={styles.promocao1}>Promoção</Text>
-                    </View>
-                    <View style={styles.informacoes}>
-                        <Text style={styles.marca}>CHARMM</Text>
-                        <Text style={styles.nomeProduto}>Sabonete Líquido</Text>
-                        <Text style={styles.especificacao}>
-                            Com uma incrível fragância de cereja.
-                        </Text>
-                        <View style={{ flexDirection: "row", alignItems: "center" }}>
-                            <Text style={styles.preco}>R$ 29,90</Text>
+            
 
-                            <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
-                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                            </TouchableOpacity>
-
-                        </View>
-                    </View>
-
-                </View>
 
                 <View style={styles.containerproduto2}>
                     {/* sabonete baunilha */}
@@ -268,37 +200,9 @@ export default function Promocao() {
                 </View>
             </View>
 
-              <View style={styles.containerproduto4}>
-                    {/* esfoliante maracujá */}
-                    <View style={styles.containerimagem}>
-                        <Image
-                            source={require('../../../src/assets/images/produto4-kitesfoliante.png')}
-                            style={styles.imagem4}
-                        />
-                    </View>
-                    <View style={styles.informacoes4}>
-                        <Text style={styles.marca4}>EKOS</Text>
-                        <Text style={styles.nomeProduto4}>Esfoliante Corporal</Text>
-                        <Text style={styles.especificacao4}>
-                        Kit esfoliante com essência de maracujá.
-                        </Text>
-                        <View style={{ flexDirection: "row", alignItems: "center" }}>
-                            <Text style={styles.preco4}>R$ 69,90</Text>
-                            <TouchableOpacity onPress={addCart4} style={{ padding: 20, marginLeft: "25%", }}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                            </TouchableOpacity>
-                        </View>
-                        
-                    </View>
-                </View>
+              
             </View>
             <View style={styles.containerlancamento}>
-                <Text style={styles.titulolancamento}>
-                    Lançamentos
-                </Text>
-
-            <View style={styles.banner2} />
-                <Banner2 />
 
             {/* lançamento 2: sabonete esfoliante  */}
             <View style={styles.lancamento1}>
@@ -424,98 +328,20 @@ containerpesquisa: {
     iconepesquisa: {
         marginLeft: 6,
     },
-    banner: {
-        width: '100%',
-        height: '100%',
-    },
+   
     titulo: {
         fontSize: 19,
         fontWeight: "600",
-        marginTop: "87%",
-        marginLeft: "7%",
+        marginTop: "28%",
+        textAlign: "justify", 
+        marginLeft: "5%",   
         width: "100%",
         position: "absolute",
     },
-    containerveja: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        marginTop: "91%",
-        marginLeft: "7%",
-        width: "100%",
-        position: "absolute",
-        paddingHorizontal: "8%", 
-    },
-    subtitulo: {
-        fontSize: 16,
-        fontWeight: "400",
-        marginLeft: "82%",
-        width: "100%",
-        position: "absolute",
-        color: '#ac0c24',
-
-    },
-    icone: {
-        marginLeft: "112%",
-        position: "absolute",
-    },
-    links: {
-        flexDirection: 'row',
-        marginTop: "100%",
-        marginLeft: "39%",
-        width: "100%",
-        justifyContent: 'space-between',
-        position: "absolute",
-    },
-    link: {
-        marginLeft: "-33%",
-        paddingHorizontal: 30,
-        height: 36,
-        borderRadius: 8,
-        position: "absolute",
-        backgroundColor: '#ac0c24',
-    },
-    textolink: {
-        marginTop: 8,
-        color: "white",
-        fontSize: 15,
-        fontFamily: "RobotoRegular",
-    },
-    link1: {
-        paddingHorizontal: 20,
-        height: 36,
-        borderRadius: 8,
-        position: "absolute",
-        borderColor: '#ac0c24',
-        borderWidth: 1,   
-    },
-    textolink1: {
-        marginTop: 8,
-        color: "black",
-        fontSize: 15,
-        fontFamily: "RobotoRegular",
-    },
-    link2: {
-        marginLeft: "35%",
-        paddingHorizontal: 18,
-        height: 36,
-        borderRadius: 8,
-        position: "absolute",
-        borderColor: '#ac0c24',
-        borderWidth: 1,
-
-    },
-    textolink2: {
-        marginTop: 8,
-        color: "black",
-        fontSize: 15,
-        fontFamily: "RobotoRegular",
-    },
-    // 2 primeiros produtos  da linha
     produtoContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: '42%',
+        marginTop: '30%',
     },
     // produto1 
     containerproduto1: {
@@ -581,7 +407,7 @@ containerpesquisa: {
     //produto2
     containerproduto2: {
         width: '49%',
-        marginLeft: "4%",
+        marginLeft: "1%",
     },
     
     imagem2: {
@@ -627,10 +453,11 @@ containerpesquisa: {
         marginTop: '2%',
     },
 
-    // produto 3
+    // produto 3 hidratante
     containerproduto3: {
         width: '48%',
-        marginTop: '10%',
+        marginTop: '-93%',
+        marginLeft: "52%",
     },
 
     imagem3: {
@@ -685,71 +512,10 @@ containerpesquisa: {
         color: '#000',
         fontWeight: '700',
     },
-
-    // produto 4
-
-    containerproduto4: {
-        width: '49%',
-        marginTop: '10%',
-    },
-
-    imagem4: {
-        width: '190%',
-        height: '190%',
-        borderRadius: 10,
-        resizeMode: 'contain',
-        marginLeft: "1%",
-        marginTop: '7%',
-
-    },
-    informacoes4: {
-        marginTop: "3%",
-
-    },
-    marca4: {
-        fontSize: 12,
-        fontFamily: "OpenSansMedium",
-        color: 'black',
-        marginBottom: 5,
-    },
-    nomeProduto4: {
-        fontSize: 15,
-        fontFamily: "OpenSansMedium",
-        color: 'black',
-        marginBottom: 5,
-    },
-    especificacao4: {
-        fontSize: 14,
-        fontFamily: "RobotoRegular",
-        color: 'black',
-        marginBottom: 20,
-    },
-    preco4: {
-        fontSize: 16,
-        fontFamily: "RobotoRegular",
-        color: '#000',
-        fontWeight: '700',
-    },
-
-    // banner de lancamento
-    banner2: { 
-        marginTop: "-35%",
-        width: '100%',
-        height: 200,
-    },
-    titulolancamento: {  
-        fontSize: 22,
-        marginTop: "10%",
-        textAlign: "center",        
-        width: "100%",
-        position: "absolute",
-        marginBottom: "20%",
-        fontFamily: "RobotoRegular",
-    },
-
+    
     // lançamentos: linha 1
     containerlancamento: {
-        marginTop: "10%",
+        marginTop: "-3%",
     },
     // lançamento 1: sabonete esfoliante
     lancamento1: {
@@ -862,7 +628,7 @@ containerpesquisa: {
         width: '48%',
         height: 250,
         borderRadius: 10,
-        marginTop: '8%',
+        marginTop: '4%',
     },
     contlancamento3: {
         backgroundColor: "#eee",
