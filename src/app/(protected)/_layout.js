@@ -6,6 +6,7 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAuth } from "../../hooks/Auth/index";
 import { router } from "expo-router";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 function CustomDrawerContent(props) {
@@ -100,7 +101,7 @@ const DrawerLayout = () => {
             headerTitle: "Sabonete líquido",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="list-circle-outline" size={20} color="black" />
+              <Ionicons name="list-circle-outline" size={23} color="black" />
             ),
           }}
         />
@@ -112,7 +113,7 @@ const DrawerLayout = () => {
             headerTitle: "Hidratante corporal",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="list-circle-outline" size={20} color="black" />
+              <Ionicons name="list-circle-outline" size={23} color="black" />
             ),
           }}
         />

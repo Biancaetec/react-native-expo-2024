@@ -6,14 +6,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { router } from "expo-router";
 import { useCart } from "../../hooks/Cart";
 import logo from "../../assets/images/gifsacola.gif";
-import Video, { VideoRef } from 'react-native-video';
-// import {Video} from "src/assets/images/gifsacola.mp4";
+// import Video from 'react-native-video';
 
 export default function Cart() {
     const { cart, removeCart, adicionarCart } = useCart();
     const [total, setTotal] = useState(0.00);
-    const videoRef = useRef(null);
-    const background = require('../../assets/images/gifsacola.mp4');
+    // const videoRef = useRef(null);
+    // const background = require('../../assets/images/gifsacola.mp4');
+ 
 
     const handleRemoveOne = (id) => {
         removeCart({ id });
@@ -130,9 +130,13 @@ export default function Cart() {
                             resizeMode="cover"
 
                         />
-                       
-
-
+                         {/* <Video 
+                            source={background}
+                            ref={videoRef}
+                            style={styles.backgroundVideo}  // Estilizei o vídeo
+                            resizeMode="cover"
+                            repeat
+                        /> */}
                         <Text style={styles.aviso}>Você não tem nenhum produto na sacola.</Text>
                         <Text style={styles.aviso2}>Quando você escolher seus produtos, mostraremos aqui.</Text>
                         <TouchableOpacity
@@ -261,14 +265,14 @@ const styles = StyleSheet.create({
     },
     sacolaVaziaContainer: {
         alignItems: 'center',
-        marginTop: "60%",
+        marginTop: "35%",
     },
     aviso: {
         textAlign: 'center',
         fontWeight: 'bold',
         color: '#000',
         fontSize: 18,
-        marginTop: 25,
+        marginTop: "-15%",
     },
     aviso2: {
         textAlign: 'center',
@@ -333,8 +337,15 @@ const styles = StyleSheet.create({
         color: '#ffffff',
         marginBottom: 1,
     },
+    
     gif: {
-        width: 200,
-        height: 200,
+        marginTop: "-15%",
+        width: 300,
+        height: 300,
     },
+    // backgroundVideo: {
+    //     width: '100%',
+    //     height: 300,
+    //     marginTop: 20,
+    // },
 });
