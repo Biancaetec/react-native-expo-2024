@@ -167,6 +167,7 @@ export default function Promocao() {
             <AntDesign name="arrowright" size={14} color="#ac0c24" style={styles.icone} />
             </View>
 
+{/* colocar um scrolview horizontal nos menus */}
             <View style={styles.links}>
 
             <TouchableOpacity style={styles.link}
@@ -174,19 +175,23 @@ export default function Promocao() {
                 <Text style={styles.textolink}>Todos</Text>
                 </TouchableOpacity>
 
-
                 <TouchableOpacity style={styles.link1}
-                    onPress={() => router.push("sabonete")}>
-                <Text style={styles.textolink1}>Sabonete</Text>
+                    onPress={() => router.push("maisvendidos")}>
+                <Text style={styles.textolink1}>Mais Vendidos</Text>
                 </TouchableOpacity>
 
+
                 <TouchableOpacity style={styles.link2}
+                    onPress={() => router.push("sabonete")}>
+                <Text style={styles.textolink2}>Sabonete</Text>
+                </TouchableOpacity>
+
+                <TouchableOpacity style={styles.link3}
                     onPress={() => router.push("list")}>
-                <Text style={styles.textolink2}>Hidratante</Text>
+                <Text style={styles.textolink3}>Hidratante</Text>
                  </TouchableOpacity>
             </View>
         
-
             <View style={styles.produtoContainer}>
                 {/* sabonete cereja */}
                 <View style={styles.containerproduto1}>
@@ -487,7 +492,7 @@ containerpesquisa: {
         borderRadius: 8,
         position: "absolute",
         borderColor: '#ac0c24',
-        borderWidth: 1,   
+        borderWidth: 1,  
     },
     textolink1: {
         marginTop: 8,
@@ -496,7 +501,22 @@ containerpesquisa: {
         fontFamily: "RobotoRegular",
     },
     link2: {
-        marginLeft: "35%",
+        marginLeft: "45%",
+        paddingHorizontal: 20,
+        height: 36,
+        borderRadius: 8,
+        position: "absolute",
+        borderColor: '#ac0c24',
+        borderWidth: 1,   
+    },
+    textolink2: {
+        marginTop: 8,
+        color: "black",
+        fontSize: 15,
+        fontFamily: "RobotoRegular",
+    },
+    link3: {
+        marginLeft: "79%",
         paddingHorizontal: 18,
         height: 36,
         borderRadius: 8,
@@ -505,7 +525,7 @@ containerpesquisa: {
         borderWidth: 1,
 
     },
-    textolink2: {
+    textolink3: {
         marginTop: 8,
         color: "black",
         fontSize: 15,
