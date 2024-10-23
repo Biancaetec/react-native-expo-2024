@@ -12,23 +12,6 @@ import { Banner2 } from "../../components/Banner2";
 export default function Promocao() {
     const { addCart } = useCart();
     
-// referente: sabonete cereja
-    const addCart1 = () => {
-        const imagem = require('../../../src/assets/images/sabonete1.png');
-        const nomeProduto = "Sabonete Líquido cereja";
-        const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
-        const preco = "29.90";
-        addCart({ 
-            id: 1, 
-            imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
-            precoproduto: preco,
-            quantity: 1 
-        });
-        Alert.alert("Produto adicionado!");
-    };
-
 // referente: sabonete baunilha
     const addCart2 = () => {
         const imagem = require('../../../src/assets/images/sabonete2.png');
