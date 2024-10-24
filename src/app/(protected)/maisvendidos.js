@@ -174,7 +174,7 @@ export default function Promocao() {
                     <Text style={styles.marca3}>CHARMM</Text>
                     <Text style={styles.nomeProduto3}>Hidratante Corporal</Text>
                     <Text style={styles.especificacao3}>
-                        Hidratação intensa, e uma delicada fragrância de cereja e lavanda. 
+                        Hidratação intensa, com um frescor de cereja e lavanda. 
                     </Text>
                     <Text style={styles.preco3}>R$ 29,90</Text>
                     <TouchableOpacity onPress={addCart3} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
@@ -433,7 +433,7 @@ containerpesquisa: {
     produtoContainer2: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: '2%',
+        marginTop: '3%',
     },
 
     // produto 3 hidratante

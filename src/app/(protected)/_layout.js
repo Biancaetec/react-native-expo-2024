@@ -166,6 +166,19 @@ const DrawerLayout = () => {
             ),
           }}
         />
+{/* paginas do professor */}
+ <Drawer.Screen
+          name="listprof"
+          options={{
+            drawerLabel: "Listagem",
+            headerTitle: "Listagem",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+              <Ionicons name="diamond-outline" size={20} color="black" />
+            ),
+          }}
+        />
+
 
         <Drawer.Screen
           name="payment"

@@ -17,6 +17,7 @@ import DateTimePicker from '@react-native-community/datetimepicker';
 import { useAuth } from "../../hooks/Auth/index";
 import { usePaymentsDatabase } from "../../database/usePaymentsDatabase";
 import { useUsersDatabase } from "../../database/useUsersDatabase";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const paymentSchema = z.object({ //o que ele quer validar
     valor_pago: z.number().gt(0),
@@ -125,10 +126,10 @@ export default function Payment() { //criar os itens do menu -pagamento
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
             <View style={styles.content}>
-                <Text>Inserir Pagamentos</Text>
+                <Text style={styles.texto}>Inserir Pagamentos</Text>
 
                 <View style={styles.inputView}>
-                    <Ionicons name="wallet-outline" size={24} color="black" />
+                    <Ionicons name="wallet-outline" size={23} color="black" />
                     <TextInput
                         placeholder="Valor"
                         keyboardType="decimal-pad"
@@ -141,7 +142,7 @@ export default function Payment() { //criar os itens do menu -pagamento
                 </View>
 
                 <View style={styles.inputView}>
-                    <Ionicons name="cash-outline" size={24} color="black" />
+                    <Ionicons name="cash-outline" size={23} color="black" />
                     <TextInput
                         placeholder="Número do Recibo"
                         keyboardType="decimal-pad"
@@ -152,11 +153,13 @@ export default function Payment() { //criar os itens do menu -pagamento
                 </View>
 
                 <View style={styles.inputView}>
+                <Ionicons name="person-outline" size={23} color="black" />
+
                     <Picker selectedValue={id}
                         onValueChange={(itemValue, index) => {
                             setId(itemValue);
                         }}
-                        style={{ width: "100%" }}
+                        style={{ width: "95%" }}
                     >
                         {sugestoes?.map((item) => {
                             return <Picker.Item key={item.id} label={item.nome} value={item.id} />
@@ -165,6 +168,7 @@ export default function Payment() { //criar os itens do menu -pagamento
                 </View>
 
                 <View style={styles.inputView}>
+                <MaterialCommunityIcons name="calendar-month" size={23} color="black" />
                     <Text onPress={() => setViewCalendar(true)} style={styles.inputData}>
                         {data.toLocaleDateString().split("T")[0]}
                     </Text>
@@ -179,6 +183,7 @@ export default function Payment() { //criar os itens do menu -pagamento
                 </View>
 
                 <View style={styles.inputView}>
+                <MaterialCommunityIcons name="message-badge-outline" size={24} color="black" />
                     <TextInput placeholder="Observações"
                         style={styles.inputObservacao}
                         value={observacao}
@@ -189,8 +194,8 @@ export default function Payment() { //criar os itens do menu -pagamento
 
                 <View style={styles.contentButtons}>
                     <Button title="Salvar" onPress={handleSubmit} />
-                    <Button title="Continuar" />
-                    <Button title="Cancelar" onPress={() => router.back()} />
+                    <Button title="Continuar"  />
+                    <Button title="Cancelar" onPress={() => router.back()}  />
 
                 </View>
 
@@ -209,6 +214,12 @@ const styles = StyleSheet.create({ // eu estilizei a pagina
         backgroundColor: '#ffffff',
 
     },
+    texto: {
+        fontFamily: "MontserratRegular",
+        fontSize: 20,
+        marginTop: "-10%",
+        marginBottom: "10%",
+    },
     inputView: {
         borderColor: "black",
         borderWidth: 1,
@@ -217,28 +228,35 @@ const styles = StyleSheet.create({ // eu estilizei a pagina
         // justifyContent: "center",
         alignItems: "center",
         flexDirection: "row",
-        padding: 10,
+        borderRadius: 10,
+        padding: 6,
+        backgroundColor: "#f4f4f4",
     },
     contentButtons: {
         flexDirection: "row",
         gap: 10,
+        marginTop: 90,
         justifyContent: "space-around",
     },
     inputValor: {
         flex: 1,
+        fontSize: 17,
+        fontWeight: "500",
         textAlign: "right",
         padding: 10,
+        fontFamily: "OpenSansMedium",
     },
     inputData: {
         width: "100%",
-        textAlign: "center",
+        marginLeft: 85,
         fontFamily: "OpenSansMedium",
-        fontSize: 20,
+        fontSize: 17,
         padding: 10,
     },
     inputObservacao: {
         fontFamily: "OpenSansMedium",
-        fontSize: 16,
+        fontSize: 17,
+        marginLeft: 15,
         flex: 1,
         lineHeight: 20,
     },
