@@ -181,7 +181,7 @@ export default function Promocao() {
                 </TouchableOpacity>
 
 
-                <TouchableOpacity style={styles.link2}
+                {/* <TouchableOpacity style={styles.link2}
                     onPress={() => router.push("sabonete")}>
                 <Text style={styles.textolink2}>Sabonete</Text>
                 </TouchableOpacity>
@@ -189,7 +189,7 @@ export default function Promocao() {
                 <TouchableOpacity style={styles.link3}
                     onPress={() => router.push("list")}>
                 <Text style={styles.textolink3}>Hidratante</Text>
-                 </TouchableOpacity>
+                 </TouchableOpacity> */}
             </View>
         
             <View style={styles.produtoContainer}>
@@ -500,37 +500,37 @@ containerpesquisa: {
         fontSize: 15,
         fontFamily: "RobotoRegular",
     },
-    link2: {
-        marginLeft: "45%",
-        paddingHorizontal: 20,
-        height: 36,
-        borderRadius: 8,
-        position: "absolute",
-        borderColor: '#ac0c24',
-        borderWidth: 1,   
-    },
-    textolink2: {
-        marginTop: 8,
-        color: "black",
-        fontSize: 15,
-        fontFamily: "RobotoRegular",
-    },
-    link3: {
-        marginLeft: "79%",
-        paddingHorizontal: 18,
-        height: 36,
-        borderRadius: 8,
-        position: "absolute",
-        borderColor: '#ac0c24',
-        borderWidth: 1,
+    // link2: {
+    //     marginLeft: "45%",
+    //     paddingHorizontal: 20,
+    //     height: 36,
+    //     borderRadius: 8,
+    //     position: "absolute",
+    //     borderColor: '#ac0c24',
+    //     borderWidth: 1,   
+    // },
+    // textolink2: {
+    //     marginTop: 8,
+    //     color: "black",
+    //     fontSize: 15,
+    //     fontFamily: "RobotoRegular",
+    // },
+    // link3: {
+    //     marginLeft: "79%",
+    //     paddingHorizontal: 18,
+    //     height: 36,
+    //     borderRadius: 8,
+    //     position: "absolute",
+    //     borderColor: '#ac0c24',
+    //     borderWidth: 1,
 
-    },
-    textolink3: {
-        marginTop: 8,
-        color: "black",
-        fontSize: 15,
-        fontFamily: "RobotoRegular",
-    },
+    // },
+    // textolink3: {
+    //     marginTop: 8,
+    //     color: "black",
+    //     fontSize: 15,
+    //     fontFamily: "RobotoRegular",
+    // },
     // 2 primeiros produtos  da linha
     produtoContainer: {
         flexDirection: 'row',

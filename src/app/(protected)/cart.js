@@ -191,8 +191,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     containerimagem: {
-        width: 130,
-        height: 130,
+        width: 140,
+        height: 120,
         backgroundColor: '#f2f3f5',
         marginLeft: "-3%",
         borderRadius: 10,
@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imagemproduto: {
-        width: 190,
-        height: 180,
+        width: 140,
+        height: 140,
     },
     nomecontainer: {
         marginLeft: "2%",
@@ -213,7 +213,7 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#000',
         fontFamily: "RobotoRegular",
-        marginBottom: 20,
+        marginBottom: 7,
     },
     quantidadeContainer: {
         flexDirection: 'row',
@@ -230,6 +230,7 @@ const styles = StyleSheet.create({
     valor: {
         fontSize: 16,
         fontWeight: '500',
+        marginTop: -10,
         color: '#000',
     },
     quantidade: {

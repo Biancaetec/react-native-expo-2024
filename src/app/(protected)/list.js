@@ -33,14 +33,13 @@ export default function Hidratante() {
                     />
                 </View>
                 <View style={styles.informacoes}>
-                    <Text style={styles.nomeProduto}>Hidratante Corporal CHARMM</Text>
+                    <Text style={styles.nomeProduto}>Hidratante Corporal</Text>
                     <Text style={styles.especificacao}>
                         Hidratação intensa, com uma delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
                     <TouchableOpacity style={styles.botao}  onPress={() => adicionarAoCarrinho("Produto adicionado!")}>
-                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
-                        <Text style={styles.botaoTexto}>Adicionar ao carrinho</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={23} color="#3baf2c" />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.icone}>
@@ -65,7 +64,7 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         padding: 20,
         elevation: 5,
-        width: '90%',
+        width: '80%',
     },
     containerimagem: {
         borderRadius: 10,
@@ -76,8 +75,8 @@ const styles = StyleSheet.create({
         height: 220,
     },
     imagem: {
-        width: '280%',
-        height: '280%',
+        width: '240%',
+        height: '240%',
         borderRadius: 10,
         resizeMode: 'contain',
         marginBottom: 10,
@@ -85,45 +84,35 @@ const styles = StyleSheet.create({
     informacoes: {
         alignItems: 'flex-start', 
         width: '100%', 
+        marginTop: -20,
     },
     nomeProduto:{
         fontSize: 18,
         fontFamily: "OpenSansMedium",
         color: 'black',
-        marginBottom: 5,
+        marginBottom: 14,
     },
     especificacao: {
         fontSize: 14,
         fontFamily: "RobotoRegular",
         color: 'black',
-        marginBottom: 10,
+        marginBottom: 20,
     },
     preco: {
         fontSize: 17,
+        fontWeight: '700',
         fontFamily: "RobotoRegular",
-        color: '#8B004C',
-        marginBottom: 10,
+        color: '#000',
     },
     botao: {
-        flexDirection: 'row',
-        backgroundColor: '#8B004C',
+        position: 'absolute',
+        bottom: -10,
+        right: 0,
         padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        elevation: 3,
-        width: "100%",
-        justifyContent: 'center',
-    },
-    botaoTexto: {
-        color: '#ffffff',
-        fontWeight: '500',
-        fontSize: 16,
-        marginLeft: 8,
-        fontFamily: "RobotoRegular",
     },
     icone: {
         position: 'absolute', 
-        marginTop: -17, 
+        marginTop: -15, 
         right: "-5%", 
         backgroundColor: 'white', 
         borderRadius: 50, 

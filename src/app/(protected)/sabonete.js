@@ -72,7 +72,8 @@ export default function Sabonete() {
     };
 
     return (
-        <ScrollView style={styles.scrollContainer}>
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.principal}>
             <View style={styles.produtoContainer}>
                 <View style={styles.containerimagem}>
                     <Image
@@ -87,8 +88,7 @@ export default function Sabonete() {
                     </Text>
                     <Text style={styles.preco}>R$ 29,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho}>
-                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
-                        <Text style={styles.botaoTexto}>Comprar</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
                 </View>
                 <View style={styles.icone}>
@@ -110,8 +110,7 @@ export default function Sabonete() {
                     </Text>
                     <Text style={styles.preco}>R$ 49,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho2}>
-                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
-                        <Text style={styles.botaoTexto}>Comprar</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -130,8 +129,7 @@ export default function Sabonete() {
                     </Text>
                     <Text style={styles.preco}>R$ 79,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho3}>
-                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
-                        <Text style={styles.botaoTexto}>Comprar</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -150,11 +148,12 @@ export default function Sabonete() {
                     </Text>
                     <Text style={styles.preco}>R$ 69,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={adicionarAoCarrinho4}>
-                        <MaterialCommunityIcons name="cart-heart" size={24} color="white" />
-                        <Text style={styles.botaoTexto}>Comprar</Text>
+                        <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
+
                 </View>
             </View>
+        </View>
         </ScrollView>
     );
 }
@@ -163,15 +162,23 @@ const styles = StyleSheet.create({
     scrollContainer: {
         flex: 1,
         backgroundColor: '#ffffff',
+        height: '800%',
+    },
+    principal: {
+        flex: 1,
+        marginTop: 50,
+        backgroundColor: '#ffffff',
     },
     produtoContainer: {
         flexDirection: 'row',
         backgroundColor: '#f9f9f9',
         borderRadius: 15,
-        padding: 13,
+        padding: 10,
         elevation: 5,
-        width: '100%',
-        marginTop: 40,
+        width: '90%',
+        height: 140,
+        marginTop: 23,
+        marginLeft: 20,
     },
     containerimagem: {
         borderRadius: 10,
@@ -179,21 +186,22 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: 120,
         height: 120,
+        marginTop: -10,   
     },
     imagem1: {
-        width: '290%',
-        height: '290%',
+        width: '260%',
+        height: '260%',
         borderRadius: 10,
         resizeMode: 'contain',
-        marginTop: "32%",
+        marginTop: "13%",
         marginLeft: "-10%",
     },
     imagem2: {
-        width: '290%',
-        height: '290%',
+        width: '260%',
+        height: '260%',
         borderRadius: 10,
         resizeMode: 'contain',
-        marginTop: "30%",
+        marginTop: "18%",
     },
     imagem3: {
         width: '220%',
@@ -205,6 +213,7 @@ const styles = StyleSheet.create({
     informacoes: {
         flex: 1,
         marginLeft: 10,
+        marginTop: 3,
     },
     nomeProduto: {
         fontSize: 18,
@@ -220,25 +229,16 @@ const styles = StyleSheet.create({
     },
     preco: {
         fontSize: 17,
+        fontWeight: '700',
         fontFamily: "RobotoRegular",
-        color: '#8B004C',
-        marginBottom: 10,
+        color: '#000',
+    
     },
     botao: {
-        flexDirection: 'row',
-        backgroundColor: '#8B004C',
-        padding: 6,
-        borderRadius: 5,
-        alignItems: 'center',
-        elevation: 3,
-        justifyContent: 'center',
-    },
-    botaoTexto: {
-        color: '#ffffff',
-        fontWeight: '500',
-        fontSize: 16,
-        marginLeft: 8,
-        fontFamily: "RobotoRegular",
+        position: 'absolute',
+        bottom: 0,
+        right: 0,
+        padding: 10,
     },
     icone: {
         position: 'absolute',
