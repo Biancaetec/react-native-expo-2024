@@ -13,7 +13,7 @@ export const Role = {
 
 export function AuthProvider({ children }) {
     const [user, setUser] = useState({ // usuario nulo
-        autenticated: false,
+        authenticated: false,
         user: null,
         role: null,
     });
@@ -26,13 +26,13 @@ export function AuthProvider({ children }) {
 
             if (storagedUser) {
                 setUser({
-                    autenticated: true,
+                    authenticated: true,
                     user: JSON.parse(storagedUser), //user = usuario armazenado
                     role: JSON.parse(storagedUser).role, // role dele = role que esta ai 
                 });
             } else {  // caso contrario
                 setUser({
-                    autenticated: false,
+                    authenticated: false,
                     user: null,
                     role: null,
                 });
@@ -46,7 +46,7 @@ export function AuthProvider({ children }) {
         const response = await authUser({ email, password });
         if (!response) { //dados incorretos:
             setUser({
-                autenticated: false,
+                authenticated: false,
                 user: null,
                 role: null,
             });
@@ -56,7 +56,7 @@ export function AuthProvider({ children }) {
         await AsyncStorage.setItem("@payment:user", JSON.stringify(response)); //transforma os dados em texto para gravar os dados
 
         setUser({ //dados certos:
-            autenticated: true,
+            authenticated: true,
             user: response,
             role: response.role,
         });
@@ -65,13 +65,13 @@ export function AuthProvider({ children }) {
     const signOut = async () => {
         await AsyncStorage.removeItem("@payment:user");
         setUser({
-            autenticated: false,
+            authenticated: false,
             user: null,
             role: null,
         });
     };
 
-    if (user?.autenticated === null) {
+    if (user?.authenticated === null) {
         return (
             <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
                 <Text style={{ fontSize: 28, marginTop: 15 }}>
