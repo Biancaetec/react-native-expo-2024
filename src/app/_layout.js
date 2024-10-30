@@ -8,9 +8,10 @@ const StackLayout = () => {
 
     useEffect(() => {
         if (user?.authenticated) {
-            router.replace("(protected)"); // na video aula 16  pt.2 ele coloca sigin, mas não funciona o meu botao
+            router.replace("signin");
+            // router.push("maintenance"); // na video aula 16  pt.2 ele coloca sigin, mas não funciona o meu botao
         } else {
-                router.replace("signin");
+                router.replace("(protected)/list");
         }
 
     }, [user]);
