@@ -65,7 +65,7 @@ const DrawerLayout = () => {
 
 
         <Drawer.Screen
-          name="index"
+          name="geral"
           options={{
             drawerLabel: "Produtos",
             headerTitle: "CABANNI",
@@ -117,7 +117,7 @@ const DrawerLayout = () => {
         />
 
         <Drawer.Screen
-          name="list"
+          name="hidratante"
           options={{
             drawerLabel: "Hidratante",
             headerTitle: "Hidratante corporal",

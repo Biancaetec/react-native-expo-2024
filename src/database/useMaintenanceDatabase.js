@@ -6,7 +6,8 @@ const database = useSQLiteContext()
 async function resetDatabase() {
     try {
         await database.withTransactionAsync(async () => {
-            //DELETE ----> apaga os dados da tabela indentidade
+
+            //DELETE ----> apaga os dados da tabela/entidade
             //DROP ----> apaga a tabela/entidade
 
             try{
@@ -44,20 +45,67 @@ async function resetDatabase() {
                     `);
                 database.execAsync (` CREATE INDEX IF NOT EXISTS idx_users_nome ON users (nome);`);
                 database.execAsync (` CREATE INDEX IF NOT EXISTS idx_payments_data_pagamento ON payments (data_pagamento);`);
+                
                 database.execAsync (`INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Super', 'super@email.com', 'A123456a!', 'SUPER');`);
-                database.execAsync (`INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Adm', 'adm@email.com', 'A123456a!', 'ADM')`);
-                database.execAsync (`INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Adm', 'adm@email.com', 'A123456a!', 'ADM')`);
+                database.execAsync (`INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('Adm', 'adm@email.com', 'A123456a!', 'ADM');`);
+                database.execAsync (`INSERT OR REPLACE INTO users (nome, email, senha, role) VALUES ('User', 'user@email.com', 'A123456a!', 'USER');`);
 
-            }catch (error) {
-                console.log ("UseMaintenanceDatabase resetDatabase error: ", error);
+            } catch (error) {
+                console.log ("useMaintenanceDatabase resetDatabase error: ", error);
             }
         })
-        console.log("UseMaintenanceDatabase resetDatabase success");
+        console.log("useMaintenanceDatabase resetDatabase success ");
 
     }
     catch (error) {
-        console.log ("UseMaintenanceDatabase resetDatabase error: ", error);
+        console.log ("useMaintenanceDatabase resetDatabase error: ", error);
     }
 }
-return {resetDatabase};
+
+    async function importUsers(){
+        const URL = "https://api.mockaroo.com/api/13db6d70?count=40&key=182a4c60";
+        try {
+            const response = await fetch(URL);
+            //JSON --> JavaScript Object Notation
+            //TEXT --> Texto (retornar os dados como texto)
+            const users = await response.text();
+            await database.withTransactionAsync(async () => {
+                users.split(/\r?\n/).forEach(async (line) => {
+                    try {
+                        await database.execAsync(line);
+                    } catch (error) {
+                        console.log("useMaintenanceDatabase importUsers error: ", error);
+                        throw error;
+                    }
+                })
+            })
+            console.log("useMaintenanceDatabase importedUsers success ");
+        } catch (error) {
+            console.log("useMaintenanceDatabase importUsers error: ", error);
+        }
+    }
+
+    async function importPayments(){
+        const URL = "https://api.mockaroo.com/api/4a051fa0?count=40&key=182a4c60";
+        try {
+            const response = await fetch(URL);
+            //JSON --> JavaScript Object Notation
+            //TEXT --> Texto (retornar os dados como texto)
+            const users = await response.text();
+            await database.withTransactionAsync(async () => {
+                users.split(/\r?\n/).forEach(async (line) => {
+                    try {
+                        await database.execAsync(line);
+                    } catch (error) {
+                        console.log("useMaintenanceDatabase importPayments error: ", error);
+                        throw error;
+                    }
+                })
+            })
+            console.log("useMaintenanceDatabase importedPayments success ");
+        } catch (error) {
+            console.log("useMaintenanceDatabase importPayments error: ", error);
+        }
+    }
+return { resetDatabase, importUsers, importPayments};
 }

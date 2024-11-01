@@ -7,11 +7,11 @@ const StackLayout = () => {
     const { user } = useAuth();
 
     useEffect(() => {
-        if (user?.authenticated) {
+        if (!user?.authenticated) {
             router.replace("signin");
-            // router.push("maintenance"); // na video aula 16  pt.2 ele coloca sigin, mas não funciona o meu botao
+            // router.push("maintenance"); 
         } else {
-                router.replace("(protected)/list");
+                router.replace("(protected)/geral");
         }
 
     }, [user]);

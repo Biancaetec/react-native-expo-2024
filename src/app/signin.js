@@ -26,7 +26,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.botaoSobre} onPress={() => router.push("about")}>
+      <TouchableOpacity style={styles.botaoSobre} onPress={() => router.push("/about")}>
         <Text style={styles.botaoSobreTexto}>Sobre</Text>
       </TouchableOpacity>
       <View style={styles.retangulo}>
@@ -59,16 +59,20 @@ export default function App() {
             onPress={togglePasswordVisibility}
           />
         </View>
+      
         <TouchableOpacity style={styles.botao1} onPress={handleEntrarSuper}>
           <Text style={styles.botaoTexto}>Entrar</Text>
         </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.botao4}  onPress={() => router.push("/maintenance")}>
+        <Text style={styles.botaoTexto4}>Banco de Dados</Text>
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.botao3} onPress={() => BackHandler.exitApp()}>
           <Text style={styles.botaoTexto3}>Sair do Aplicativo</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity  title="Banco de dados" onPress={() => router.push("/maintenance")}>
-        </TouchableOpacity>
-
+       
       </View>
       <StatusBar style="auto" />
     </View>
@@ -131,7 +135,7 @@ const styles = StyleSheet.create({
   botao3: {
     width: "100%",
     borderRadius: 10,
-    paddingVertical: 15,
+    paddingVertical: 12,
     alignItems: 'center',
     marginTop: 1, 
   },
@@ -142,6 +146,23 @@ const styles = StyleSheet.create({
     fontFamily: "RobotoRegular",
 
   },
+
+  botao4: {
+    width: "100%",
+    borderRadius: 10,
+    paddingVertical: 12,
+    alignItems: 'center',
+    marginTop: 1, 
+    backgroundColor: "#A9A9A9",
+  },
+  botaoTexto4: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
+
+  },
+
   botaoTexto: {
     color: '#ffffff',
     fontSize: 18,
@@ -153,17 +174,18 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 50,
     right: 25,
-    backgroundColor: 'transparent',
+    borderRadius: 12,
+    backgroundColor: '#8B004C',
+
   },
   botaoSobreTexto: {
     fontSize: 16,
     color: '#ffffff',
     fontWeight: '600',
     fontFamily: "RobotoRegular",
-    backgroundColor: '#8B004C',
     width: 70,
     height: 30,
-    borderRadius: 10,
+    
     textAlign: 'center',
     paddingVertical: 4,
 
