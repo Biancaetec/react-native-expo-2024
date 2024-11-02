@@ -23,9 +23,9 @@ const paymentSchema = z.object({ //o que ele quer validar
     valor_pago: z.number().gt(0),
     user_id: z.number().int().positive(),
     user_cadastro: z.number().int().positive(),
-    data_pagamento: z.date(),
+    data_pagamento: z.string().datetime(),
     numero_recibo: z.string(),
-    observacao: z.string(),
+    observacao: z.string().optional(),
 
 });
 
@@ -99,13 +99,18 @@ export default function Payment() { //criar os itens do menu -pagamento
             user_id: id,
             user_cadastro: Number(user.user.id),
             valor_pago: convertValue(valor),
-            data_pagamento: data,
+            data_pagamento: data.toISOString(),
             numero_recibo: numeroRecibo,
             observacao,
         };
 
+        // console.log(".....payment......");
+        // console.log(payment);
+        // return false;
+
         try {
             const result = await paymentSchema.parseAsync(payment);
+            payment.data_pagamento = new Date(payment.data_pagamento).toISOString().replace("T", " ").split(".")[0];
             const { insertedID } = await createPayment(payment);
             console.log(insertedID);
             setValor("0,00");
