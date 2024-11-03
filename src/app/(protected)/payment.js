@@ -104,9 +104,7 @@ export default function Payment() { //criar os itens do menu -pagamento
             observacao,
         };
 
-        // console.log(".....payment......");
-        // console.log(payment);
-        // return false;
+       
 
         try {
             const result = await paymentSchema.parseAsync(payment);
