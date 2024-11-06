@@ -197,6 +197,8 @@ const DrawerLayout = () => {
           options={{
             drawerLabel: "Detalhes",
             headerTitle: "Detalhes",
+            // unmountOnBlur: true,
+            // drawerItemStyle: { display: "none" },
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <Ionicons name="diamond-outline" size={20} color="black" />

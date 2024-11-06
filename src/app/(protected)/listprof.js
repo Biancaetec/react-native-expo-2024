@@ -1,69 +1,106 @@
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
 import { usePaymentsDatabase } from "../../database/usePaymentsDatabase";
 import { FlashList } from "@shopify/flash-list";
 import { formatDateToBrazilian } from "../../uteis/formatData";
 import { formatCurrencyBRL } from "../../uteis/formatCurrency";
+import { router } from "expo-router";
 
-export default function listprof() {
-    const [ data, setData ] = useState([])
+export default function ListProf() {
+    const [data, setData] = useState([]);
     const { getPayments } = usePaymentsDatabase();
-    const [page, setPage] = useState(0) //controla qual página o sistema já carregou
-    const [loading, setLoading] = useState(true) // controla se está carregando os dados no banco 
-    const [hasMore, setHasMore] = useState(true) //controla se tem mais dados para carregar
+    const [page, setPage] = useState(0); // controla qual página o sistema já carregou
+    const [loading, setLoading] = useState(true); // controla se está carregando os dados no banco
+    const [hasMore, setHasMore] = useState(true); // controla se tem mais dados para carregar
 
     async function fetchData() {
+        if (!hasMore) return; // se não há mais dados, não busca mais
+        setPage(page + 1);
 
-        if (hasMore === false) return; //se essa flag for falsa, não busca mais dados
-        console.log(page)
-        setPage(page + 1)
-
-        //Essa função vai buscar no banco de dados os pagamentos
         const payments = await getPayments(page);
+        if (payments.length < 5) setHasMore(false); // se a quantidade de pagamentos for menor que 5, não tem mais dados
+        setData((prevData) => [...prevData, ...payments]);
+        setLoading(false);
+    }
 
-        if (payments.length < 5) setHasMore(false) //se a quantidade de pagamentos for menor que 5, não tem mais dados{
-        // console.log(payments);
-        setData([...data, ...payments]);
-        setLoading(false)
-        }
+    useEffect(() => {
+        setPage(0);
+        fetchData();
+    }, []);
 
-    useEffect(() =>{
-        //Executa a primeira vez a busca de dados
-        setPage(0)
-        fetchData()
-    }, [])
-
-    renderItem = ({ item }) => (
-        <View style={{ flexDirection: "row", margin: 10, padding: 3, height: 80, backgroundColor: "#ffff", borderRadius: 8, alignItems:"center", alignContent:"center"}}>
-            <View style={{ flex: 1, gap: 5}}> 
-                <Text style={{fontFamily: "RobotoMedium", fontSize: 20, textTransform: "uppercase" }}>{item.nome}</Text> 
-                <View style={{ flexDirection: "row", gap: 10}}>
-                <Text style={{ fontFamily: "RobotoLight", fontSize: 15}}>
-                    {formatDateToBrazilian(item.data_pagamento || new Date())}
+    const renderItem = ({ item }) => (
+        <TouchableOpacity
+            onPress={() => router.push({ pathname: "details", params: { id: item.id } })} // Navegação ao clicar
+            style={styles.itemContainer}
+        >
+            <View style={{ flex: 1, gap: 5 }}>
+                <Text style={styles.itemName}>{item.nome}</Text>
+                <View style={styles.row}>
+                    <Text style={styles.dateText}>
+                        {formatDateToBrazilian(item.data_pagamento || new Date())}
                     </Text>
-                <Text>{item.numero_recibo}</Text>
+                    <Text>{item.numero_recibo}</Text>
                 </View>
             </View>
-         <View style={{marginRight: 20, alignItems:"center", alignContent:"center"}}>
-            <Text style={{ flex: 1, justifyContent:"center", alignItems:"center", fontFamily: "RobotoMedium", fontWeight: "800", fontSize: 18}}>
-                {formatCurrencyBRL(item.valor_pago || 0)}
-            </Text>
-        </View>   
-        </View>
-      );
-    
+            <View>
+                <Text style={styles.valueText}>
+                    {formatCurrencyBRL(item.valor_pago || 0)}
+                </Text>
+            </View>   
+        </TouchableOpacity>
+    );
+
     return (
-    <View style={{ flex: 1, backgroundColor: "#eee"}}>
-            <View style={{flex: 1}}>
+        <View style={styles.container}>
+            <View style={styles.listContainer}>
                 <FlashList
-                  data={data}
-                  renderItem={renderItem}
-                  estimatedItemSize={50}
-                  onEndReached={fetchData}
-                  onEndReachedThreshold={0.8}
-                  keyExtractor={(item) => item.id.toString()}
+                    data={data}
+                    renderItem={renderItem}
+                    estimatedItemSize={50}
+                    onEndReached={fetchData}
+                    onEndReachedThreshold={0.8}
+                    keyExtractor={(item) => item.id.toString()}
                 />
             </View>
-    </View>
+        </View>
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: "#ffff",
+    },
+    listContainer: {
+        flex: 1,
+        padding: 10,
+    },
+    itemContainer: {
+        flexDirection: "row",
+        margin: 10,
+        padding: 3,
+        height: 150,
+        backgroundColor: "#eee",
+        borderRadius: 8,
+    },
+    itemName: {
+        fontFamily: "RobotoMedium",
+        fontSize: 18,
+        textTransform: "uppercase",
+    },
+    row: {
+        flexDirection: "row",
+        gap: 10,
+    },
+    dateText: {
+        fontFamily: "RobotoLight",
+    },
+    valueText: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+        fontFamily: "OpenSansMedium",
+        fontWeight: "600",
+        fontSize: 15,
+    },
+});
