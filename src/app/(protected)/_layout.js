@@ -192,7 +192,17 @@ const DrawerLayout = () => {
           }}
         />
 
-
+        <Drawer.Screen
+          name="details"
+          options={{
+            drawerLabel: "Detalhes",
+            headerTitle: "Detalhes",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+              <Ionicons name="diamond-outline" size={20} color="black" />
+            ),
+          }}
+        />
       </Drawer>
 
     </GestureHandlerRootView>

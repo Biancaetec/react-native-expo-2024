@@ -13,18 +13,18 @@ export function usePaymentsDatabase() {
     }) {
         const statment = await database.prepareAsync(` 
         INSERT INTO payments (user_id, user_cadastro, valor_pago, data_pagamento, observacao, numero_recibo) 
-        VALUES ($user_id, $user_cadastro, $valor_pago, $data_pagamento, $observacao, $numero_recibo);
+        VALUES (?, ?, ?, ?, ?, ?);
         `);
       
         try {
-            const result = await statment.executeAsync({
-                $user_id: user_id, 
-                $user_cadastro: user_cadastro, 
-                $valor_pago: valor_pago, 
-                $data_pagamento: data_pagamento, 
-                $observacao: observacao,
-                $numero_recibo: numero_recibo,
-            });
+            const result = await statment.executeAsync([
+                user_id, 
+                user_cadastro, 
+                valor_pago, 
+                data_pagamento, 
+                observacao,
+                numero_recibo,
+            ]);
 
             const insertedID = result.lastInsertRowId.toString();
             return { insertedID };
@@ -38,14 +38,20 @@ export function usePaymentsDatabase() {
     }
 
     async function getPayments(page) {
-       try {
-        const payments = await database.getAllAsync('SELECT p.*,u.nome FROM payments p, users u WHERE u.id = p.user_id ORDER BY data_pagamento DESC LIMIT 5 OFFSET ${page * 5}');
-        return payments;
-       } catch (error) {
-           console.log(error);
-           throw error;
-        
-       }
+        try {
+            const payments = await database.getAllAsync(`
+                SELECT p.*, u.nome 
+                FROM payments p
+                JOIN users u ON u.id = p.user_id
+                ORDER BY data_pagamento DESC
+                LIMIT 5 OFFSET ?`, 
+                [page * 5]
+            );
+            return payments;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 
     return { createPayment, getPayments };

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Text, View } from "react-native";
 import { usePaymentsDatabase } from "../../database/usePaymentsDatabase";
 import { FlashList } from "@shopify/flash-list";
-import { formatDateToBrazilian } from "../../uteis/formatDate";
+import { formatDateToBrazilian } from "../../uteis/formatData";
 import { formatCurrencyBRL } from "../../uteis/formatCurrency";
 
 export default function listprof() {
@@ -30,22 +30,22 @@ export default function listprof() {
     useEffect(() =>{
         //Executa a primeira vez a busca de dados
         setPage(0)
-        fetchData();
+        fetchData()
     }, [])
 
     renderItem = ({ item }) => (
-        <View style={{ flexDirection: "row", margin: 5, margin: 10, padding: 3, height: 150, backgroundColor: "#eee", borderRadius: 8}}>
+        <View style={{ flexDirection: "row", margin: 10, padding: 3, height: 80, backgroundColor: "#ffff", borderRadius: 8, alignItems:"center", alignContent:"center"}}>
             <View style={{ flex: 1, gap: 5}}> 
-                <Text style={{fontFamily: "RobotoMedium", fontSize: 18, textTransform: "uppercase" }}>{item.nome}</Text> 
+                <Text style={{fontFamily: "RobotoMedium", fontSize: 20, textTransform: "uppercase" }}>{item.nome}</Text> 
                 <View style={{ flexDirection: "row", gap: 10}}>
-                <Text style={{ fontFamily: "RobotoLight"}}>
+                <Text style={{ fontFamily: "RobotoLight", fontSize: 15}}>
                     {formatDateToBrazilian(item.data_pagamento || new Date())}
                     </Text>
                 <Text>{item.numero_recibo}</Text>
                 </View>
             </View>
-         <View>
-            <Text style={{ flex: 1, justifyContent:"center", alignItems:"center", fontFamily: "OpenSansMedium", fontWeight: "600", fontSize: 15}}>
+         <View style={{marginRight: 20, alignItems:"center", alignContent:"center"}}>
+            <Text style={{ flex: 1, justifyContent:"center", alignItems:"center", fontFamily: "RobotoMedium", fontWeight: "800", fontSize: 18}}>
                 {formatCurrencyBRL(item.valor_pago || 0)}
             </Text>
         </View>   
@@ -53,7 +53,7 @@ export default function listprof() {
       );
     
     return (
-    <View style={{ flex: 1, backgroundColor: "#ffff"}}>
+    <View style={{ flex: 1, backgroundColor: "#eee"}}>
             <View style={{flex: 1}}>
                 <FlashList
                   data={data}
