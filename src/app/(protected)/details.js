@@ -1,5 +1,5 @@
 import { router, useLocalSearchParams } from "expo-router";
-import { Alert, Button, StyleSheet, Text, View } from "react-native";
+import { Alert, Button, Image, StyleSheet, Text, View } from "react-native";
 import { usePaymentsDatabase } from "../../database/usePaymentsDatabase";
 import { useEffect, useState } from "react";
 import { formatDateToBrazilian } from "../../uteis/formatData";
@@ -30,14 +30,19 @@ export default function Details() {
     return (
         <View style={styles.container}>
             <View>
-                <Text>Nome: {payment?.nome} </Text>
-                <Text>Data do Pagamento: {formatDateToBrazilian(payment?.data_pagamento || new Date())}</Text>
-                <Text>Número do Recibo: {payment?.numero_recibo}</Text>
-                <Text>Valor Pago: {formatCurrencyBRL(payment?.valor_pago)}</Text>
-                <Text>Observação: {payment?.observacao}</Text>
+                <Text style={styles.text}>Nome: {payment?.nome}</Text>
+                <Text style={styles.text}>Data do Pagamento: {formatDateToBrazilian(payment?.data_pagamento || new Date())}</Text>
+                <Text style={styles.text}>Número do Recibo: {payment?.numero_recibo}</Text>
+                <Text style={styles.text}>Valor Pago: {formatCurrencyBRL(payment?.valor_pago || 0)}</Text>
+                <Text style={styles.text}>Observação: {payment?.observacao}</Text>
             </View>
             <View styles={styles.contentImage}>
-                <Text> A imagem não foi cadastrada</Text>
+                {
+                    !!payment?.imagem ? 
+                    <Image source={{uri: payment?.imagem}} style={{width: 200, height: 200}} />
+                    :  <Text> A imagem não foi cadastrada</Text>
+
+                }
             </View>
             <View style={styles.containerButtons}>
                 <Button title="Editar" disabled/>
@@ -65,4 +70,8 @@ const styles = StyleSheet.create ({
         justifyContent: "center",
         alignItems: "center",
     },
+    text: {
+        fontSize: 16,
+        fontFamily: "RobotoMedium",
+    }
 });
