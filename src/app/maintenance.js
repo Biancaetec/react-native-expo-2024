@@ -21,9 +21,9 @@ const { resetDatabase, importUsers, importPayments } = useMaintenanceDatabase();
     const handleImportUsers = async () => {
         try {
             await importUsers();
-            Alert.alert("Payments", "Usuários importados com sucesso! ");
+            Alert.alert("Usuários", "Usuários importados com sucesso! ");
         } catch (error) {
-            Alert.alert("Payments", "Erro ao importar usuários: " + error.message)
+            Alert.alert("Usuários", "Erro ao importar usuários: " + error.message)
         }
     }
 

@@ -22,7 +22,7 @@ export default function Details() {
     }
 
     useEffect(() => {
-        fetchData();
+        fetchData()
     }, [])
 
     return (
@@ -31,7 +31,7 @@ export default function Details() {
                 <Text>Nome: {payment?.nome} </Text>
                 <Text>Data do Pagamento: {formatDateToBrazilian(payment?.data_pagamento)}</Text>
                 <Text>Número do Recibo: {payment?.numero_recibo}</Text>
-                <Text>Valor Pago: {formatCurrencyBRL (payment?.valor_pago)}</Text>
+                <Text>Valor Pago: {formatCurrencyBRL(payment?.valor_pago)}</Text>
                 <Text>Observação: {payment?.observacao}</Text>
             </View>
             <View styles={{ flex: 1 }}>
