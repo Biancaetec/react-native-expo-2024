@@ -37,6 +37,7 @@ async function resetDatabase() {
                         data_pagamento DATE NOT NULL,
                         numero_recibo TEXT NOT NULL,
                         observacao TEXT,
+                        imagem TEXT DEFAULT "",
                         created_at DATE DEFAULT CURRENT_TIMESTAMP,
                         updated_at DATE,
                         FOREIGN KEY (user_id) REFERENCES users(id),

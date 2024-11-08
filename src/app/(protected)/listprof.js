@@ -16,9 +16,10 @@ export default function ListProf() {
     async function fetchData() {
         if (!hasMore) return; // se não há mais dados, não busca mais
         setPage(page + 1);
-
         const payments = await getPayments(page);
         if (payments.length < 5) setHasMore(false); // se a quantidade de pagamentos for menor que 5, não tem mais dados
+        console.log("Page: ", page);
+        console.log("Pagamentos: ", payments);
         setData((prevData) => [...prevData, ...payments]);
         setLoading(false);
     }
@@ -33,6 +34,7 @@ export default function ListProf() {
             onPress={() => router.push({ pathname: "details", params: { id: item.id } })} // Navegação ao clicar
             style={styles.itemContainer}
         >
+            {console.log("Item da list: ", item)}
             <View style={{ flex: 1, gap: 5 }}>
                 <Text style={styles.itemName}>{item.nome}</Text>
                 <View style={styles.row}>
