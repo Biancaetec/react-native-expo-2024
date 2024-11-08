@@ -14,14 +14,17 @@ export default function ListProf() {
     const [hasMore, setHasMore] = useState(true); // controla se tem mais dados para carregar
 
     async function fetchData() {
-        if (!hasMore) return; // se não há mais dados, não busca mais
+        if (hasMore === false) return; // se não há mais dados, não busca mais
+        console.log(page)
         setPage(page + 1);
+
         const payments = await getPayments(page);
         if (payments.length < 5) setHasMore(false); // se a quantidade de pagamentos for menor que 5, não tem mais dados
-        console.log("Page: ", page);
-        console.log("Pagamentos: ", payments);
+        // console.log("Page: ", page);
+        // console.log("Pagamentos: ", payments);
+        // comsole.log(payments)
         setData((prevData) => [...prevData, ...payments]);
-        setLoading(false);
+        setLoading(false)
     }
 
     useEffect(() => {
@@ -30,21 +33,23 @@ export default function ListProf() {
     }, []);
 
     const renderItem = ({ item }) => (
-        <TouchableOpacity
-            onPress={() => router.push({ pathname: "details", params: { id: item.id } })} // Navegação ao clicar
-            style={styles.itemContainer}
+        <TouchableOpacity style={styles.itemContainer}
+            onPress={() => router.push({ 
+                pathname: "details", 
+                params: { id: item.id } 
+            })} // Navegação ao clicar
         >
-            {console.log("Item da list: ", item)}
-            <View style={{ flex: 1, gap: 5 }}>
-                <Text style={styles.itemName}>{item.nome}</Text>
-                <View style={styles.row}>
+            {/* {console.log("Item da list: ", item)} */}
+            <View style={{ flex: 1}}>
+                <Text style={styles.name}>{item.nome}</Text>
+                <View>
                     <Text style={styles.dateText}>
                         {formatDateToBrazilian(item.data_pagamento || new Date())}
                     </Text>
                     <Text>{item.numero_recibo}</Text>
                 </View>
             </View>
-            <View>
+                <View style={styles.valueContent}>
                 <Text style={styles.valueText}>
                     {formatCurrencyBRL(item.valor_pago || 0)}
                 </Text>
@@ -71,7 +76,7 @@ export default function ListProf() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#ffff",
+        backgroundColor: "#ffffff",
     },
     listContainer: {
         flex: 1,
@@ -81,8 +86,8 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         margin: 10,
         padding: 3,
-        height: 150,
-        backgroundColor: "#eee",
+        height: 100,
+        backgroundColor: "#f0f0f0",
         borderRadius: 8,
     },
     itemName: {
