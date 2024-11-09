@@ -13,18 +13,16 @@ export default function ListProf() {
     const [loading, setLoading] = useState(true); // controla se está carregando os dados no banco
     const [hasMore, setHasMore] = useState(true); // controla se tem mais dados para carregar
 
+
     async function fetchData() {
         if (hasMore === false) return; // se não há mais dados, não busca mais
-        console.log(page)
         setPage(page + 1);
-
         const payments = await getPayments(page);
         if (payments.length < 5) setHasMore(false); // se a quantidade de pagamentos for menor que 5, não tem mais dados
-        // console.log("Page: ", page);
-        // console.log("Pagamentos: ", payments);
-        // comsole.log(payments)
+        console.log("Page: ", page);
+        console.log("Pagamentos: ", payments);
         setData((prevData) => [...prevData, ...payments]);
-        setLoading(false)
+        setLoading(false);
     }
 
     useEffect(() => {
@@ -32,22 +30,44 @@ export default function ListProf() {
         fetchData();
     }, []);
 
+
+
+    // async function fetchData() {
+    //     if (hasMore === false) return; // se não há mais dados, não busca mais
+    //     console.log(page)
+    //     setPage(page + 1);
+
+    //     const payments = await getPayments(page);
+    //     if (payments.length < 5) setHasMore(false); // se a quantidade de pagamentos for menor que 5, não tem mais dados
+    //     console.log("Page: ", page);
+    //     console.log("Pagamentos: ", payments);
+    //     comsole.log(payments)
+    //     setData((prevData) => [...prevData, ...payments]);
+    //     setLoading(false)
+    // }
+
+    // useEffect(() => {
+    //     setPage(0);
+    //     fetchData();
+    // }, []);
+
     const renderItem = ({ item }) => (
-        <TouchableOpacity style={styles.itemContainer}
-            onPress={() => router.push({ 
-                pathname: "details", 
-                params: { id: item.id } 
-            })} // Navegação ao clicar
+        <TouchableOpacity
+            onPress={() => router.push({ pathname: "details", params: { id: item.id } })} // Navegação ao clicar
+            style={styles.itemContainer}
         >
-            {/* {console.log("Item da list: ", item)} */}
-            <View style={{ flex: 1}}>
-                <Text style={styles.name}>{item.nome}</Text>
+            {console.log("Item da list: ", item)}
+            <View style={{ flex: 1, gap: 5, marginVertical: 10, }}>
+                <Text style={styles.itemName}>{item.nome}</Text>
+            
+            <View style={styles.row}>
                 <View>
                     <Text style={styles.dateText}>
                         {formatDateToBrazilian(item.data_pagamento || new Date())}
                     </Text>
                     <Text>{item.numero_recibo}</Text>
                 </View>
+            </View>
             </View>
                 <View style={styles.valueContent}>
                 <Text style={styles.valueText}>
@@ -107,7 +127,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         fontFamily: "OpenSansMedium",
-        fontWeight: "600",
-        fontSize: 15,
+        fontWeight: "700",
+        fontSize: 18,
+        marginTop: 30,
+    
     },
 });
