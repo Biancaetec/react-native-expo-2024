@@ -5,12 +5,14 @@ import { useEffect, useState } from "react";
 import { formatDateToBrazilian } from "../../uteis/formatData";
 import { formatCurrencyBRL } from "../../uteis/formatCurrency";
 import { usePickImage } from "../../uteis/pickImage";
+import { useConfig } from "../../hooks/Config";
 
 export default function Details() {
     const { id } = useLocalSearchParams();
-    const { getPayment } = usePaymentsDatabase();
+    const { getPayment, setImagePayment } = usePaymentsDatabase();
     const [payment, setPayment]  = useState({});
     const { pickImage } = usePickImage();
+    const { directory } = useConfig();
 
     const fetchData = async () => {
         try {
@@ -24,18 +26,36 @@ export default function Details() {
         }
     }
 
+    // useEffect(() => {
+    //     fetchData()
+    //     // console.log("payment ID", id);
+    // }, [])
+
     useEffect(() => {
-        fetchData()
-        console.log("payment ID", id);
-    }, [])
+        fetchData();
+    }, [id]); // Observa as mudanças no id
 
 const handlePickImage = async () => {
     try {
         const image = await pickImage();
-        console.log("Image: ", image);
+        if (!!!image) return;
+        setPayment({...payment, imagem: image});
+        setImagePayment(id, image);
+        // console.log("Image: ", image);
     } catch (error) {
         console.log("handlePickImage: ",error);
         Alert.alert("Erro ao buscar imagem: ", error);
+    }
+}
+
+const handleRemoveImage = async () => {
+    try {
+       
+        setPayment({...payment, imagem: "" });
+        setImagePayment(id, "" );
+    } catch (error) {
+        console.log("handleRemoveImage: ",error);
+        Alert.alert("Erro ao remover imagem: ", error);
     }
 }
     return (
@@ -50,7 +70,7 @@ const handlePickImage = async () => {
             <View styles={styles.contentImage}>
                 {
                     !!payment?.imagem ? 
-                    <Image source={{uri: payment?.imagem}} style={{width: 200, height: 200}} />
+                    <Image source={{uri: `${directory}/${payment?.imagem}` }} style={{width: 200, height: 200}} />
                     :  <Text> A imagem não foi cadastrada</Text>
 
                 }
@@ -58,7 +78,7 @@ const handlePickImage = async () => {
             <View style={styles.containerButtons}>
                 <Button title="Editar" disabled/>
                 <Button title="Imagem" onPress={handlePickImage} />
-                <Button title="Remover imagem" />
+                <Button title="Remover imagem" onPress={handleRemoveImage} />
                 <Button title="Voltar" onPress={() => router.push("listprof")} />
             </View>
         </View>
@@ -74,12 +94,14 @@ const styles = StyleSheet.create ({
     containerButtons: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: "140%",
+        marginTop: "90%",
+        position: "relative",
     },
     contentImage: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
+        marginBottom: 20,
     },
     text: {
         fontSize: 16,

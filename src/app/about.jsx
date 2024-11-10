@@ -26,20 +26,25 @@ export default function About() {
                 O que você encontrará :
                 </Text>
                 {/* tópico 1 */}
-                <Entypo name="check" size={24} color="#8B004C" />
+                <Entypo name="check" size={22} color="#ac0c24" />
                 <Text style={styles.topico1}>
-                Hidratantes de alta qualidade
+                Hidratantes Premium para a sua Pele
                 </Text>
                 {/* tópico 2 */}
-                <Entypo name="check" size={24} color="#8B004C" />
+                <Entypo name="check" size={22} color="#ac0c24" />
                 <Text style={styles.topico2}>
-                Sabonetes líquidos exclusivos
+                Sabonetes Líquidos Exclusivos
+                </Text>
+                <Entypo name="check" size={22} color="#ac0c24" />
+                <Text style={styles.topico2}>
+                Perfumes com fragrâncias marcantes
                 </Text>
                 {/* tópico 3 */}
-                <Entypo name="check" size={24} color="#8B004C" />
+                <Entypo name="check" size={22} color="#ac0c24" />
                 <Text style={styles.topico3}>
                 Promoções imperdíveis
                 </Text>
+                
             </View>
 
             <TouchableOpacity style={styles.button} onPress={() => { router.replace("signin") }}>
@@ -57,13 +62,13 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
     },
     image: {
-        width: 430,
-        height: 330,
+        width: 470,
+        height: 270,
         resizeMode: 'contain',
         marginTop: "-1%",
     },
     titulo: {
-        fontSize: 22,
+        fontSize: 21,
         fontWeight: "700",
         fontFamily: "RobotoRegular",
         color: "black",
@@ -71,12 +76,13 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start', 
         marginHorizontal: "5%", 
         marginVertical: "-1%",
+        marginTop: "8%",
     },
     retangulo: {
         padding: 10,
         borderRadius: 15,
         margin: "4%",
-        backgroundColor: "#8B004C",
+        backgroundColor: "#d6afaf",
         alignItems: 'center',
     },
     frase: {
@@ -91,9 +97,10 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start', 
         marginHorizontal: "6%", 
         marginVertical: "1%",
+        marginTop: "-2%",
     },
     subtexto: {
-        fontSize: 22,
+        fontSize: 20,
         fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "12%",
@@ -101,7 +108,7 @@ const styles = StyleSheet.create({
         
     },
     topico1: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "-8%",
@@ -109,7 +116,7 @@ const styles = StyleSheet.create({
         marginBottom: "3%",
     },
     topico2: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "-8%",
@@ -117,7 +124,7 @@ const styles = StyleSheet.create({
         marginBottom: "3%",
     },
     topico3: {
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: "RobotoRegular",
         color: "black",
         marginTop: "-8%",
@@ -125,11 +132,11 @@ const styles = StyleSheet.create({
         marginBottom: "7%",
     },
     button: {
-        backgroundColor: '#8B004C', 
-        paddingVertical: 8,
+        backgroundColor: '#ac0c24', 
+        paddingVertical: 5,
         paddingHorizontal: 20,
         borderRadius: 10,
-        marginTop: 30,
+        marginTop: 40,
     },
     buttonText: {
         color: 'white',

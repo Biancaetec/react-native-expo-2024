@@ -19,7 +19,7 @@ export default function Perfil() {
 
     const handlesair = () => {
         signOut();
-        navigation.navigate('index'); 
+        navigation.navigate('signin'); 
     };
 
     const handleeditar = () => {
@@ -44,7 +44,7 @@ export default function Perfil() {
                 <Text style={styles.titulo}>{user?.user?.nome}</Text>
                 
                 <View style={styles.inputContainer1}>
-                    <Ionicons name="mail-open-outline" size={20} color="#8B004C" />
+                    <Ionicons name="mail-open-outline" size={20} color="#000" />
                     <TextInput
                         style={styles.emailinput}
                         placeholder="E-mail"
@@ -55,7 +55,7 @@ export default function Perfil() {
                 </View>
                 
                 <View style={styles.inputContainer2}>
-                    <Ionicons name="lock-closed-outline" size={20} color="#8B004C" />
+                    <Ionicons name="lock-closed-outline" size={20} color="#000" />
                     <TextInput
                         style={styles.emailinput}
                         placeholder="Senha"
@@ -68,7 +68,7 @@ export default function Perfil() {
                         <Ionicons
                             name={passwordVisibility ? "eye-off-outline" : "eye-outline"}
                             size={20}
-                            color="#8B004C"
+                            color="#000"
                         />
                     </TouchableOpacity>
                 </View>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
         elevation: 3, 
     },
     editarsalvar: {
-        color: '#8B004C',
+        color: '#007bfc',
         fontWeight: 'bold',
         marginRight: 5,
         textAlign: 'center',
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         color: '#333',
-        marginBottom: 15,
+        marginBottom: 10,
         textAlign: 'center',
     },
     inputContainer1: {
@@ -139,7 +139,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderRadius: 10,
         backgroundColor: '#ffffff', 
-        marginVertical: 10,
+        marginVertical: 8,
         paddingHorizontal: 10,
         marginTop: "10%",
         width: '100%',
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         borderColor: '#ddd',
         borderRadius: 10,
         backgroundColor: '#ffffff', 
-        marginVertical: 10,
+        marginVertical: 8,
         paddingHorizontal: 10,
         width: '100%',
     },
@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
         color: '#333',
     },
     botaosair: {
-        backgroundColor: '#8B004C',
+        backgroundColor: '#007bfc',
         padding: 14, 
         borderRadius: 12,
         alignItems: 'center',

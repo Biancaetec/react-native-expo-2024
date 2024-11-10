@@ -7,6 +7,8 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useAuth } from "../../hooks/Auth/index";
 import { router } from "expo-router";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 function CustomDrawerContent(props) {
@@ -44,7 +46,7 @@ function CustomDrawerContent(props) {
           alignItems: "center",
           height: 50,
           margin: 10,
-          backgroundColor: "#8B004C",
+          backgroundColor: "#007bfc",
           borderRadius: 12,
         }}
       >
@@ -107,12 +109,23 @@ const DrawerLayout = () => {
         <Drawer.Screen
           name="sabonete"
           options={{
-            drawerLabel: "Sabonetes",
+            drawerLabel: "Sabonete",
             headerTitle: "Sabonetes",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="list-circle-outline" size={23} color="black" />
-            ),
+<FontAwesome6 name="pump-soap" size={24} color="black" />            ),
+          }}
+        />
+
+<Drawer.Screen
+          name="perfumes"
+          options={{
+            drawerLabel: "Perfume",
+            headerTitle: "Perfumes",
+            headerTitleAlign: 'center',
+            drawerIcon: () => (
+          <MaterialCommunityIcons name="bottle-soda-classic-outline" size={27} color="black" />            
+),
           }}
         />
 
@@ -123,7 +136,7 @@ const DrawerLayout = () => {
             headerTitle: "Hidratante corporal",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="list-circle-outline" size={23} color="black" />
+              <MaterialCommunityIcons name="bottle-tonic-outline" size={24} color="black" />
             ),
           }}
         />
@@ -174,7 +187,7 @@ const DrawerLayout = () => {
             headerTitle: "Listagem",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="diamond-outline" size={20} color="black" />
+              <Ionicons name="list-circle-outline" size={23} color="black" />
             ),
           }}
         />
@@ -187,8 +200,8 @@ const DrawerLayout = () => {
             headerTitle: "Pagamento",
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="diamond-outline" size={20} color="black" />
-            ),
+            <MaterialIcons name="payment" size={24} color="black" />            
+          ),
           }}
         />
 
@@ -201,7 +214,7 @@ const DrawerLayout = () => {
             // drawerItemStyle: { display: "none" },
             headerTitleAlign: 'center',
             drawerIcon: () => (
-              <Ionicons name="diamond-outline" size={20} color="black" />
+              <MaterialCommunityIcons name="card-account-details-outline" size={24} color="black" />
             ),
           }}
         />

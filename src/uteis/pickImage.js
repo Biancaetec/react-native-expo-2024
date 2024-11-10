@@ -8,29 +8,31 @@ export function usePickImage() {
     async function pickImage () {
         try {
             const result = await ImagePicker.launchImageLibraryAsync({
-                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                mediaTypes: ImagePicker.MediaTypeOptions.Images,
                 allowsEditing: true,
-                aspect: [1, 1],
                 quality: 1,
+                aspect: [1, 1]
+
             });
 
             if(!result.canceled) {
-                console.log("pickImage: ", result.assets[0].uri);
+                // console.log("pickImage: ", result.assets[0].uri);
                 const localUri = result.assets[0].uri;
                 const filename = localUri.split('/').pop(); // Pega o nome do arquivo
-                const newPath = '${directory}/${filename}';
+               // pega a pasta do projeto
+                const newPath = `${directory}/${filename}`;
 
                 await FileSystem.moveAsync({
                 from: localUri,
                 to: newPath,
                 });
-                console.log("newPath: ", newPath);
+                // console.log("newPath: ", newPath);
                 //pegar a pasta do projeto
 
                 return filename;
             } else return ""
         } catch(error) {
-            console.log("pickImage: ",error);
+            console.log("pickImage: ", error);
             throw error;
         }
     }

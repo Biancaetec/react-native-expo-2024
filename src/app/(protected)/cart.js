@@ -200,8 +200,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     imagemproduto: {
-        width: 140,
-        height: 140,
+        width: 150,
+        height: 150,
     },
     nomecontainer: {
         marginLeft: "2%",

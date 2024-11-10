@@ -39,7 +39,7 @@ export function usePaymentsDatabase() {
 
     async function getPayments(page) {
         try {
-            const payments = await database.getAllAsync(`SELECT p.*, u.nome FROM payments p, users u WHERE u.id = p.user_id LIMIT 5 OFFSET ${page * 5}`);
+            const payments = await database.getAllAsync(`SELECT p.*, u.nome FROM payments p, users u WHERE u.id = p.user_id ORDER BY data_pagamento DESC LIMIT 5 OFFSET ${page * 5}`);
             return payments;
         } catch (error) {
             console.log(error);
@@ -57,5 +57,26 @@ export function usePaymentsDatabase() {
         }
     }
 
-    return { createPayment, getPayments, getPayment };
+
+    async function setImagePayment(id, filename) {
+     const updated_at = new Date().toLocaleString(`pt-BR`).replace("T", " ").split(".")[0];
+        const statment = await database.prepareAsync(`
+            UPDATE payments SET imagem = $filename, updated_at = $updated_at WHERE id = $id;
+        `);
+
+        try {
+            const result = await statment.executeAsync({ 
+                $filename: filename, 
+                $updated_at: updated_at,
+                $id: id, 
+            });
+            return result.changes;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        } finally {
+            await statment.finalizeAsync();
+        }
+    }
+    return { createPayment, getPayments, getPayment, setImagePayment };
 }

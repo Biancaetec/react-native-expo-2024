@@ -72,7 +72,7 @@ export default function Sabonete() {
     };
 
     return (
-        <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <ScrollView contentContainerStyle={[styles.scrollContainer, {  paddingBottom: 120, backgroundColor: '#ffffff' }]}>
         <View style={styles.principal}>
             <View style={styles.produtoContainer}>
                 <View style={styles.containerimagem}>
@@ -159,11 +159,7 @@ export default function Sabonete() {
 }
 
 const styles = StyleSheet.create({
-    scrollContainer: {
-        flex: 1,
-        backgroundColor: '#ffffff',
-        height: '800%',
-    },
+  
     principal: {
         flex: 1,
         marginTop: 50,

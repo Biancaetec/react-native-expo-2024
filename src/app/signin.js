@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { BackHandler, Button, StyleSheet, TextInput, Text, View, Alert, Image, TouchableOpacity } from 'react-native';
+import { BackHandler, StyleSheet, TextInput, Text, View, Alert, Image, TouchableOpacity, KeyboardAvoidingView, Platform } from 'react-native';
 import { useAuth } from "../hooks/Auth";
 import { router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
@@ -25,17 +25,26 @@ export default function App() {
   };
 
   return (
-    <View style={styles.container}>
-      <TouchableOpacity style={styles.botaoSobre} onPress={() => router.push("/about")}>
-        <Text style={styles.botaoSobreTexto}>Sobre</Text>
-      </TouchableOpacity>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+    >
+      <View style={styles.cabecalhobotao}>
+        <TouchableOpacity style={styles.sobrebotao} onPress={() => router.push("/about")}>
+          <Text style={styles.sobretexto}>Sobre</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.sairbotao} onPress={() => BackHandler.exitApp()}>
+          <Text style={styles.sairtexto}>Sair</Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.retangulo}>
         <Image
           source={{ uri: 'https://www.github.com/biancaetec.png' }}
           style={styles.imagem}
         />
         <View style={styles.inputContainer}>
-          <Ionicons name="mail-open-outline" size={20} color="#8B004C" />
+          <Ionicons name="mail-open-outline" size={20} color="#000" />
           <TextInput
             style={styles.emailinput}
             placeholder="E-mail"
@@ -44,38 +53,42 @@ export default function App() {
           />
         </View>
         <View style={styles.inputContainer}>
-          <Ionicons name="lock-closed-outline" size={20} color="#8B004C" />
+          <Ionicons name="lock-closed-outline" size={20} color="#000" />
           <TextInput
             style={styles.emailinput}
             placeholder="Senha"
             value={password}
             onChangeText={setPassword}
-            secureTextEntry={passwordVisibility}
+            secureTextEntry={!passwordVisibility}
           />
           <Ionicons
             name={passwordVisibility ? "eye-off-outline" : "eye-outline"}
             size={20}
-            color="#8B004C"
+            color="#000"
             onPress={togglePasswordVisibility}
           />
         </View>
-      
-        <TouchableOpacity style={styles.botao1} onPress={handleEntrarSuper}>
-          <Text style={styles.botaoTexto}>Entrar</Text>
-        </TouchableOpacity>
+
         
-        <TouchableOpacity style={styles.botao4}  onPress={() => router.push("/maintenance")}>
-        <Text style={styles.botaoTexto4}>Banco de Dados</Text>
+        <TouchableOpacity style={styles.entrarbotao} onPress={handleEntrarSuper}>
+          <Text style={styles.entrartexto}>Entrar</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.botao3} onPress={() => BackHandler.exitApp()}>
-          <Text style={styles.botaoTexto3}>Sair do Aplicativo</Text>
-        </TouchableOpacity>
+        <Image source={require('../assets/images/logogoogle.png')} style={styles.googleImage} />
 
-       
+        <TouchableOpacity style={styles.googlebotao} onPress={() => router.push("/entrarcomgoogle")}>
+          <Text style={styles.googletexto}>Entrar com o Google</Text>
+        </TouchableOpacity>
+      
+        <TouchableOpacity style={styles.bdbotao} onPress={() => router.push("/maintenance")}>
+          <Text style={styles.bdtexto}>Banco de Dados</Text>
+        </TouchableOpacity>
       </View>
+      <View style={styles.textoou}>
+          <Text>Ou</Text>
+        </View>
       <StatusBar style="auto" />
-    </View>
+    </KeyboardAvoidingView>
   );
 }
 
@@ -85,14 +98,20 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#f7f7f7', 
+    backgroundColor: '#f7f7f7',
+  },
+  cabecalhobotao: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    marginTop: -90,
+    paddingTop: 10,
+    paddingBottom: 20,
   },
   retangulo: {
-    marginTop: 100,
     backgroundColor: '#ffffff',
     borderRadius: 15,
     width: "95%",
-    height: "70%",
     padding: 20,
     alignItems: 'center',
     shadowRadius: 4,
@@ -102,8 +121,7 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    marginBottom: 50,
-    marginTop: 20,
+    marginBottom: 20,
   },
   inputContainer: {
     flexDirection: "row",
@@ -112,9 +130,9 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
-    padding: 9,
+    padding: 5,
     marginVertical: 10,
-    backgroundColor: '#f9f9f9', 
+    backgroundColor: '#f9f9f9',
   },
   emailinput: {
     flex: 1,
@@ -123,72 +141,96 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: '#333',
   },
-  botao1: {
+  entrarbotao: {
     width: "100%",
-    height: 50,
-    backgroundColor: '#8B004C',
+    height: 40,
+    backgroundColor: '#007bfc',
     borderRadius: 10,
-    paddingVertical: 10,
+    paddingVertical: 7,
     alignItems: 'center',
-    marginTop: 70, 
+    marginTop: 40, 
+    marginBottom: 30, 
   },
-  botao3: {
-    width: "100%",
-    borderRadius: 10,
-    paddingVertical: 12,
-    alignItems: 'center',
-    marginTop: 1, 
-  },
-  botaoTexto3: {
-    color: '#8B004C',
-    fontSize: 18,
-    fontWeight: '600',
-    fontFamily: "RobotoRegular",
-
-  },
-
-  botao4: {
-    width: "100%",
-    borderRadius: 10,
-    paddingVertical: 12,
-    alignItems: 'center',
-    marginTop: 1, 
-    backgroundColor: "#A9A9A9",
-  },
-  botaoTexto4: {
+  entrartexto: {
     color: '#ffffff',
     fontSize: 18,
     fontWeight: '600',
     fontFamily: "RobotoRegular",
-
   },
-
-  botaoTexto: {
-    color: '#ffffff',
+  googlebotao: {
+    width: "100%",
+    height: 40,
+    backgroundColor: "#ffff",
+    borderWidth: 1,
+    borderRadius: 20,
+    paddingVertical: 7,
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  googletexto: {
+    color: '#000',
     fontSize: 18,
     fontWeight: '600',
     fontFamily: "RobotoRegular",
-
   },
-  botaoSobre: {
-    position: 'absolute',
-    top: 50,
-    right: 25,
-    borderRadius: 12,
-    backgroundColor: '#8B004C',
-
+  googleImage: {
+    width: 20,
+    height: 20,
+    marginTop: 390,
+    position: "absolute",
+    left: 40,
+    zIndex: 1,
   },
-  botaoSobreTexto: {
-    fontSize: 16,
-    color: '#ffffff',
-    fontWeight: '600',
-    fontFamily: "RobotoRegular",
+  sairbotao: {
+    borderRadius: 10,
+    backgroundColor: "#ac0c24",
     width: 70,
     height: 30,
-    
     textAlign: 'center',
-    paddingVertical: 4,
-
+    alignItems: 'center',
+    marginVertical: 6,
+    marginTop: "-30%",
+    marginLeft: "80%",
+    position: "absolute",
+  },
+  sairtexto: {
+    fontSize: 16,
+    color: '#ffff',
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
     
+  },
+  bdbotao: {
+    width: "100%",
+    borderRadius: 10,
+    paddingVertical: 7,
+    alignItems: 'center',
+    marginTop: 10,
+    backgroundColor: "#C0C0C0",
+  },
+  bdtexto: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
+  },
+  
+  sobrebotao: {
+    borderRadius: 10,
+    marginLeft: "60%",
+    marginTop: "-32%",
+
+  },
+  sobretexto: {
+    fontSize: 16,
+    color: '#ac0c24',
+    fontWeight: '600',
+    fontFamily: "RobotoRegular",
+    width: 50,
+  },
+  textoou: {
+    marginTop: "-42%",
+    position: "relative",
+    alignItems: "center",
   },
 });

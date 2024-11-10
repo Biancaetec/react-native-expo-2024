@@ -9,7 +9,7 @@ export function ConfigProvider ({ children }) {
 
     const getDirectory = async () => {
         // console.log("getDirectory: ", FileSystem.documentDirectory); //mostra qual é o diretorio
-        const dir = '${FileSystem.documentDirectory}images'; // sabe onde está o diretorio
+        const dir = `${FileSystem.documentDirectory}images`; // sabe onde está o diretorio
         await FileSystem.makeDirectoryAsync(dir, { intermediates: true }); // cria o diretorio caso não exista
         setDirectory(dir);
     }
