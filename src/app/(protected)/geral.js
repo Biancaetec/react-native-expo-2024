@@ -170,26 +170,16 @@ export default function Promocao() {
 {/* colocar um scrolview horizontal nos menus */}
             <View style={styles.links}>
 
-            <TouchableOpacity style={styles.link}
-                    onPress={() => router.push("index")}>
+            <TouchableOpacity style={styles.link} onPress={() => router.push("index")}>
+                <View>
                 <Text style={styles.textolink}>Todos</Text>
+                </View>
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.link1}
                     onPress={() => router.push("maisvendidos")}>
                 <Text style={styles.textolink1}>Mais Vendidos</Text>
                 </TouchableOpacity>
-
-
-                {/* <TouchableOpacity style={styles.link2}
-                    onPress={() => router.push("sabonete")}>
-                <Text style={styles.textolink2}>Sabonete</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity style={styles.link3}
-                    onPress={() => router.push("list")}>
-                <Text style={styles.textolink3}>Hidratante</Text>
-                 </TouchableOpacity> */}
             </View>
         
             <View style={styles.produtoContainer}>

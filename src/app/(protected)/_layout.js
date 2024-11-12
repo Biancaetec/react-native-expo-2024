@@ -197,7 +197,7 @@ const DrawerLayout = () => {
           name="payment"
           options={{
             drawerLabel: "Pagamento",
-            headerTitle: "Pagamento",
+            headerTitle: "Inserir Pagamento",
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <MaterialIcons name="payment" size={24} color="black" />            
@@ -205,19 +205,31 @@ const DrawerLayout = () => {
           }}
         />
 
-        <Drawer.Screen
+       
+<Drawer.Screen
           name="details"
           options={{
             drawerLabel: "Detalhes",
             headerTitle: "Detalhes",
-            // unmountOnBlur: true,
-            // drawerItemStyle: { display: "none" },
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <MaterialCommunityIcons name="card-account-details-outline" size={24} color="black" />
             ),
+            headerRight: () => (
+              <TouchableOpacity
+                onPress={() => router.push("/listprof")}
+                style={{ marginRight: 10 }}>
+                <Ionicons
+                  name="arrow-forward"
+                  size={24}
+                  color="black"
+                  style={{ marginRight: 10 }}
+                />
+              </TouchableOpacity>
+            ),
           }}
         />
+        
       </Drawer>
 
     </GestureHandlerRootView>

@@ -9,43 +9,38 @@ import {
     KeyboardAvoidingView,
     Platform,
     Alert,
+    TouchableOpacity,
 } from "react-native";
-import { set, z } from "zod";
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { Picker } from '@react-native-picker/picker';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { useAuth } from "../../hooks/Auth/index";
 import { usePaymentsDatabase } from "../../database/usePaymentsDatabase";
 import { useUsersDatabase } from "../../database/useUsersDatabase";
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { set, z } from "zod";
 
-const paymentSchema = z.object({ //o que ele quer validar
+const paymentSchema = z.object({
     valor_pago: z.number().gt(0),
     user_id: z.number().int().positive(),
     user_cadastro: z.number().int().positive(),
     data_pagamento: z.string().datetime(),
     numero_recibo: z.string(),
     observacao: z.string().optional(),
-
 });
 
-export default function Payment() { //criar os itens do menu -pagamento
+export default function Payment() {
     const [valor, setValor] = useState("0,00");
     const [sugestoes, setSugestoes] = useState([]);
     const [id, setId] = useState(1);
     const [data, setData] = useState(new Date());
-    const [viewCalendar, setViewCalendar] = useState(false)
+    const [viewCalendar, setViewCalendar] = useState(false);
     const [observacao, setObservacao] = useState("");
     const [numeroRecibo, setNumeroRecibo] = useState("");
     const valueRef = useRef();
     const { user } = useAuth();
     const { createPayment } = usePaymentsDatabase();
     const { getAllUsers } = useUsersDatabase();
-
-    const handleCalendar = (event, selectedDate) => {
-        setViewCalendar(false);
-        setData(selectedDate);
-    };
 
     useEffect(() => {
         (async () => {
@@ -60,60 +55,25 @@ export default function Payment() { //criar os itens do menu -pagamento
         })();
     }, []);
 
-    const handleChangeValor = (value) => {
-        try {
-            let valorLimpo = value.replace(",", "").replace(".", "");
-            let valorConvertido = Number(valorLimpo) / 100;
-            if (valorConvertido === 0 || isNaN(valorConvertido)) {
-                setValor("0,00");
-                return;
-            }
-            let valorPtBR = Intl.NumberFormat("pt-BR", {
-                style: "decimal",
-                minimumFractionDigits: 2,
-            }).format(valorConvertido);
-            setValor(valorPtBR);
-
-        } catch (error) {
-            setValor("0,00");
-        }
-    };
-
-    const convertValue = (value) => {
-        try {
-            let valorLimpo = value.replace(",", "").replace(".", "");
-            let valorConvertido = Number(valorLimpo) / 100;
-            if (valorConvertido === 0 || isNaN(valorConvertido)) {
-                return 0;
-            }
-            return valorConvertido;
-
-        } catch (error) {
-            return valorConvertido;
-
-        }
+    const handleCalendar = (event, selectedDate) => {
+        setViewCalendar(false);
+        setData(selectedDate);
     };
 
     const handleSubmit = async () => {
         const payment = {
             user_id: id,
             user_cadastro: Number(user.user.id),
-            valor_pago: convertValue(valor),
+            valor_pago: parseFloat(valor.replace(",", ".")),
             data_pagamento: data.toISOString(),
             numero_recibo: numeroRecibo,
             observacao,
         };
 
-       
-
         try {
-            const result = await paymentSchema.parseAsync(payment);
-            payment.data_pagamento = new Date(payment.data_pagamento).toISOString().replace("T", " ").split(".")[0];
-            const { insertedID } = await createPayment(payment);
-            console.log(insertedID);
+            await paymentSchema.parseAsync(payment);
+            await createPayment(payment);
             setValor("0,00");
-            setId(sugestoes[0].id);
-            setData(new Date());
             setObservacao("");
             setNumeroRecibo("");
             valueRef?.current?.focus();
@@ -125,142 +85,177 @@ export default function Payment() { //criar os itens do menu -pagamento
 
     return (
         <KeyboardAvoidingView
-            style={{ flex: 1 }}
+            style={{ flex: 1, backgroundColor: '#fff' }}
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         >
-            <View style={styles.content}>
-                <Text style={styles.texto}>Inserir Pagamentos</Text>
+           <View style={styles.containerprincipal}>
+    <Text style={styles.titulo}>Dados do pagamento</Text>
 
-                <View style={styles.inputView}>
-                    <Ionicons name="wallet-outline" size={23} color="black" />
-                    <TextInput
-                        placeholder="Valor"
-                        keyboardType="decimal-pad"
-                        style={styles.inputValor}
-                        value={valor}
-                        onChangeText={(newValue) => handleChangeValor(newValue)}
-                        ref={valueRef}
+    <View style={styles.inputView}>
+        <Ionicons name="wallet-outline" size={23} color="#777" />
+        <TextInput
+            placeholder="Valor"
+            keyboardType="decimal-pad"
+            style={styles.inputValor}
+            value={valor}
+            onChangeText={(text) => setValor(text)}
+            ref={valueRef}
+        />
+    </View>
 
-                    />
-                </View>
+    <View style={styles.inputView}>
+        <Ionicons name="cash-outline" size={23} color="#777" />
+        <TextInput
+            placeholder="    Número do Recibo"
+            keyboardType="decimal-pad"
+            style={styles.input}
+            value={numeroRecibo}
+            onChangeText={setNumeroRecibo}
+        />
+    </View>
 
-                <View style={styles.inputView}>
-                    <Ionicons name="cash-outline" size={23} color="black" />
-                    <TextInput
-                        placeholder="Número do Recibo"
-                        keyboardType="decimal-pad"
-                        style={styles.inputValor}
-                        value={numeroRecibo}
-                        onChangeText={setNumeroRecibo}
-                    />
-                </View>
+    <View style={styles.inputView}>
+        <Ionicons name="person-outline" size={23} color="#777" />
+        <Picker
+            selectedValue={id}
+            onValueChange={(itemValue) => setId(itemValue)}
+            style={styles.picker}
+        >
+            {sugestoes.map((user) => (
+                <Picker.Item key={user.id} label={user.nome} value={user.id} />
+            ))}
+        </Picker>
+    </View>
 
-                <View style={styles.inputView}>
-                <Ionicons name="person-outline" size={23} color="black" />
+    <View style={styles.inputView}>
+        <MaterialCommunityIcons name="calendar-month" size={23} color="#777" />
+        <Text onPress={() => setViewCalendar(true)} style={styles.inputData}>
+            {data.toLocaleDateString()}
+        </Text>
+        {viewCalendar && (
+            <DateTimePicker
+                value={data}
+                onChange={handleCalendar}
+                mode="date"
+                textID="dateTimePicker"
+            />
+        )}
+    </View>
 
-                    <Picker selectedValue={id}
-                        onValueChange={(itemValue, index) => {
-                            setId(itemValue);
-                        }}
-                        style={{ width: "95%" }}
-                    >
-                        {sugestoes?.map((item) => {
-                            return <Picker.Item key={item.id} label={item.nome} value={item.id} />
-                        })}
-                    </Picker>
-                </View>
+    <View style={styles.inputView}>
+        <MaterialCommunityIcons name="message-badge-outline" size={24} color="#777" />
+        <TextInput
+            placeholder="Observações"
+            style={styles.inputObservacao}
+            value={observacao}
+            onChangeText={setObservacao}
+            multiline={true}
+        />
+    </View>
 
-                <View style={styles.inputView}>
-                <MaterialCommunityIcons name="calendar-month" size={23} color="black" />
-                    <Text onPress={() => setViewCalendar(true)} style={styles.inputData}>
-                        {data.toLocaleDateString().split("T")[0]}
-                    </Text>
-                    {viewCalendar && (
-                        <DateTimePicker
-                            value={data}
-                            onChange={handleCalendar}
-                            mode="date"
-                            textID="dateTimePicker"
-                        />
-                    )}
-                </View>
-
-                <View style={styles.inputView}>
-                <MaterialCommunityIcons name="message-badge-outline" size={24} color="black" />
-                    <TextInput placeholder="Observações"
-                        style={styles.inputObservacao}
-                        value={observacao}
-                        onChangeText={setObservacao}
-                        multiline={true}
-                    />
-                </View>
-
-                <View style={styles.contentButtons}>
-                    <Button title="Salvar" onPress={handleSubmit} />
-                    <Button title="Continuar"  />
-                    <Button title="Cancelar" onPress={() => router.back()}  />
-
-                </View>
-
-            </View>
+    <View style={styles.botaoContainer}>  
+        <TouchableOpacity style={styles.botao} onPress={handleSubmit}>
+            <Text style={styles.textobotao}>Salvar</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.botao} onPress={() => router.back()}>
+            <Text style={styles.textobotao}>Cancelar</Text>
+        </TouchableOpacity>
+    </View>
+</View>
         </KeyboardAvoidingView>
     );
 }
 
-const styles = StyleSheet.create({ // eu estilizei a pagina
 
-    content: {
+const styles = StyleSheet.create({
+    container: {
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center',
-        padding: 10,
-        backgroundColor: '#ffffff',
+        paddingHorizontal: 20,
+        paddingTop: 50,        
+        alignItems: "center",
+        textAlign: 'center',
 
     },
-    texto: {
-        fontFamily: "MontserratRegular",
-        fontSize: 20,
-        marginTop: "-10%",
-        marginBottom: "10%",
+    titulo: {
+        fontFamily: 'MontserratRegular',
+        fontSize: 24,
+        color: '#444',
+        marginBottom: 15,
+        textAlign: 'center',
+    },
+    containerprincipal: {
+        width: "90%",
+        marginLeft: "5%",
+        backgroundColor: "#ffffff",
+        borderRadius: 16,
+        padding: 20,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 4 },
+        shadowOpacity: 0.15,
+        shadowRadius: 6,
+        elevation: 6,
+        marginTop: "20%",
     },
     inputView: {
-        borderColor: "black",
-        borderWidth: 1,
-        width: "100%",
-        margin: 10,
-        // justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "row",
-        borderRadius: 10,
-        padding: 6,
-        backgroundColor: "#f4f4f4",
-    },
-    contentButtons: {
-        flexDirection: "row",
-        gap: 10,
-        marginTop: 90,
-        justifyContent: "space-around",
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#fafafa',
+        borderRadius: 12,
+        padding: 12,
+        marginVertical: 8,
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.08,
+        shadowRadius: 4,
+        elevation: 2,
     },
     inputValor: {
         flex: 1,
         fontSize: 17,
-        fontWeight: "500",
+        color: '#555',
         textAlign: "right",
-        padding: 10,
-        fontFamily: "OpenSansMedium",
+        marginLeft: 10,
     },
     inputData: {
-        width: "100%",
-        marginLeft: 85,
-        fontFamily: "OpenSansMedium",
+        flex: 1,
         fontSize: 17,
-        padding: 10,
+        color: '#555',
+        paddingLeft: 10,
     },
     inputObservacao: {
-        fontFamily: "OpenSansMedium",
-        fontSize: 17,
-        marginLeft: 15,
         flex: 1,
-        lineHeight: 20,
+        fontSize: 17,
+        color: '#666',
+        paddingLeft: 10,
+        lineHeight: 22,
+    },
+    picker: {
+        flex: 1,
+        fontSize: 17,
+        color: '#333',
+    },
+    botaoContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 20,
+    },
+    botao: {
+        backgroundColor: '#6a5acd',
+        paddingVertical: 12,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+        width: '48%',
+        shadowColor: "#000",
+        shadowOffset: { width: 0, height: 3 },
+        shadowOpacity: 0.1,
+        shadowRadius: 4,
+        elevation: 4,
+    },
+    textobotao: {
+        color: '#ffffff',
+        fontFamily: 'OpenSansMedium',
+        fontSize: 16,
     },
 });
