@@ -40,7 +40,7 @@ function CustomDrawerContent(props) {
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
 
-      <TouchableOpacity onPress={() => signOut()}
+      {/* <TouchableOpacity onPress={() => signOut()}
         style={{
           justifyContent: "center",
           alignItems: "center",
@@ -53,7 +53,7 @@ function CustomDrawerContent(props) {
         <Text style={{
           color: "white", fontFamily: "RobotoRegular", fontSize: 16,
         }}>Deslogar</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -146,7 +146,7 @@ const DrawerLayout = () => {
           name="cart"
           options={{
             drawerLabel: "Minhas compras",
-            headerTitle: "Sacola",
+            headerTitle: "",
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <Ionicons name="bag-handle-outline" size={24} color="black" />
@@ -172,7 +172,7 @@ const DrawerLayout = () => {
           name="perfil"
           options={{
             drawerLabel: "Perfil",
-            headerTitle: "Perfil",
+            headerTitle: "",
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <Ionicons name="person-circle-outline" size={24} color="black" />
