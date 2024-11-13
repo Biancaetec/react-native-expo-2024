@@ -74,7 +74,7 @@ const adicionarlancamento2 = () => {
                     <Text style={styles.especificacao}>
                     Perfume essencial único 90 ml.
                     </Text>
-                    <Text style={styles.preco}>R$ 129.90</Text>
+                    <Text style={styles.preco}>R$ 129,90</Text>
                     <TouchableOpacity style={styles.botao} onPress={adicionarlancamento4}>
                         <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                     </TouchableOpacity>
