@@ -251,7 +251,8 @@ const styles = StyleSheet.create({
     },
 
     minhascompras: {
-        marginTop: "1%",
+        marginTop: "0%",
+        marginBottom: 10,
         textAlign: 'left',
         fontFamily: 'RobotoRegular',
         fontSize: 19,

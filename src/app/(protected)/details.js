@@ -135,6 +135,11 @@ const styles = StyleSheet.create({
         fontWeight: "bold", 
         marginRight: 8,  
     },
+    textNormal: {
+        fontSize: 15,
+        color: "#333",
+        marginRight: 8,  
+    },
     resposta: {
         fontSize: 18,
         color: "#333",

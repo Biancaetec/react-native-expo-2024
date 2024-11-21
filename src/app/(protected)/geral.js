@@ -174,12 +174,12 @@ export default function Promocao() {
                 <View>
                 <Text style={styles.textolink}>Todos</Text>
                 </View>
-                </TouchableOpacity>
+            </TouchableOpacity>
 
-                <TouchableOpacity style={styles.link1}
-                    onPress={() => router.push("maisvendidos")}>
+            <TouchableOpacity style={styles.link1}
+                    onPress={() => router.push("/maisvendidos")}>
                 <Text style={styles.textolink1}>Mais Vendidos</Text>
-                </TouchableOpacity>
+            </TouchableOpacity>
             </View>
         
             <View style={styles.produtoContainer}>
