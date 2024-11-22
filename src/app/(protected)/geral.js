@@ -11,105 +11,105 @@ import { Banner2 } from "../../components/Banner2";
 
 export default function Promocao() {
     const { addCart } = useCart();
-    
-// referente: sabonete cereja
+
+    // referente: sabonete cereja
     const addCart1 = () => {
         const imagem = require('../../../src/assets/images/sabonete1.png');
         const nomeProduto = "Sabonete Líquido cereja";
         const especificacao = "Com uma incrível fragância de cereja, disponível em 250ml.";
         const preco = "29.90";
-        addCart({ 
-            id: 1, 
+        addCart({
+            id: 1,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
 
-// referente: sabonete baunilha
+    // referente: sabonete baunilha
     const addCart2 = () => {
         const imagem = require('../../../src/assets/images/sabonete2.png');
         const nomeProduto = "Sabonete Líquido baunilha";
         const especificacao = "Com aroma de baunilha, disponível em 200ml.";
-        const preco = "49.90"; 
-        addCart({ 
-            id: 2, 
+        const preco = "49.90";
+        addCart({
+            id: 2,
             imagemproduto: imagem,
-            name: nomeProduto, 
+            name: nomeProduto,
             especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
 
-// referente: hidratante cereja
+    // referente: hidratante cereja
     const addCart3 = () => {
         const imagem = require('../../../src/assets/images/hidratante.png');
         const nomeProduto = "Hidratante Corporal";
         const especificacao = "Delicada fragrância de cereja e lavanda. Disponível em embalagem de 200ml.";
         const preco = "29.90";
-        addCart({ 
-            id: 3, 
+        addCart({
+            id: 3,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
 
-// referente: esfoliante maracujá
+    // referente: esfoliante maracujá
     const addCart4 = () => {
         const imagem = require('../../../src/assets/images/produto4-kitesfoliante.png');
         const nomeProduto = "Esfoliante Corporal";
         const especificacao = "Kit esfoliante com essência de maracujá.";
         const preco = "69.90";
-        addCart({ 
-            id: 4, 
+        addCart({
+            id: 4,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
 
-// referente aos lancamentos: sabonete esfoliante
+    // referente aos lancamentos: sabonete esfoliante
     const addCart5 = () => {
         const imagem = require('../../../src/assets/images/lan1esfoliante.png');
         const nomeProduto = "Sabonete esfoliante";
         const especificacao = "Sabonete vegetal com esfoliante natural.";
         const preco = "79.90";
-        addCart({ 
-            id: 5, 
+        addCart({
+            id: 5,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
 
-// referente aos lancamentos: perfume 1
+    // referente aos lancamentos: perfume 1
     const addCart6 = () => {
         const imagem = require('../../../src/assets/images/lan2perfume.png');
         const nomeProduto = "Perfume";
         const especificacao = "Perfume com aroma fresco e envolvente.";
         const preco = "59.90";
-        addCart({ 
-            id: 6, 
+        addCart({
+            id: 6,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
@@ -120,30 +120,30 @@ export default function Promocao() {
         const nomeProduto = "Sabonete em barra";
         const especificacao = "Sabonete vegetal de castanha";
         const preco = "10.90";
-        addCart({ 
-            id: 7, 
+        addCart({
+            id: 7,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
 
-     // referente aos lancamentos: perfume masculino
-     const addCart8 = () => {
+    // referente aos lancamentos: perfume masculino
+    const addCart8 = () => {
         const imagem = require('../../../src/assets/images/lan4perfume2.png');
         const nomeProduto = "Perfume Masculino";
         const especificacao = "Perfume essencial único 90 ml.";
         const preco = "129.90";
-        addCart({ 
-            id: 8, 
+        addCart({
+            id: 8,
             imagemproduto: imagem,
-            name: nomeProduto, 
-            especificacaoproduto: especificacao, 
+            name: nomeProduto,
+            especificacaoproduto: especificacao,
             precoproduto: preco,
-            quantity: 1 
+            quantity: 1
         });
         Alert.alert("Produto adicionado!");
     };
@@ -151,7 +151,7 @@ export default function Promocao() {
 
     return (
         <ScrollView contentContainerStyle={styles.container}>
-             <View style={styles.containerpesquisa}>
+            <View style={styles.containerpesquisa}>
                 <TextInput
                     style={styles.pesquisar}
                     placeholder="Buscar produtos"
@@ -163,25 +163,24 @@ export default function Promocao() {
             <Banner style={styles.banner} />
             <Text style={styles.titulo}>Categorias</Text>
             <View style={styles.containerveja}>
-            <Text style={styles.subtitulo}>Veja todas</Text>
-            <AntDesign name="arrowright" size={14} color="#ac0c24" style={styles.icone} />
+                <Text style={styles.subtitulo}>Veja todas</Text>
+                <AntDesign name="arrowright" size={14} color="#ac0c24" style={styles.icone} />
             </View>
 
-{/* colocar um scrolview horizontal nos menus */}
+            {/* colocar um scrolview horizontal nos menus */}
             <View style={styles.links}>
 
-            <TouchableOpacity style={styles.link} onPress={() => router.push("index")}>
-                <View>
-                <Text style={styles.textolink}>Todos</Text>
-                </View>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.link} onPress={() => router.push("index")}>
+                    <View>
+                        <Text style={styles.textolink}>Todos</Text>
+                    </View>
+                </TouchableOpacity>
 
-            <TouchableOpacity style={styles.link1}
-                    onPress={() => router.push("/maisvendidos")}>
-                <Text style={styles.textolink1}>Mais Vendidos</Text>
-            </TouchableOpacity>
+                <TouchableOpacity style={styles.link1} onPress={() => router.push("/maisvendidos")}>
+                    <Text style={styles.textolink1}>Mais Vendidos</Text>
+                </TouchableOpacity>
             </View>
-        
+
             <View style={styles.produtoContainer}>
                 {/* sabonete cereja */}
                 <View style={styles.containerproduto1}>
@@ -204,7 +203,7 @@ export default function Promocao() {
                             <Text style={styles.preco}>R$ 29,90</Text>
 
                             <TouchableOpacity onPress={addCart1} style={{ padding: 20 }}>
-                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                             </TouchableOpacity>
 
                         </View>
@@ -232,38 +231,38 @@ export default function Promocao() {
                                 <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                             </TouchableOpacity>
                         </View>
-                        
+
                     </View>
                 </View>
             </View>
 
 
             <View style={styles.produtoContainer2}>
-                    {/* hidratante */}
-            <View style={styles.containerproduto3}>
-                <View style={styles.containerimagem}>
-                    <Image
-                        source={require('../../../src/assets/images/hidratante.png')}
-                        style={styles.imagem3}
-                    />
-                </View>
-                <View style={styles.informacoes3}>
-                    <View style={styles.containerpromocao3}>
-                        <Text style={styles.promocao3}>Promoção</Text>
+                {/* hidratante */}
+                <View style={styles.containerproduto3}>
+                    <View style={styles.containerimagem}>
+                        <Image
+                            source={require('../../../src/assets/images/hidratante.png')}
+                            style={styles.imagem3}
+                        />
                     </View>
-                    <Text style={styles.marca3}>CHARMM</Text>
-                    <Text style={styles.nomeProduto3}>Hidratante Corporal</Text>
-                    <Text style={styles.especificacao3}>
-                        Hidratação intensa, e uma delicada fragrância de cereja e lavanda. 
-                    </Text>
-                    <Text style={styles.preco3}>R$ 29,90</Text>
-                    <TouchableOpacity onPress={addCart3} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
-                    <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                    </TouchableOpacity>
+                    <View style={styles.informacoes3}>
+                        <View style={styles.containerpromocao3}>
+                            <Text style={styles.promocao3}>Promoção</Text>
+                        </View>
+                        <Text style={styles.marca3}>CHARMM</Text>
+                        <Text style={styles.nomeProduto3}>Hidratante Corporal</Text>
+                        <Text style={styles.especificacao3}>
+                            Hidratação intensa, e uma delicada fragrância de cereja e lavanda.
+                        </Text>
+                        <Text style={styles.preco3}>R$ 29,90</Text>
+                        <TouchableOpacity onPress={addCart3} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%" }}>
+                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
 
-              <View style={styles.containerproduto4}>
+                <View style={styles.containerproduto4}>
                     {/* esfoliante maracujá */}
                     <View style={styles.containerimagem}>
                         <Image
@@ -275,7 +274,7 @@ export default function Promocao() {
                         <Text style={styles.marca4}>EKOS</Text>
                         <Text style={styles.nomeProduto4}>Esfoliante Corporal</Text>
                         <Text style={styles.especificacao4}>
-                        Kit esfoliante com essência de maracujá.
+                            Kit esfoliante com essência de maracujá.
                         </Text>
                         <View style={{ flexDirection: "row", alignItems: "center" }}>
                             <Text style={styles.preco4}>R$ 69,90</Text>
@@ -283,7 +282,7 @@ export default function Promocao() {
                                 <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
                             </TouchableOpacity>
                         </View>
-                        
+
                     </View>
                 </View>
             </View>
@@ -292,99 +291,99 @@ export default function Promocao() {
                     Lançamentos
                 </Text>
 
-            <View style={styles.banner2} />
+                <View style={styles.banner2} />
                 <Banner2 />
 
-            {/* lançamento 2: sabonete esfoliante  */}
-            <View style={styles.lancamento1}>
-                <View style={styles.contlancamento1}>
-                    <Image
-                        source={require('../../../src/assets/images/lan1esfoliante.png')}
-                        style={styles.img1}
-                    />
-                </View>
-                <View style={styles.inflancamento1}>
-                   
-                    <Text style={styles.marcalancamento1}>EKOS</Text>
-                    <Text style={styles.nomelancamento1}>Sabonete esfoliante</Text>
-                    <Text style={styles.esplancamento1}>
-                        Sabonete vegetal com esfoliante natural . 
-                    </Text>
-                    <Text style={styles.preco5}>R$ 79,90</Text>
-                    <TouchableOpacity onPress={addCart5} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                    </TouchableOpacity>
-                   </View>
+                {/* lançamento 2: sabonete esfoliante  */}
+                <View style={styles.lancamento1}>
+                    <View style={styles.contlancamento1}>
+                        <Image
+                            source={require('../../../src/assets/images/lan1esfoliante.png')}
+                            style={styles.img1}
+                        />
+                    </View>
+                    <View style={styles.inflancamento1}>
+
+                        <Text style={styles.marcalancamento1}>EKOS</Text>
+                        <Text style={styles.nomelancamento1}>Sabonete esfoliante</Text>
+                        <Text style={styles.esplancamento1}>
+                            Sabonete vegetal com esfoliante natural .
+                        </Text>
+                        <Text style={styles.preco5}>R$ 79,90</Text>
+                        <TouchableOpacity onPress={addCart5} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%" }}>
+                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-            {/* lançamento 2: perfume  */}
+                {/* lançamento 2: perfume  */}
                 <View style={styles.lancamento2}>
-            <View style={styles.contlancamento2}>
-                    <Image
-                        source={require('../../../src/assets/images/lan2perfume.png')}
-                        style={styles.img2}
-                    />
-                </View>
-                <View style={styles.inflancamento2}>
-                   
-                    <Text style={styles.marcalancamento2}>EKOS</Text>
-                    <Text style={styles.nomelancamento2}>Perfume</Text>
-                    <Text style={styles.esplancamento2}>
-                        Perfume com aroma fresco e envolvente.                    
-                    </Text>
-                    <Text style={styles.preco6}>R$ 59,90</Text>
-                    <TouchableOpacity onPress={addCart6} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                    </TouchableOpacity>
-                </View>
+                    <View style={styles.contlancamento2}>
+                        <Image
+                            source={require('../../../src/assets/images/lan2perfume.png')}
+                            style={styles.img2}
+                        />
+                    </View>
+                    <View style={styles.inflancamento2}>
+
+                        <Text style={styles.marcalancamento2}>EKOS</Text>
+                        <Text style={styles.nomelancamento2}>Perfume</Text>
+                        <Text style={styles.esplancamento2}>
+                            Perfume com aroma fresco e envolvente.
+                        </Text>
+                        <Text style={styles.preco6}>R$ 59,90</Text>
+                        <TouchableOpacity onPress={addCart6} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%" }}>
+                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
                 {/* lançamento 3: sabonete em barra  */}
                 <View style={styles.lancamento3}>
-                <View style={styles.contlancamento3}>
-                    <Image
-                        source={require('../../../src/assets/images/lan3sabbarra.png')}
-                        style={styles.img3}
-                    />
-                </View>
-                <View style={styles.inflancamento3}>
-                   
-                    <Text style={styles.marcalancamento3}>EKOS</Text>
-                    <Text style={styles.nomelancamento3}>Sabonete em barra</Text>
-                    <Text style={styles.esplancamento3}>
-                    Sabonete vegetal de castanha
-                    </Text>
-                    <Text style={styles.preco7}>R$ 10,90</Text>
-                    <TouchableOpacity onPress={addCart7} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                    </TouchableOpacity>
-                   </View>
+                    <View style={styles.contlancamento3}>
+                        <Image
+                            source={require('../../../src/assets/images/lan3sabbarra.png')}
+                            style={styles.img3}
+                        />
+                    </View>
+                    <View style={styles.inflancamento3}>
+
+                        <Text style={styles.marcalancamento3}>EKOS</Text>
+                        <Text style={styles.nomelancamento3}>Sabonete em barra</Text>
+                        <Text style={styles.esplancamento3}>
+                            Sabonete vegetal de castanha
+                        </Text>
+                        <Text style={styles.preco7}>R$ 10,90</Text>
+                        <TouchableOpacity onPress={addCart7} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%" }}>
+                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
                 {/* lançamento 4: perfume masculino */}
                 <View style={styles.lancamento4}>
-            <View style={styles.contlancamento4}>
-                    <Image
-                        source={require('../../../src/assets/images/lan4perfume2.png')}
-                        style={styles.img4}
-                    />
-                </View>
-                <View style={styles.inflancamento4}>
-                   
-                    <Text style={styles.marcalancamento4}>ESSENCIAL</Text>
-                    <Text style={styles.nomelancamento4}>Perfume Masculino</Text>
-                    <Text style={styles.esplancamento2}>
-                        Perfume essencial único 90 ml.                    
-                    </Text>
-                    <Text style={styles.preco8}>R$ 129,90</Text>
-                    <TouchableOpacity onPress={addCart8} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%"}}>
-                                <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
-                    </TouchableOpacity>
-                </View>
+                    <View style={styles.contlancamento4}>
+                        <Image
+                            source={require('../../../src/assets/images/lan4perfume2.png')}
+                            style={styles.img4}
+                        />
+                    </View>
+                    <View style={styles.inflancamento4}>
+
+                        <Text style={styles.marcalancamento4}>ESSENCIAL</Text>
+                        <Text style={styles.nomelancamento4}>Perfume Masculino</Text>
+                        <Text style={styles.esplancamento2}>
+                            Perfume essencial único 90 ml.
+                        </Text>
+                        <Text style={styles.preco8}>R$ 129,90</Text>
+                        <TouchableOpacity onPress={addCart8} style={{ padding: 20, marginTop: "-24%", marginLeft: "64%" }}>
+                            <MaterialCommunityIcons name="cart-heart" size={20} color="#3baf2c" />
+                        </TouchableOpacity>
+                    </View>
                 </View>
 
-             </View>   
-        
+            </View>
+
 
 
 
@@ -399,7 +398,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: "5%",
         paddingBottom: "19%",
     },
-containerpesquisa: {
+    containerpesquisa: {
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
@@ -407,7 +406,7 @@ containerpesquisa: {
         borderWidth: 1,
         borderRadius: 15,
         paddingHorizontal: 8,
-        marginTop: 20,        
+        marginTop: 20,
         marginBottom: 10,
     },
     pesquisar: {
@@ -439,7 +438,7 @@ containerpesquisa: {
         marginLeft: "7%",
         width: "100%",
         position: "absolute",
-        paddingHorizontal: "8%", 
+        paddingHorizontal: "8%",
     },
     subtitulo: {
         fontSize: 16,
@@ -482,7 +481,7 @@ containerpesquisa: {
         borderRadius: 8,
         position: "absolute",
         borderColor: '#ac0c24',
-        borderWidth: 1,  
+        borderWidth: 1,
     },
     textolink1: {
         marginTop: 8,
@@ -593,7 +592,7 @@ containerpesquisa: {
         width: '49%',
         marginLeft: "4%",
     },
-    
+
     imagem2: {
         width: '210%',
         height: '210%',
@@ -601,7 +600,7 @@ containerpesquisa: {
         resizeMode: 'contain',
         marginLeft: "10%",
     },
-   
+
     informacoes2: {
         marginTop: "2%",
     },
@@ -742,15 +741,15 @@ containerpesquisa: {
     },
 
     // banner de lancamento
-    banner2: { 
+    banner2: {
         marginTop: "-35%",
         width: '100%',
         height: 200,
     },
-    titulolancamento: {  
+    titulolancamento: {
         fontSize: 22,
         marginTop: "10%",
-        textAlign: "center",        
+        textAlign: "center",
         width: "100%",
         position: "absolute",
         marginBottom: "20%",

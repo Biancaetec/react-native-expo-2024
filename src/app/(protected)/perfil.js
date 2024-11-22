@@ -141,7 +141,7 @@ export default function Perfil() {
                 </View>
                 <Text style={styles.inspiraem2}>Acaba em 2h 25min</Text>
                 <Text style={styles.usar2}>Usar</Text>
-                <Image source={require('../../assets/images/cupon.webp')} style={{width: 60, height: 60, marginTop: "-22%", marginLeft: "5%"}}/>
+                <Image source={require('../../assets/images/cupon.webp')} style={{width: 60, height: 60, marginTop: "-25%", marginLeft: "2%"}}/>
             </View>
             </TouchableOpacity>
         
@@ -258,9 +258,10 @@ const styles = StyleSheet.create({
         fontSize: 19,
     },
     scrollViewHorizontal: {
-        marginTop: "-1%", 
+        flexDirection: 'row',
+        height: 90,  
         backgroundColor: '#ffffff',
-        width: '107%',
+        marginLeft: "2%",
     },
     scrollContentContainer: {
         flexDirection: 'row', 
@@ -380,6 +381,11 @@ const styles = StyleSheet.create({
         width: '101%',
         height: 110,
         position: 'absolute',
+    }, 
+    cupon2: {
+        marginTop: "1%",
+        marginLeft: "5%",
+       
     },
     titulo2: {
         marginTop: "1%",

@@ -108,7 +108,7 @@ export default function Payment() {
         <TextInput
             placeholder="    Número do Recibo"
             keyboardType="decimal-pad"
-            style={styles.input}
+            style={styles.inputrecibo}
             value={numeroRecibo}
             onChangeText={setNumeroRecibo}
         />
@@ -211,6 +211,13 @@ const styles = StyleSheet.create({
         elevation: 2,
     },
     inputValor: {
+        flex: 1,
+        fontSize: 17,
+        color: '#555',
+        textAlign: "right",
+        marginLeft: 10,
+    },
+    inputrecibo: {
         flex: 1,
         fontSize: 17,
         color: '#555',
