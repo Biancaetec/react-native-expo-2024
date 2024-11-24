@@ -25,13 +25,13 @@ function CustomDrawerContent(props) {
       }}
       >
         <Image
-          source={{
-            uri: 'https://www.github.com/biancaetec.png',
-          }}
+          source={require('../../../src/assets/images/logoperfilcabanni2.png')}
+        
           style={{ width: 100, height: 100, borderRadius: 50, margin: 10 }}
         />
-        <Text style={{ textAlign: "center", fontSize: 20, fontFamily: "RobotoLight" }}
+        <Text style={{ textAlign: "center", fontSize: 20,  fontWeight: '500', color: '#333' }}
         >
+          
           {user?.user?.nome}
         </Text>
       </View>

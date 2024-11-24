@@ -40,7 +40,7 @@ export default function App() {
 
       <View style={styles.retangulo}>
         <Image
-          source={{ uri: 'https://www.github.com/biancaetec.png' }}
+          source={require('../../src/assets/images/logoperfilcabanni2.png')}
           style={styles.imagem}
         />
         <View style={styles.inputContainer}>
@@ -79,7 +79,8 @@ export default function App() {
         <TouchableOpacity style={styles.googlebotao} onPress={() => router.push("/entrarcomgoogle")}>
           <Text style={styles.googletexto}>Entrar com o Google</Text>
         </TouchableOpacity>
-      
+
+
         <TouchableOpacity style={styles.bdbotao} onPress={() => router.push("/maintenance")}>
           <Text style={styles.bdtexto}>Banco de Dados</Text>
         </TouchableOpacity>
@@ -118,10 +119,11 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   imagem: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 20,
+    width: 113,
+    height: 115,
+    borderRadius: 10,
+    marginTop: 23,
+    marginBottom: 19,
   },
   inputContainer: {
     flexDirection: "row",
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
   googleImage: {
     width: 20,
     height: 20,
-    marginTop: 390,
+    marginTop: 427,
     position: "absolute",
     left: 40,
     zIndex: 1,

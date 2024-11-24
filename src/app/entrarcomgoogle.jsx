@@ -30,20 +30,21 @@ export default function Entrarcomgoogle() {
     };
 
     return (
-      <View style={styles.container}>
+     
+      <View style={styles.container}> 
         <View style={styles.retangulo}>
           <Image
-            source={{ uri: 'https://www.github.com/biancaetec.png' }}
-            style={styles.imagem}
+          source={require('../../src/assets/images/logoperfilcabanni2.png')}
+          style={styles.imagem}
           />
-          <Text style={{ fontSize: 20, fontFamily: "RobotoMedium", color: '#000', marginTop: -34, marginBottom: 30 }}>
-            Bianca Lima
+          <Text style={{ fontSize: 20, fontFamily: "RobotoMedium", color: '#000', marginTop: -45, marginBottom: 25 }}>
+            Super
           </Text>
           <View style={styles.inputContainer}>
             <Ionicons name="mail-open-outline" size={20} color="#000" />
             <TextInput
               style={styles.emailinput}
-              placeholder="biancalima90@gmail.com"
+              placeholder="E-mail"
               value={email}
               onChangeText={setEmail}
             />
@@ -98,7 +99,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff', 
   },
   retangulo: {
-    marginTop: -6,
+    marginTop: "-3%",
     backgroundColor: '#ffffff',
     borderRadius: 15,
     width: "95%",
@@ -109,11 +110,11 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   imagem: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    marginBottom: 50,
-    marginTop: 20,
+    width: 113,
+    height: 115,
+    borderRadius: 10,
+    marginTop: 1,
+    marginBottom: 43,
   },
   inputContainer: {
     flexDirection: "row",
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 50,
     marginLeft: "-10%",
   },
   checkbox: {

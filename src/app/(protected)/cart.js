@@ -33,7 +33,8 @@ export default function Cart() {
     };
 
     const gerarMensagem = () => {
-        let mensagem = 'Olá, gostaria de finalizar seu pedido?\n\n';
+        let mensagem = '*Confira o relatório do pedido 🛍️*\n\n'  ;
+        
         cart.forEach((element, index) => {
             mensagem += `${element.name} - R$ ${element.precoproduto} (Quantidade: ${element.quantity})`;
             if (index < cart.length - 1) {

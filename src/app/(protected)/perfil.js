@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Ionicons } from "@expo/vector-icons";
 import { useCart } from '../../hooks/Cart';
 import { router } from 'expo-router';
+import { Alert } from 'react-native';
 
 export default function Perfil() {
     const { user, signOut } = useAuth();
@@ -29,12 +30,19 @@ export default function Perfil() {
         setIsEditing(!isEditing);
     };
 
+    const handlecupom1 = () => {
+        Alert.alert(
+            "Cupom já utilizado ! ",
+            "O cupom R$ 5 na primeira compra já foi utilizado.",
+            [{ text: "OK" }]
+        );
+    };
     return (
         <ScrollView contentContainerStyle={[styles.scrollContainer, {  paddingBottom: 120, backgroundColor: '#ffffff', paddingBottom: 20, }]}>
             <Image source={{ uri: 'src/assets/images/fundo perfil.jpg' }} style={styles.imagemfundo} />
         
             <Image
-                source={{ uri: 'https://www.github.com/biancaetec.png' }}
+               source={require('../../../src/assets/images/logoperfilcabanni2.png')}
                 style={styles.imagem}
             />
             <Text style={styles.nome}>{user?.user?.nome}</Text>
@@ -118,10 +126,10 @@ export default function Perfil() {
             {/* Linha abaixo das imagens */}
             <View style={styles.linha2} />
         
-            <View>
+            {/* <View>
                 <Text style={styles.textocupon}>Cupons disponíveis</Text>
-            </View>
-            <TouchableOpacity style={styles.containercupon1} onPress={() => router.push("/geral")}>
+            </View> */}
+            <TouchableOpacity style={styles.containercupon1} onPress={handlecupom1}>
             <View style={styles.cupon1}>
                 <Text style={styles.titulo}>R$ 5 na primeira compra</Text>
                 <View style={styles.detalhe1}>
@@ -311,15 +319,18 @@ const styles = StyleSheet.create({
         position: 'absolute',
     },
 
-    textocupon: {
-        marginTop: "-82%",
-        textAlign: 'center',
-        fontFamily: 'RobotoRegular',
-        fontWeight: '500',
-        fontSize: 19,
-    },
+    // textocupon: {
+    // position: 'absolute', 
+    // marginTop: '-80%', 
+    // left: '26%', 
+    // textAlign: 'center',
+    // fontFamily: 'RobotoRegular',
+    // fontWeight: '500',
+    // fontSize: 19,
+    // zIndex: 2, 
+    // },
     containercupon1: {
-        marginTop: "145%",
+        marginTop: "135%",
         marginLeft: "5%",
         borderColor: '#ddd',
         borderWidth: 2,
@@ -345,7 +356,7 @@ const styles = StyleSheet.create({
     detalhe1: {
         marginLeft: "26%",
         marginTop: "2%",
-        width: '35%',
+        width: '36%',
         height: 23,
         borderRadius: 35,
         alignContent: 'center',
@@ -372,7 +383,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
     containercupon2: {
-        marginTop: "182%",
+        marginTop: "172%",
         marginLeft: "5%",
         borderColor: '#ddd',
         borderWidth: 2,
@@ -397,7 +408,7 @@ const styles = StyleSheet.create({
     detalhe2: {
         marginLeft: "29%",
         marginTop: "1%",
-        width: '35%',
+        width: '36%',
         height: 23,
         borderRadius: 35,
         alignContent: 'center',
