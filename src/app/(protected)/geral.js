@@ -162,6 +162,7 @@ export default function Promocao() {
 
             <Banner style={styles.banner} />
             <Text style={styles.titulo}>Categorias</Text>
+            
             <View style={styles.containerveja}>
                 <Text style={styles.subtitulo}>Veja todas</Text>
                 <AntDesign name="arrowright" size={14} color="#ac0c24" style={styles.icone} />
@@ -170,7 +171,7 @@ export default function Promocao() {
             {/* colocar um scrolview horizontal nos menus */}
             <View style={styles.links}>
 
-                <TouchableOpacity style={styles.link} onPress={() => router.push("index")}>
+                <TouchableOpacity style={styles.link} onPress={() => router.push("/geral")}>
                     <View>
                         <Text style={styles.textolink}>Todos</Text>
                     </View>

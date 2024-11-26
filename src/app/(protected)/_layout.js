@@ -98,8 +98,8 @@ const DrawerLayout = () => {
         <Drawer.Screen
           name="maisvendidos"
           options={{
-            drawerLabel: "Mais vendidos",
-            headerTitle: "Mais vendidos",
+            drawerLabel: "Mais Vendidos",
+            headerTitle: "Mais Vendidos",
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <MaterialCommunityIcons name="medal-outline" size={23} color="black" />            ),
@@ -110,7 +110,7 @@ const DrawerLayout = () => {
           name="sabonete"
           options={{
             drawerLabel: "Sabonete",
-            headerTitle: "Sabonetes",
+            headerTitle: "Sabonete",
             headerTitleAlign: 'center',
             drawerIcon: () => (
 <FontAwesome6 name="pump-soap" size={24} color="black" />            ),
@@ -121,7 +121,7 @@ const DrawerLayout = () => {
           name="perfumes"
           options={{
             drawerLabel: "Perfume",
-            headerTitle: "Perfumes",
+            headerTitle: "Perfume",
             headerTitleAlign: 'center',
             drawerIcon: () => (
           <MaterialCommunityIcons name="bottle-soda-classic-outline" size={27} color="black" />            
@@ -133,7 +133,7 @@ const DrawerLayout = () => {
           name="hidratante"
           options={{
             drawerLabel: "Hidratante",
-            headerTitle: "Hidratante corporal",
+            headerTitle: "Hidratante Corporal",
             headerTitleAlign: 'center',
             drawerIcon: () => (
               <MaterialCommunityIcons name="bottle-tonic-outline" size={24} color="black" />
@@ -145,7 +145,7 @@ const DrawerLayout = () => {
         <Drawer.Screen
           name="cart"
           options={{
-            drawerLabel: "Minhas compras",
+            drawerLabel: "Minhas Compras",
             headerTitle: "",
             headerTitleAlign: 'center',
             drawerIcon: () => (
@@ -196,8 +196,8 @@ const DrawerLayout = () => {
         <Drawer.Screen
           name="payment"
           options={{
-            drawerLabel: "Pagamento",
-            headerTitle: "Inserir Pagamento",
+            drawerLabel: "Cadastro",
+            headerTitle: "Cadastrar Pagamentos",
             headerTitleAlign: 'center',
             drawerIcon: () => (
             <MaterialIcons name="payment" size={24} color="black" />            

@@ -96,6 +96,7 @@ async function resetDatabase() {
 
     async function importPayments(){
         const URL = "https://api.mockaroo.com/api/4a051fa0?count=40&key=182a4c60";
+        
        
         try {
             
